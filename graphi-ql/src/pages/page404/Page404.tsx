@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { PAGE_STYLE } from "../../style-const/style-const";
+import { FormattedMessage } from 'react-intl';
 
 const Page404 = () => {
   return <>
     <div className={`${PAGE_STYLE}`}>
-      <p>Page not found</p>
+      <FormattedMessage id='page_not_found'/>
       <Link to='/'>
-        <p>Go to Welcome Page</p>
+        <FormattedMessage id='go_to_main'/>
       </Link>
     </div>
   </>
