@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router";
-import { IntlProvider } from 'react-intl';
-import { LOCALES } from './i18n/locales';
-import { messages } from './i18n/messages';
+import { IntlProvider } from "react-intl";
+import { LOCALES } from "./i18n/locales";
+import { messages } from "./i18n/messages";
 import WelcomePage from "./pages/welcomePage/WelcomePage";
 import GraphQlPage from "./pages/graphiQLPage/GraphQlPage";
 import AuthPage from "./pages/authPage/AuthPage";
@@ -11,14 +11,14 @@ import "./App.css";
 import { useTypeSelector } from "./hooks/hooks";
 
 const App = () => {
-  const { lang } = useTypeSelector(state => state.user);
+  const { lang } = useTypeSelector((state) => state.user);
 
   return (
     <>
       <IntlProvider
-      messages={messages[lang]}
-      locale={lang}
-      defaultLocale={LOCALES.ENGLISH}
+        messages={messages[lang]}
+        locale={lang}
+        defaultLocale={LOCALES.ENGLISH}
       >
         <div className="app-wrap m-0 w-full h-full">
           <Routes>
@@ -31,9 +31,9 @@ const App = () => {
             </Route>
           </Routes>
         </div>
-      </IntlProvider> 
+      </IntlProvider>
     </>
   );
-}
+};
 
 export default App;
