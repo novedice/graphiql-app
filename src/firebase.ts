@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  apiKey: "AIzaSyAHHO30DqiIaLiV6Y-i86RzbnBoSLpgZRg",
   authDomain: "graphql-auth-20ff8.firebaseapp.com",
   projectId: "graphql-auth-20ff8",
   storageBucket: "graphql-auth-20ff8.appspot.com",
