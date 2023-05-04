@@ -1,34 +1,32 @@
-import { FC, useState } from "react";
+import { FC, useState } from 'react';
 
 interface FormProps {
-  title: string,
-  handleClick: (email: string, password: string) => void
+  title: string;
+  handleClick: (email: string, password: string) => void;
 }
 
-const Form: FC<FormProps> = ({title, handleClick}) => {
+const Form: FC<FormProps> = ({ title, handleClick }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   return (
-    <div className="m-6 flex flex-col">
+    <div className='m-6 flex flex-col'>
       <input
-        className="mb-6 w-56 p-2 rounded-sm"
-        type="email"
+        className='mb-6 w-56 p-2 rounded-sm'
+        type='email'
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder="email"
+        placeholder='email'
       />
       <input
-        className="w-56 p-2 rounded-sm"
-        type="password"
+        className='w-56 p-2 rounded-sm'
+        type='password'
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        placeholder="password"
+        placeholder='password'
       />
-      <button onClick={() => handleClick(email, password)}>
-        {title}
-      </button>
+      <button onClick={() => handleClick(email, password)}>{title}</button>
     </div>
-   );
-}
+  );
+};
 
-export {Form}
+export { Form };

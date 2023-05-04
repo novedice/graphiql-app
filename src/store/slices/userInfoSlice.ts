@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { PayloadAction } from '@reduxjs/toolkit';
-import { IUser } from '../types';
+import { IUser } from '../../types';
 
 const initialState = { name: '', lang: 'en' } as IUser;
 
@@ -16,3 +15,6 @@ const userInfoSlice = createSlice({
     },
   },
 });
+
+export const { changeLang, changeName } = userInfoSlice.actions;
+export default userInfoSlice.reducer;

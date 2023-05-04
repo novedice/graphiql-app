@@ -1,12 +1,12 @@
-import { useTypeSelector } from "./redux-hooks";
+import { useTypeSelector } from './redux-hooks';
 
 export function useAuth() {
-  const {email, token, id} = useTypeSelector(state => state.user);
+  const { email, token, id } = useTypeSelector((state) => state.user);
 
   return {
     isAuth: !!email,
     email,
     token,
-    id
-  }
+    id,
+  };
 }

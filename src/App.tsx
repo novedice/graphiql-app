@@ -14,7 +14,7 @@ import './App.css';
 import { useTypeSelector } from './hooks/redux-hooks';
 
 const App = () => {
-  const { lang } = useTypeSelector((state) => state.user);
+  const { lang } = useTypeSelector((state) => state.userLang);
 
   return (
     <>

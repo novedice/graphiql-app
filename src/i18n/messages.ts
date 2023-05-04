@@ -10,8 +10,8 @@ export const messages = {
     welcome_page: 'MAIN PAGE',
     graphi_ql_page: 'GRAPHI-QL PAGE',
     auth_page: 'AUTHENTIFICATION PAGE',
-    login_l: 'Login',
-    register_l: 'Register',
+    login: 'login',
+    register: 'register',
   },
   [LOCALES.RUSSIAN]: {
     to_welcome_page: 'Главная',
@@ -22,5 +22,7 @@ export const messages = {
     welcome_page: 'ГЛАВНАЯ СТРАНИЦА',
     graphi_ql_page: 'Самая сложная страница',
     auth_page: 'Страница логин/регистрация',
+    login: 'вход',
+    register: 'регистрация',
   },
 };

@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 interface ModalWindowInterface {
   show: boolean;
@@ -7,7 +7,7 @@ interface ModalWindowInterface {
 const initialState = { show: false } as ModalWindowInterface;
 
 const modalWindowSlice = createSlice({
-  name: "modalWindow",
+  name: 'modalWindow',
   initialState,
   reducers: {
     openModalWindow: (state) => {

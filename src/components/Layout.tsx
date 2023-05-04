@@ -8,7 +8,7 @@ import { PAGE_STYLE } from '../style-const/style-const';
 
 const Layout = () => {
   const dispatch = useAppDispatch();
-  const { lang, name } = useTypeSelector((state) => state.user);
+  const { lang, name } = useTypeSelector((state) => state.userLang);
   const { loggedIn } = useTypeSelector((state) => state.login);
 
   const handleChangeLang = () => {

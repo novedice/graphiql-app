@@ -8,7 +8,8 @@ const store = configureStore({
   reducer: {
     login: loginReducer,
     modalWindow: modalWindowReducer,
-    user: userInfoReducer,
+    userLang: userInfoReducer,
+    user: userReducer,
   },
 });
 
