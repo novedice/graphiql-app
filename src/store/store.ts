@@ -1,18 +1,16 @@
-import { PreloadedState, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import loginReducer from './slices/loginSlice';
 import modalWindowReducer from './slices/modalWindowSlice';
 import userInfoReducer from './slices/userInfoSlice';
-import userReducer from './slices/userSlice'
+import userReducer from './slices/userSlice';
 
 const store = configureStore({
-    reducer: {
-      login: loginReducer,
-      modalWindow: modalWindowReducer,
-      userLang: userInfoReducer,
-      user: userReducer
-    },
-  });
-
+  reducer: {
+    login: loginReducer,
+    modalWindow: modalWindowReducer,
+    user: userInfoReducer,
+  },
+});
 
 export default store;
 

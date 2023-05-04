@@ -1,7 +1,6 @@
 interface IUser {
   name: string;
-  lang: 'en' | 'rus';
+  lang: "en" | "rus";
 }
 
-export type {IUser}
-
+export type { IUser };
