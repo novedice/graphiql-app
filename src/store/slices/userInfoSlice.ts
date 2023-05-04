@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { IUser } from "../types";
+import { IUser } from "../../types";
 
 
 const initialState = { name: '', lang: 'en' } as IUser;
