@@ -1,17 +1,20 @@
-import { addRequest } from "../../../store/requestSlice";
-import { useAppDispatch, useTypeSelector } from "../../../hooks/hooks";
+import Editor from "@monaco-editor/react";
 import { useState } from "react";
+import { useAppDispatch } from "../../../hooks/hooks";
+import { addRequest } from "../../../store/requestSlice";
 import { request } from "../../../requests/api";
 import { addResults } from "../../../store/resultSlice";
 
 const RequestEditor = () => {
-  const [inputValue, setInputValue] = useState("");
-  const { requestValue } = useTypeSelector((state) => state.requestValue);
+  const [inputValue, setInputValue] = useState(`query NewQuery {
+          country(code:"PT") {
+            name
+          }
+        }`);
   const dispatch = useAppDispatch();
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    e.preventDefault();
-    setInputValue(e.target.value);
+  const handleChange = (e: string | undefined) => {
+    setInputValue(e ? e : "");
   };
 
   const handleSubmit = async () => {
@@ -19,22 +22,21 @@ const RequestEditor = () => {
     const res = await request(inputValue);
     if (res) {
       dispatch(addResults(JSON.stringify(res)));
-      console.log("store: request", requestValue);
     }
   };
 
   return (
     <>
-      <div className="text-black w-[50%] h-[100vh]">
-        <textarea
-          className="w-[100%] h-[100vh]"
-          defaultValue={requestValue}
+      <div className="flex flex-col w-[50%]">
+        <Editor
+          height="50vh"
+          defaultLanguage="graphql"
           onChange={handleChange}
-          rows={20}
-          cols={50}
-          autoComplete="on"
+          defaultValue={inputValue}
         />
-        <button onClick={handleSubmit}>Submit</button>
+        <button className="bg-black w-[300px] h-[40px]" onClick={handleSubmit}>
+          Submit
+        </button>
       </div>
     </>
   );

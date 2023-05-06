@@ -5,7 +5,7 @@ const ResultWindow = () => {
 
   return (
     <>
-      <div className="w-[50%] h-[100vh]">
+      <div className="w-[50%] h-[50vh]">
         <p>Results</p>
         <div>{resultValue}</div>
       </div>
