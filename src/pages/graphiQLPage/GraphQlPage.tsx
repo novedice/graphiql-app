@@ -1,11 +1,11 @@
-import { FormattedMessage } from "react-intl";
-import { PAGE_STYLE } from "../../style-const/style-const";
+import { FormattedMessage } from 'react-intl';
+import { PAGE_STYLE } from '../../style-const/style-const';
 
 const GraphQlPage = () => {
   return (
     <>
       <div className={`${PAGE_STYLE}`}>
-        <FormattedMessage id="graphi_ql_page" />
+        <FormattedMessage id='graphi_ql_page' />
       </div>
     </>
   );

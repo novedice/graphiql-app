@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 interface LoginInterface {
   loggedIn: boolean;
@@ -7,7 +7,7 @@ interface LoginInterface {
 const initialState = { loggedIn: false } as LoginInterface;
 
 const loginSlice = createSlice({
-  name: "login",
+  name: 'login',
   initialState,
   reducers: {
     logIn: (state) => {
