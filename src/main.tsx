@@ -7,6 +7,7 @@ import store from './store/store';
 import './index.css';
 
 import './firebase';
+import 'flowbite';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

@@ -10,11 +10,17 @@ const userInfoSlice = createSlice({
     changeLang: (state) => {
       state.lang === 'en' ? (state.lang = 'rus') : (state.lang = 'en');
     },
-    changeName: (state, action: { payload: string }) => {
-      state.name = action.payload;
+    changeToEn: (state) => {
+      state.lang = 'en';
     },
+    changeToRu: (state) => {
+      state.lang = 'rus';
+    },
+    // changeName: (state, action: { payload: string }) => {
+    //   state.name = action.payload;
+    // },
   },
 });
 
-export const { changeLang, changeName } = userInfoSlice.actions;
+export const { changeLang, changeToEn, changeToRu } = userInfoSlice.actions;
 export default userInfoSlice.reducer;

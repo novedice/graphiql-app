@@ -1,6 +1,6 @@
-import { Form } from './Form';
+import { FormRegister } from './FormRegister';
 import { useNavigate } from 'react-router';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { setUser } from '../../store/slices/userSlice';
 import { useAppDispatch } from '../../hooks/redux-hooks';
 
@@ -8,12 +8,15 @@ const RegisterForm = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const handleRegister = (email: string, password: string) => {
+  const handleRegister = (name: string, email: string, password: string) => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
+        updateProfile(user, { displayName: name }).catch((err) => console.log(err));
+
         dispatch(
           setUser({
+            name: name,
             email: user.email,
             id: user.uid,
             token: user.refreshToken,
@@ -21,10 +24,12 @@ const RegisterForm = () => {
         );
         navigate('/');
       })
-      .catch(() => alert('Check the fields to be filled out'));
+      .catch((error) => {
+        console.error('Error updating user profile:', error);
+      });
   };
 
-  return <Form title='register' handleClick={handleRegister} />;
+  return <FormRegister title='register' handleClick={handleRegister} />;
 };
 
 export { RegisterForm };

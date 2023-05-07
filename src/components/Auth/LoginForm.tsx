@@ -1,4 +1,4 @@
-import { Form } from './Form';
+import { FormLogin } from './FormLogin';
 import { useNavigate } from 'react-router';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { setUser } from '../../store/slices/userSlice';
@@ -14,6 +14,7 @@ const LoginForm = () => {
       .then(({ user }) => {
         dispatch(
           setUser({
+            name: user.displayName,
             email: user.email,
             id: user.uid,
             token: user.refreshToken,
@@ -24,7 +25,7 @@ const LoginForm = () => {
       .catch(() => alert('Invalid user'));
   };
 
-  return <Form title='sign in' handleClick={handleLogin} />;
+  return <FormLogin title='sign in' handleClick={handleLogin} />;
 };
 
 export default LoginForm;
