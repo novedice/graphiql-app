@@ -4,7 +4,7 @@ import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase
 import { setUser } from '../../store/slices/userSlice';
 import { useAppDispatch } from '../../hooks/redux-hooks';
 
-const RegisterForm = () => {
+const Register = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -32,4 +32,4 @@ const RegisterForm = () => {
   return <FormRegister title='register' handleClick={handleRegister} />;
 };
 
-export { RegisterForm };
+export default Register;

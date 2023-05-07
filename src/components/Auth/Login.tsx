@@ -4,7 +4,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { setUser } from '../../store/slices/userSlice';
 import { useAppDispatch } from '../../hooks/redux-hooks';
 
-const LoginForm = () => {
+const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -28,4 +28,4 @@ const LoginForm = () => {
   return <FormLogin title='sign in' handleClick={handleLogin} />;
 };
 
-export default LoginForm;
+export default Login;
