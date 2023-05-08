@@ -6,6 +6,7 @@ import { useAppDispatch } from '../hooks/redux-hooks';
 
 import { removeUser } from '../store/slices/userSlice';
 import LanguageSelector from './Auth/LanguageSelector';
+import { FormattedMessage } from 'react-intl';
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -18,32 +19,38 @@ const Header = () => {
           <Link to='/'>
             <img className='w-12' src={ReactLogo} alt='React Logo' />
           </Link>
-          {isAuth ? <h1 className='text-2xl ml-6 font-bold'>Welcome, {name}</h1> : <></>}
+          {isAuth ? (
+            <h1 className='capitalize text-2xl ml-6 font-bold'>
+              <FormattedMessage id='welcome' />, {name}
+            </h1>
+          ) : (
+            <></>
+          )}
         </div>
         <nav className='hidden md:flex md:items-center'>
           <ul className='md:flex md:items-center'>
             <li>
               <Link
                 to='/'
-                className='block text-xl px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
+                className='capitalize block text-xl px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
               >
-                Home
+                <FormattedMessage id='home' />
               </Link>
             </li>
             <li>
               <Link
                 to='/about'
-                className='block text-xl px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
+                className='capitalize block text-xl px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
               >
-                About
+                <FormattedMessage id='about' />
               </Link>
             </li>
             <li>
               <Link
                 to='/contact'
-                className=' block text-xl px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
+                className='capitalize block text-xl px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
               >
-                Contact
+                <FormattedMessage id='contact' />
               </Link>
             </li>
           </ul>
@@ -51,24 +58,24 @@ const Header = () => {
           {isAuth ? (
             <Link
               to='/login'
-              className='block text-xl px-4 py-2 text-gray-700  ml-10 bg-red-400 hover:bg-red-500 rounded'
+              className='capitalize block text-xl px-4 py-2 text-gray-700  ml-10 bg-red-400 hover:bg-red-500 rounded'
               onClick={() => dispatch(removeUser())}
             >
-              Log out
+              <FormattedMessage id='log_out' />
             </Link>
           ) : (
             <div className='ml-4 flex items-center'>
               <Link
                 to='/login'
-                className='block text-xl px-4 py-2 text-gray-700  mr-2 bg-yellow-300 hover:bg-yellow-400 rounded'
+                className='capitalize block text-xl px-4 py-2 text-gray-700  mr-2 bg-yellow-300 hover:bg-yellow-400 rounded'
               >
-                Sign In
+                <FormattedMessage id='sign_in' />
               </Link>
               <Link
                 to='/register'
-                className='text-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+                className='capitalize text-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
               >
-                Sign Up
+                <FormattedMessage id='sign_up' />
               </Link>
             </div>
           )}
