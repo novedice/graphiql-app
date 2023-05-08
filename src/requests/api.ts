@@ -19,13 +19,13 @@
 // }`;
 
 // const url = "https://spacex-production.up.railway.app/";
-const url2 = "https://countries.trevorblades.com/graphql";
+const url2 = 'https://countries.trevorblades.com/graphql';
 
 const request = async (query: string) => {
   const resp2 = await fetch(url2, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-type": "application/json",
+      'Content-type': 'application/json',
     },
     body: JSON.stringify({ query }),
   });

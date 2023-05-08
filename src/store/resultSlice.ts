@@ -1,16 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { resultValue: "" };
+const initialState = { resultValue: '' };
 
 const resultSlice = createSlice({
-  name: "resultValue",
+  name: 'resultValue',
   initialState,
   reducers: {
     addResults: (state, action: { payload: string }) => {
       state.resultValue = action.payload;
     },
     clearResults: (state) => {
-      state.resultValue = "";
+      state.resultValue = '';
     },
   },
 });
