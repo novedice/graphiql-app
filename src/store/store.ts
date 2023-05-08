@@ -1,9 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
-import loginReducer from "./loginSlice";
-import modalWindowReducer from "./modalWindowSlice";
-import userInfoReducer from "./userInfoSlice";
-import requestValueReducer from "./requestSlice";
-import resultValueReducer from "./resultSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import loginReducer from './loginSlice';
+import modalWindowReducer from './modalWindowSlice';
+import userInfoReducer from './userInfoSlice';
+import requestValueReducer from './requestSlice';
+import resultValueReducer from './resultSlice';
 
 const store = configureStore({
   reducer: {
