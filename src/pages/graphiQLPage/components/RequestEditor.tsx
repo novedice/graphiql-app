@@ -27,7 +27,7 @@ const RequestEditor = () => {
 
   return (
     <>
-      <div className='flex flex-col w-[50%]'>
+      <div className='flex flex-col'>
         <Editor
           height='50vh'
           defaultLanguage='graphql'

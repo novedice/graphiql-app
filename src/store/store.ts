@@ -3,6 +3,7 @@ import loginReducer from './loginSlice';
 import modalWindowReducer from './modalWindowSlice';
 import userInfoReducer from './userInfoSlice';
 import requestValueReducer from './requestSlice';
+import variablesValueReducer from './variablesSlice';
 import resultValueReducer from './resultSlice';
 
 const store = configureStore({
@@ -11,6 +12,7 @@ const store = configureStore({
     modalWindow: modalWindowReducer,
     user: userInfoReducer,
     requestValue: requestValueReducer,
+    variablesValue: variablesValueReducer,
     resultValue: resultValueReducer,
   },
 });
