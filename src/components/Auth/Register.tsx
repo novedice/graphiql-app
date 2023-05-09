@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { setUser } from '../../store/slices/userSlice';
 import { useAppDispatch } from '../../hooks/redux-hooks';
+import { FormattedMessage } from 'react-intl';
 
 const Register = () => {
   const dispatch = useAppDispatch();
@@ -29,7 +30,7 @@ const Register = () => {
       });
   };
 
-  return <FormRegister title='register' handleClick={handleRegister} />;
+  return <FormRegister title={<FormattedMessage id='register' />} handleClick={handleRegister} />;
 };
 
 export default Register;

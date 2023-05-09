@@ -4,13 +4,16 @@ import { Link } from 'react-router-dom';
 
 const RegisterPage = () => {
   return (
-    <div>
-      <h1 className='text-xl m-6'>
+    <div className='m-12'>
+      <h1 className='text-3xl m-6 first-letter:uppercase'>
         <FormattedMessage id='register' />
       </h1>
       <Register />
       <p className='m-6'>
-        Already have an account? <Link to='/login'>Sign in</Link>
+        <FormattedMessage id='have_an_account' />{' '}
+        <Link to='/login' className='capitalize'>
+          <FormattedMessage id='sign_in' />
+        </Link>
       </p>
     </div>
   );

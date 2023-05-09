@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { setUser } from '../../store/slices/userSlice';
 import { useAppDispatch } from '../../hooks/redux-hooks';
+import { FormattedMessage } from 'react-intl';
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -25,7 +26,7 @@ const Login = () => {
       .catch(() => alert('Invalid user'));
   };
 
-  return <FormLogin title='sign in' handleClick={handleLogin} />;
+  return <FormLogin title={<FormattedMessage id='sign_in' />} handleClick={handleLogin} />;
 };
 
 export default Login;

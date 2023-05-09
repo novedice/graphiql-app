@@ -32,7 +32,7 @@ const Header = () => {
             <li>
               <Link
                 to='/'
-                className='capitalize block text-xl px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
+                className='first-letter:uppercase block text-xl px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
               >
                 <FormattedMessage id='home' />
               </Link>
