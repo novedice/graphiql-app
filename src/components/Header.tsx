@@ -8,13 +8,42 @@ import { removeUser } from '../store/slices/userSlice';
 import LanguageSelector from './Auth/LanguageSelector';
 import { FormattedMessage } from 'react-intl';
 
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+
 const Header = () => {
   const dispatch = useAppDispatch();
   const { isAuth, name } = useAuth();
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    function handleScroll() {
+      if (window.scrollY > 0 && !isScrolled) {
+        setIsScrolled(true);
+      } else if (window.scrollY === 0 && isScrolled) {
+        setIsScrolled(false);
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isScrolled]);
+
   return (
-    <header className='shadow-md sticky top-0 z-100'>
-      <div className='container max-w-full py-6 px-8 m-auto md:flex md:justify-between md:items-center'>
+    <motion.header
+      className={`sticky top-0 z-50 bg-white shadow-md ${
+        isScrolled ? 'bg-opacity-90 bg-sky-500/50' : 'bg-opacity-100'
+      }`}
+      initial={{ y: 0 }}
+      animate={{ y: 0 }}
+      transition={{ type: 'tween', duration: 0.3, delay: 0 }}
+    >
+      <div
+        className={`container max-w-full px-8 m-auto md:flex md:justify-between md:items-center ${
+          isScrolled ? 'py-2' : 'py-6'
+        }`}
+      >
         <div className='flex items-center justify-between'>
           <Link to='/'>
             <img className='w-12' src={ReactLogo} alt='React Logo' />
@@ -82,7 +111,7 @@ const Header = () => {
           <LanguageSelector />
         </nav>
       </div>
-    </header>
+    </motion.header>
   );
 };
 
