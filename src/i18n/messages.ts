@@ -11,6 +11,7 @@ export const messages = {
     graphi_ql_page: 'GRAPHI-QL PAGE',
     auth_page: 'AUTHENTIFICATION PAGE',
     variables_title: 'QUERY VARIABLES',
+    headers_title: 'headers',
   },
   [LOCALES.RUSSIAN]: {
     to_welcome_page: 'Главная',
@@ -22,5 +23,6 @@ export const messages = {
     graphi_ql_page: 'Самая сложная страница',
     auth_page: 'Страница логин/регистрация',
     variables_title: 'ПЕРЕМЕННЫЕ ЗАПРОСА',
+    headers_title: 'заголовки запроса',
   },
 };

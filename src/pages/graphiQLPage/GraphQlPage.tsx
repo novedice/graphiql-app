@@ -1,5 +1,4 @@
 import { FormattedMessage } from 'react-intl';
-import { PAGE_STYLE } from '../../style-const/style-const';
 import ResultWindow from '../../components/ResultsWindow';
 import RequestEditor from '../../components/RequestEditor';
 import VariablesEditor from '../../components/VariablesEditor';
@@ -7,14 +6,16 @@ import VariablesEditor from '../../components/VariablesEditor';
 const GraphQlPage = () => {
   return (
     <>
-      <div className={`${PAGE_STYLE}`}>
+      <div className={`w-full h-[97vh] bg-slate-300`}>
         <FormattedMessage id='graphi_ql_page' />
-        <div className='flex'>
-          <div className='w-[50%]'>
+        <div className='w-[98%] flex m-3 justify-center'>
+          <div className='w-[64%] m-2 mr-1 flex flex-col'>
             <RequestEditor />
             <VariablesEditor />
           </div>
-          <ResultWindow />
+          <div className='w-[34%] h-[100%] ml-0 m-2 flex flex-col'>
+            <ResultWindow />
+          </div>
         </div>
       </div>
     </>
