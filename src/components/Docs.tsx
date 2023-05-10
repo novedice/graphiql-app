@@ -1,0 +1,59 @@
+import { useState } from 'react';
+import DocColumn from './DocColumn';
+
+// const typeDetails = {
+//   ID: 'The ID scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as "4") or integer (such as 4) input value will be accepted as an ID.',
+// };
+
+// const instanses = {
+//   code: {
+//     field: [],
+//     value: 'code',
+//     type: 'ID!',
+//     title: 'code: ID!',
+//     details: typeDetails['ID'],
+//     args: '',
+//   },
+//   Continent: {
+//     fields: ['code: ID!', 'countries', 'name'],
+//     value: continent(...): Continent,
+//     title: `continent(
+//       code: ID!
+//       ): Continent`
+
+//   },
+// };
+
+const Docs = () => {
+  const [isShow, setShow] = useState(false);
+  const [docs, setDocs] = useState(['Query']);
+  const toggleShow = () => setShow((prev) => !prev);
+  const appendDocumentation = (type: string, order: number) => {
+    setDocs((prev) => [...prev.slice(0, order + 1), type.replace('[', '').replace(']', '')]);
+  };
+
+  return (
+    <section className='flex items-center absolute right-0 h-[100%]'>
+      <button className='h-min bg-yellow-300 p-2' onClick={toggleShow}>
+        Docs
+      </button>
+      {isShow && (
+        <div className='h-[100%] bg-slate-50 text-black p-10 '>
+          <h3>Documentation</h3>
+          <div className='flex gap-x-2 h-[100%]'>
+            {docs.map((doc, i) => (
+              <DocColumn
+                key={Math.floor(Math.random() * 1000)}
+                type={doc}
+                appendDocumentation={appendDocumentation}
+                order={i}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+    </section>
+  );
+};
+
+export default Docs;
