@@ -8,43 +8,37 @@ import { removeUser } from '../store/slices/userSlice';
 import LanguageSelector from './Auth/LanguageSelector';
 import { FormattedMessage } from 'react-intl';
 
-import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 const Header = () => {
   const dispatch = useAppDispatch();
   const { isAuth, name } = useAuth();
 
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [animateHeader, setAnimateHeader] = useState(false);
 
   useEffect(() => {
-    function handleScroll() {
-      if (window.scrollY > 0 && !isScrolled) {
-        setIsScrolled(true);
-      } else if (window.scrollY === 0 && isScrolled) {
-        setIsScrolled(false);
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isScrolled]);
+    const listener = () => {
+      if (window.scrollY > 40) {
+        setAnimateHeader(true);
+      } else setAnimateHeader(false);
+    };
+    window.addEventListener('scroll', listener);
+    return () => {
+      window.removeEventListener('scroll', listener);
+    };
+  }, []);
 
   return (
-    <motion.header
-      className={`sticky top-0 z-50 bg-white shadow-md ${
-        isScrolled ? 'bg-opacity-90 bg-sky-500/50' : 'bg-opacity-100'
+    <header
+      className={`w-full top-0 backdrop-filter backdrop-blur-lg sticky z-10 trasition ease-in-out duration-500 ${
+        animateHeader ? 'shadow-xl py-2 bg-sky-500/50' : 'py-6 bg-white/50'
       }`}
-      initial={{ y: 0 }}
-      animate={{ y: 0 }}
-      transition={{ type: 'tween', duration: 0.3, delay: 0 }}
     >
       <div
-        className={`container max-w-full px-8 m-auto md:flex md:justify-between md:items-center ${
-          isScrolled ? 'py-2' : 'py-6'
-        }`}
+        className={`mx-auto container m-auto md:flex md:justify-between md:items-center
+        flex max-w-screen-xl items-center justify-between trasition ease-in-out duration-500`}
       >
-        <div className='flex items-center justify-between'>
+        <div className={`flex items-center justify-between`}>
           <Link to='/'>
             <img className='w-12' src={ReactLogo} alt='React Logo' />
           </Link>
@@ -111,7 +105,7 @@ const Header = () => {
           <LanguageSelector />
         </nav>
       </div>
-    </motion.header>
+    </header>
   );
 };
 

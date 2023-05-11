@@ -36,7 +36,7 @@ export const messages = {
     auth_page: 'Страница логин/регистрация',
     login: 'вход в систему',
     register: 'регистрация',
-    welcome: 'приветству',
+    welcome: 'приветствую',
     home: 'главная страница',
     about: 'о нас',
     contact: 'контакты',
