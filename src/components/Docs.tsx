@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import DocColumn from './DocColumn';
 
 // const typeDetails = {
@@ -32,6 +32,7 @@ export type DocState = {
 const Docs = () => {
   const [isShow, setShow] = useState(false);
   const [docs, setDocs] = useState([{ type: 'Query', id: Date.now() }]);
+  const refToRight = useRef<HTMLDivElement>(null);
   const toggleShow = () => setShow((prev) => !prev);
   const appendDocumentation = (type: string, order: number) => {
     setDocs((prev) => [
@@ -39,8 +40,12 @@ const Docs = () => {
       { type: type.replace('[', '').replace(']', ''), id: Date.now() },
     ]);
   };
+
+  useEffect(() => {
+    refToRight.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }, [docs]);
   return (
-    <section className='flex items-center absolute right-0 h-[100%]'>
+    <section className='flex items-center absolute right-0 h-[100%] max-w-[100%] overflow-x-auto'>
       <button className='h-min bg-yellow-300 p-2' onClick={toggleShow}>
         Docs
       </button>
@@ -56,6 +61,7 @@ const Docs = () => {
                 order={i}
               />
             ))}
+            <div ref={refToRight}></div>
           </div>
         </div>
       )}
