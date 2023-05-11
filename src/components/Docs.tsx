@@ -24,14 +24,21 @@ import DocColumn from './DocColumn';
 //   },
 // };
 
+export type DocState = {
+  type: string;
+  id: number;
+};
+
 const Docs = () => {
   const [isShow, setShow] = useState(false);
-  const [docs, setDocs] = useState(['Query']);
+  const [docs, setDocs] = useState([{ type: 'Query', id: Date.now() }]);
   const toggleShow = () => setShow((prev) => !prev);
   const appendDocumentation = (type: string, order: number) => {
-    setDocs((prev) => [...prev.slice(0, order + 1), type.replace('[', '').replace(']', '')]);
+    setDocs((prev) => [
+      ...prev.slice(0, order + 1),
+      { type: type.replace('[', '').replace(']', ''), id: Date.now() },
+    ]);
   };
-
   return (
     <section className='flex items-center absolute right-0 h-[100%]'>
       <button className='h-min bg-yellow-300 p-2' onClick={toggleShow}>
@@ -43,8 +50,8 @@ const Docs = () => {
           <div className='flex gap-x-2 h-[100%]'>
             {docs.map((doc, i) => (
               <DocColumn
-                key={Math.floor(Math.random() * 1000)}
-                type={doc}
+                key={doc.id}
+                doc={doc}
                 appendDocumentation={appendDocumentation}
                 order={i}
               />
