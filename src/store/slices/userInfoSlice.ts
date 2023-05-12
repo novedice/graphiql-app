@@ -1,7 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IUser } from '../../types';
 
-const initialState = { name: '', lang: 'en' } as IUser;
+const initialState = {
+  name: '',
+  lang: localStorage.getItem('currentLanguage') ? localStorage.getItem('currentLanguage') : 'en',
+} as IUser;
 
 const userInfoSlice = createSlice({
   name: 'userInfo',
@@ -16,9 +19,6 @@ const userInfoSlice = createSlice({
     changeToRu: (state) => {
       state.lang = 'rus';
     },
-    // changeName: (state, action: { payload: string }) => {
-    //   state.name = action.payload;
-    // },
   },
 });
 

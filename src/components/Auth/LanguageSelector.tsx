@@ -17,11 +17,13 @@ const LanguageSelector = () => {
   const handleToEnLang = () => {
     setIsDropdownOpen(false);
     dispatch(changeToEn());
+    localStorage.setItem('currentLanguage', 'en');
   };
 
   const handleToRuLang = () => {
     setIsDropdownOpen(false);
     dispatch(changeToRu());
+    localStorage.setItem('currentLanguage', 'rus');
   };
   return (
     <div className='flex items-center md:order-2 ml-4'>
