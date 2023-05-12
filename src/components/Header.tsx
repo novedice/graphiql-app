@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { Link, useNavigate } from 'react-router-dom';
-import ReactLogo from '../assets/logo.png';
+import GraphiQlLogo from '../assets/logo.png';
 
 import { useAuth } from '../hooks/use-auth';
 import { useAppDispatch } from '../hooks/redux-hooks';
@@ -75,7 +75,7 @@ const Header = () => {
       >
         <div className={`flex items-center justify-between`}>
           <Link to='/'>
-            <img className='w-12' src={ReactLogo} alt='React Logo' />
+            <img className='w-12' src={GraphiQlLogo} alt='React Logo' />
           </Link>
           {isAuth ? (
             <h1 className='capitalize text-2xl ml-6 font-bold'>

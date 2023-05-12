@@ -24,6 +24,8 @@ export const messages = {
     email: 'email',
     password: 'password',
     name: 'name',
+    madeBy: 'Made by',
+    project: 'Project',
   },
   [LOCALES.RUSSIAN]: {
     to_welcome_page: 'Главная',
@@ -48,5 +50,7 @@ export const messages = {
     email: 'почта',
     password: 'пароль',
     name: 'имя',
+    madeBy: 'Создано',
+    project: 'Проект',
   },
 };
