@@ -1,5 +1,4 @@
 interface IUser {
-  name: string;
   lang: 'en' | 'rus';
 }
 

@@ -1,9 +1,9 @@
 import ControlledEditor from '@monaco-editor/react';
 import { useState } from 'react';
-import { useAppDispatch, useTypeSelector } from '../hooks/hooks';
-import { addRequest } from '../store/requestSlice';
+import { useAppDispatch, useTypeSelector } from '../hooks/redux-hooks';
+import { addRequest } from '../store/slices/requestSlice';
 import { request } from '../requests/api';
-import { addResults } from '../store/resultSlice';
+import { addResults } from '../store/slices/resultSlice';
 import PlayIcon from './play-sign';
 
 const RequestEditor = () => {
@@ -39,7 +39,7 @@ const RequestEditor = () => {
   return (
     <>
       <div className='flex justify-center pt-5 pl-2 pb-2 mb-1 mr-1 w-[100%] bg-white rounded-tl-xl'>
-        <div className='w-[80%]'>
+        <div className='w-[95%] mr-2'>
           <ControlledEditor
             width='100%'
             theme='light'
@@ -47,16 +47,24 @@ const RequestEditor = () => {
             defaultLanguage='graphql'
             onChange={handleChange}
             defaultValue={inputValue}
-            options={{ minimap: { enabled: false } }}
+            className='overflow-hidden'
+            options={{
+              minimap: { enabled: false },
+              overviewRulerLanes: 0,
+              overviewRulerBorder: false,
+              scrollbar: {
+                vertical: 'hidden',
+                horizontal: 'hidden',
+              },
+            }}
           />
         </div>
-        <div className='flex justify-center w-[20%]'>
+        <div className='flex justify-center w-[45px] mr-2'>
           <div
-            className='bg-slate-300 flex min-w-[50px] max-h-[40px] hover:bg-red-400 rounded-lg'
+            className='bg-slate-300 flex min-w-[40px] max-h-[40px] justify-center items-center hover:bg-red-400 rounded-lg'
             onClick={handleSubmit}
           >
             <PlayIcon />
-            <p>Query</p>
           </div>
         </div>
       </div>

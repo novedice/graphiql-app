@@ -1,19 +1,23 @@
 import { configureStore } from '@reduxjs/toolkit';
-import loginReducer from './loginSlice';
-import modalWindowReducer from './modalWindowSlice';
-import userInfoReducer from './userInfoSlice';
-import requestValueReducer from './requestSlice';
-import variablesValueReducer from './variablesSlice';
-import resultValueReducer from './resultSlice';
+import requestValueReducer from './slices/requestSlice';
+import variablesValueReducer from './slices/variablesSlice';
+import resultValueReducer from './slices/resultSlice';
+import loginReducer from './slices/loginSlice';
+import modalWindowReducer from './slices/modalWindowSlice';
+import langReducer from './slices/langSlice';
+import userReducer from './slices/userSlice';
+import variableViewReducer from './slices/variableViewSlice';
 
 const store = configureStore({
   reducer: {
     login: loginReducer,
     modalWindow: modalWindowReducer,
-    user: userInfoReducer,
     requestValue: requestValueReducer,
     variablesValue: variablesValueReducer,
     resultValue: resultValueReducer,
+    userLang: langReducer,
+    user: userReducer,
+    variableView: variableViewReducer,
   },
 });
 
