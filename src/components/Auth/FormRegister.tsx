@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { FormattedMessage } from 'react-intl';
 
 interface FormProps {
   handleClick: (name: string, email: string, password: string) => void;
@@ -23,9 +24,9 @@ const FormRegister: FC<FormProps> = ({ handleClick }) => {
   };
 
   return (
-    <form className='m-6 flex flex-col' onSubmit={handleSubmit(onSubmit)}>
+    <form className='ml-6 flex flex-col' onSubmit={handleSubmit(onSubmit)}>
       <input
-        className='w-56 mt-6 p-2 text-lg rounded-sm'
+        className='w-56 p-2 text-lg rounded-sm'
         type='text'
         placeholder='name'
         {...register('name', {
@@ -64,10 +65,12 @@ const FormRegister: FC<FormProps> = ({ handleClick }) => {
         })}
       />
       {errors.password && <p className='mt-2 text-red-500'>{errors.password?.message as string}</p>}
-      <input
+      <button
         type='submit'
         className='w-44 mt-10 capitalize text-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer'
-      ></input>
+      >
+        {<FormattedMessage id='register' />}
+      </button>
     </form>
   );
 };

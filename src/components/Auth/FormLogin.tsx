@@ -50,11 +50,12 @@ const FormLogin: FC<FormProps> = ({ handleClick }) => {
         placeholder='password'
       />
       {errors.password && <p className='mt-2 text-red-500'>{errors.password?.message as string}</p>}
-      <input
+      <button
         type='submit'
-        // value={<FormattedMessage id='sign_in' />}
         className='w-32 mt-10 capitalize block text-xl px-4 py-2 text-gray-700  mr-2 bg-yellow-300 hover:bg-yellow-400 rounded cursor-pointer'
-      ></input>
+      >
+        {<FormattedMessage id='login' />}
+      </button>
     </form>
   );
 };
