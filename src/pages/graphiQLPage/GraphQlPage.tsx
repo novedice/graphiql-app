@@ -1,6 +1,7 @@
 import ResultWindow from '../../components/ResultsWindow';
 import RequestEditor from '../../components/RequestEditor';
 import VariablesEditor from '../../components/VariablesEditor';
+import Docs from '../../components/Docs';
 
 const GraphQlPage = () => {
   return (
@@ -11,8 +12,9 @@ const GraphQlPage = () => {
             <RequestEditor />
             <VariablesEditor />
           </div>
-          <div className='w-[34%] h-[100%] ml-0 m-2 flex flex-col'>
+          <div className='flex relative justify-center m-3 w-[30%]'>
             <ResultWindow />
+            <Docs />
           </div>
         </div>
       </div>
