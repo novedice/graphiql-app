@@ -24,10 +24,10 @@ const Login = () => {
         );
         navigate('/graphi-ql');
       })
-      .catch(() => alert('Invalid user'));
+      .catch(() => alert('Such a user does not exist'));
   };
 
-  return <FormLogin title={<FormattedMessage id='sign_in' />} handleClick={handleLogin} />;
+  return <FormLogin handleClick={handleLogin} />;
 };
 
 export default Login;

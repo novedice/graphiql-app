@@ -30,7 +30,7 @@ const Register = () => {
       });
   };
 
-  return <FormRegister title={<FormattedMessage id='register' />} handleClick={handleRegister} />;
+  return <FormRegister handleClick={handleRegister} />;
 };
 
 export default Register;

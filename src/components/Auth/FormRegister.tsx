@@ -1,44 +1,74 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
 interface FormProps {
-  title: string;
   handleClick: (name: string, email: string, password: string) => void;
 }
 
-const FormRegister: FC<FormProps> = ({ title, handleClick }) => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+interface IFormInput {
+  name: string;
+  email: string;
+  password: string;
+}
+
+const FormRegister: FC<FormProps> = ({ handleClick }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormInput>();
+
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    handleClick(data.name, data.email, data.password);
+  };
+
   return (
-    <div className='m-6 flex flex-col'>
+    <form className='m-6 flex flex-col' onSubmit={handleSubmit(onSubmit)}>
       <input
-        className='mb-6 w-56 p-2 text-lg rounded-sm'
+        className='w-56 mt-6 p-2 text-lg rounded-sm'
         type='text'
-        value={name}
-        onChange={(e) => setName(e.target.value)}
         placeholder='name'
+        {...register('name', {
+          required: 'Please enter the name',
+          pattern: {
+            value: /^([А-ЯЁ][а-яё]*|[A-Z][a-z]*)$/,
+            message:
+              'Please enter the name correctly (with a capital letter, no numbers, no special characters)',
+          },
+        })}
       />
+      {errors.name && <p className='mt-2 text-red-500'>{errors.name?.message as string}</p>}
       <input
-        className='mb-6 w-56 p-2 text-lg rounded-sm'
-        type='email'
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        className='w-56 mt-6 p-2 text-lg rounded-sm'
+        type='text'
         placeholder='email'
+        {...register('email', {
+          required: 'Please enter the email',
+          pattern: {
+            value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+            message: 'Please enter the correct email address',
+          },
+        })}
       />
+      {errors.email && <p className='mt-2 text-red-500'>{errors.email?.message as string}</p>}
       <input
-        className='mb-6 w-56 p-2 text-lg rounded-sm'
+        className='w-56 mt-6 p-2 text-lg rounded-sm'
         type='password'
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
         placeholder='password'
+        {...register('password', {
+          required: 'Please enter the password',
+          pattern: {
+            value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+            message: 'Minimum 8 symbols, at least one letter, one digit, one special character',
+          },
+        })}
       />
-      <button
-        className='w-44 mt-4 capitalize text-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-        onClick={() => handleClick(name, email, password)}
-      >
-        {title}
-      </button>
-    </div>
+      {errors.password && <p className='mt-2 text-red-500'>{errors.password?.message as string}</p>}
+      <input
+        type='submit'
+        className='w-44 mt-10 capitalize text-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer'
+      ></input>
+    </form>
   );
 };
 
