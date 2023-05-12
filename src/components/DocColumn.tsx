@@ -12,11 +12,15 @@ const DocColumn: FC<DocColumnProps> = ({ appendDocumentation, doc, order }) => {
   if (!docs[doc.type]) return <></>;
   const list = Object.entries(docs[doc.type]);
   return (
-    <ul className='border-2 border-rose-600 w-52 flex flex-col gap-y-2 p-2'>
+    <ul
+      className={` w-52 flex flex-col gap-y-2 p-2 font-semibold shadow-md  shadow-gray-700 bg-rose-100 ${
+        order % 2 && 'shadow-inner'
+      }`}
+    >
       {list.map(([key, value], i) => (
         <li key={i}>
           <a
-            className='border-2 border-indigo-500/75 cursor-pointer block w-[100%] p-1'
+            className='cursor-pointer block w-[100%] p-1 hover:text-blue-700 duration-300'
             onClick={() => appendDocumentation(value, order)}
           >
             {key}: {value}
