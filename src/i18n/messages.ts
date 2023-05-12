@@ -26,6 +26,13 @@ export const messages = {
     name: 'name',
     madeBy: 'Made by',
     project: 'Project',
+    nameRequaredMessage: 'Please enter the name',
+    emailRequaredMessage: 'Please enter the email',
+    passwordRequaredMessage: 'Please enter the password',
+    nameMessage:
+      'Please enter the name correctly (with a capital letter, no numbers, no special characters)',
+    emailMessage: 'Please enter the correct email address',
+    passwordMessage: 'Minimum 8 symbols, at least one letter, one digit, one special character',
   },
   [LOCALES.RUSSIAN]: {
     to_welcome_page: 'Главная',
@@ -52,5 +59,13 @@ export const messages = {
     name: 'имя',
     madeBy: 'Создано',
     project: 'Проект',
+    nameRequaredMessage: 'Пожалуйста, введите имя',
+    emailRequaredMessage: 'Пожалуйста, введите электронную почту',
+    passwordRequaredMessage: 'Пожалуйста, введите пароль',
+    nameMessage:
+      'Пожалуйста, введите имя правильно (с большой буквы, без цифр и специальных символов)',
+    emailMessage: 'Пожалуйста, введите правильный адрес электронной почты',
+    passwordMessage:
+      'Минимум 8 символов, как минимум одна буква, одна цифра, один специальный символ',
   },
 };

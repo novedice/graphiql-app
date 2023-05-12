@@ -33,8 +33,7 @@ const FormRegister: FC<FormProps> = ({ handleClick }) => {
           required: 'Please enter the name',
           pattern: {
             value: /^([А-ЯЁ][а-яё]*|[A-Z][a-z]*)$/,
-            message:
-              'Please enter the name correctly (with a capital letter, no numbers, no special characters)',
+            message: <FormattedMessage id='nameMessage' />,
           },
         })}
       />
@@ -47,7 +46,7 @@ const FormRegister: FC<FormProps> = ({ handleClick }) => {
           required: 'Please enter the email',
           pattern: {
             value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-            message: 'Please enter the correct email address',
+            message: <FormattedMessage id='emailMessage' />,
           },
         })}
       />
@@ -60,7 +59,7 @@ const FormRegister: FC<FormProps> = ({ handleClick }) => {
           required: 'Please enter the password',
           pattern: {
             value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-            message: 'Minimum 8 symbols, at least one letter, one digit, one special character',
+            message: <FormattedMessage id='passwordMessage' />,
           },
         })}
       />
@@ -69,7 +68,7 @@ const FormRegister: FC<FormProps> = ({ handleClick }) => {
         type='submit'
         className='w-44 mt-10 capitalize text-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer'
       >
-        {<FormattedMessage id='register' />}
+        {<FormattedMessage id='sign_up' />}
       </button>
     </form>
   );

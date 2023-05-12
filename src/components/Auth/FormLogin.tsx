@@ -31,7 +31,7 @@ const FormLogin: FC<FormProps> = ({ handleClick }) => {
           required: 'Please enter the email',
           pattern: {
             value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-            message: 'Please enter the correct email address',
+            message: <FormattedMessage id='emailMessage' />,
           },
         })}
         placeholder='email'
@@ -44,7 +44,7 @@ const FormLogin: FC<FormProps> = ({ handleClick }) => {
           required: 'Please enter the password',
           pattern: {
             value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-            message: 'Minimum 8 symbols, at least one letter, one digit, one special character',
+            message: <FormattedMessage id='passwordMessage' />,
           },
         })}
         placeholder='password'
@@ -54,7 +54,7 @@ const FormLogin: FC<FormProps> = ({ handleClick }) => {
         type='submit'
         className='w-32 mt-10 capitalize block text-xl px-4 py-2 text-gray-700  mr-2 bg-yellow-300 hover:bg-yellow-400 rounded cursor-pointer'
       >
-        {<FormattedMessage id='login' />}
+        {<FormattedMessage id='sign_in' />}
       </button>
     </form>
   );
