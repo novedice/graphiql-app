@@ -11,6 +11,7 @@ const Login = () => {
 
   const handleLogin = (email: string, password: string) => {
     const auth = getAuth();
+
     signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         dispatch(
@@ -21,7 +22,7 @@ const Login = () => {
             token: user.refreshToken,
           })
         );
-        navigate('/');
+        navigate('/graphi-ql');
       })
       .catch(() => alert('Invalid user'));
   };

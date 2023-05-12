@@ -23,7 +23,7 @@ const Register = () => {
             token: user.refreshToken,
           })
         );
-        navigate('/');
+        navigate('/graphi-ql');
       })
       .catch((error) => {
         console.error('Error updating user profile:', error);
