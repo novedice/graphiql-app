@@ -1,7 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import loginReducer from './loginSlice';
-import modalWindowReducer from './modalWindowSlice';
-import userInfoReducer from './userInfoSlice';
+import loginReducer from '../store/slices/loginSlice';
+import modalWindowReducer from '../store/slices/modalWindowSlice';
+import userInfoReducer from '../store/slices/userInfoSlice';
+import requestValueReducer from './slices/requestSlice';
+import variablesReducer from './slices/variablesSlice';
+import resultReducer from './slices/resultSlice';
+import userReducer from './slices/userSlice';
 
 const store = configureStore({
   reducer: {
@@ -9,8 +13,8 @@ const store = configureStore({
     modalWindow: modalWindowReducer,
     userLang: userInfoReducer,
     requestValue: requestValueReducer,
-    variablesValue: variablesValueReducer,
-    resultValue: resultValueReducer,
+    variablesValue: variablesReducer,
+    resultValue: resultReducer,
     user: userReducer,
   },
 });

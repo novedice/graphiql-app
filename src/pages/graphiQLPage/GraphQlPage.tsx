@@ -1,7 +1,5 @@
 import { FormattedMessage } from 'react-intl';
 import { PAGE_STYLE } from '../../style-const/style-const';
-import { FormattedMessage } from 'react-intl';
-import { PAGE_STYLE } from '../../style-const/style-const';
 import ResultWindow from './components/ResultsWindow';
 import RequestEditor from './components/RequestEditor';
 import VariablesEditor from '../../components/VariablesEditor';
