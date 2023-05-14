@@ -1,4 +1,4 @@
-import { useTypeSelector } from '../../../hooks/hooks';
+import { useTypeSelector } from '../../../hooks/redux-hooks';
 
 const ResultWindow = () => {
   const { resultValue } = useTypeSelector((state) => state.resultValue);

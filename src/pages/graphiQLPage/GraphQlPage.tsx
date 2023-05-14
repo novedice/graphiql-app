@@ -10,6 +10,14 @@ const GraphQlPage = () => {
     <>
       <div className={`${PAGE_STYLE}`}>
         <FormattedMessage id='graphi_ql_page' />
+        <div className='flex relative'>
+          <div className='w-[50%]'>
+            <RequestEditor />
+            <VariablesEditor />
+          </div>
+          <ResultWindow />
+          <Docs />
+        </div>
       </div>
     </>
   );
