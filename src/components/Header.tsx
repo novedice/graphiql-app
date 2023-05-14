@@ -65,8 +65,8 @@ const Header = () => {
 
   return (
     <header
-      className={`w-full top-0 backdrop-filter backdrop-blur-lg sticky z-10 trasition ease-in-out duration-500 ${
-        animateHeader ? 'shadow-xl py-2 bg-sky-500/50' : 'py-6 bg-white/50'
+      className={`w-full top-0 backdrop-filter backdrop-blur-lg sticky z-10 trasition ease-in-out duration-500 shadow-xl ${
+        animateHeader ? 'py-2 bg-sky-500/50' : 'py-6 bg-white/50'
       }`}
     >
       <div
