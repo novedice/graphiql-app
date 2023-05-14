@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAppDispatch, useTypeSelector } from '../../hooks/redux-hooks';
-import { changeToEn, changeToRu } from '../../store/slices/userInfoSlice';
+import { changeToEn, changeToRu } from '../../store/slices/langSlice';
 
 import USAFlag from '../../assets/lang_flags/USAFlag.png';
 import RuFlag from '../../assets/lang_flags/RuFlag.png';

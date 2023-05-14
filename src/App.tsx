@@ -20,7 +20,7 @@ const App = () => {
   return (
     <>
       <IntlProvider messages={messages[lang]} locale={lang} defaultLocale={LOCALES.ENGLISH}>
-        <div className='app-wrap m-0 w-full h-full'>
+        <div className='app-wrap m-0 w-full h-screen'>
           <Routes>
             <Route path='/' element={<Layout />}>
               <Route index path='/' element={<WelcomePage />} />

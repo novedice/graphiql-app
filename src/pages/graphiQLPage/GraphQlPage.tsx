@@ -1,22 +1,21 @@
-import { FormattedMessage } from 'react-intl';
-import { PAGE_STYLE } from '../../style-const/style-const';
-import ResultWindow from './components/ResultsWindow';
-import RequestEditor from './components/RequestEditor';
+import ResultWindow from '../../components/ResultsWindow';
+import RequestEditor from '../../components/RequestEditor';
 import VariablesEditor from '../../components/VariablesEditor';
 import Docs from '../../components/Docs';
 
 const GraphQlPage = () => {
   return (
     <>
-      <div className={`${PAGE_STYLE}`}>
-        <FormattedMessage id='graphi_ql_page' />
-        <div className='flex relative'>
-          <div className='w-[50%]'>
+      <div className={`w-full bg-slate-300`}>
+        <div className='w-[98%] flex m-3 justify-center'>
+          <div className='w-[64%] m-2 mr-1 flex flex-col'>
             <RequestEditor />
             <VariablesEditor />
           </div>
-          <ResultWindow />
-          <Docs />
+          <div className='flex relative justify-center m-2 ml-1 w-[30%]'>
+            <ResultWindow />
+            <Docs />
+          </div>
         </div>
       </div>
     </>

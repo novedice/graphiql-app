@@ -33,6 +33,8 @@ export const messages = {
       'Please enter the name correctly (with a capital letter, no numbers, no special characters)',
     emailMessage: 'Please enter the correct email address',
     passwordMessage: 'Minimum 8 symbols, at least one letter, one digit, one special character',
+    variables_title: 'QUERY VARIABLES',
+    headers_title: 'headers',
   },
   [LOCALES.RUSSIAN]: {
     to_welcome_page: 'Главная',
@@ -67,5 +69,7 @@ export const messages = {
     emailMessage: 'Пожалуйста, введите правильный адрес электронной почты',
     passwordMessage:
       'Минимум 8 символов, как минимум одна буква, одна цифра, один специальный символ',
+    variables_title: 'переменные',
+    headers_title: 'заголовки',
   },
 };

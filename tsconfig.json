@@ -17,15 +17,14 @@
     "isolatedModules": true,
     "noImplicitAny": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "baseUrl": "src"
+    "jsx": "react-jsx"
   },
   "ts-node": {
     "esm": true,
     "experimentalSpecifierResolution": "node"
   },
   "include": [
-     "./src/**/*",
+    "./src/**/*",
     "styled.d.ts",
     "setupTests.js",
     "vitest.config.ts",
