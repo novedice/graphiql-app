@@ -1,9 +1,9 @@
 import Editor from '@monaco-editor/react';
 import { useState } from 'react';
-import { useAppDispatch } from '../../../hooks/hooks';
-import { addRequest } from '../../../store/requestSlice';
+import { useAppDispatch } from '../../../hooks/redux-hooks';
+import { addRequest } from '../../../store/slices/requestSlice';
 import { request } from '../../../requests/api';
-import { addResults } from '../../../store/resultSlice';
+import { addResults } from '../../../store/slices/resultSlice';
 
 const RequestEditor = () => {
   const [inputValue, setInputValue] = useState(`query NewQuery {

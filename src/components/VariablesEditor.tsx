@@ -1,7 +1,7 @@
 import Editor from '@monaco-editor/react';
-import { useAppDispatch } from '../hooks/hooks';
+import { useAppDispatch } from '../hooks/redux-hooks';
 import { FormattedMessage } from 'react-intl';
-import { updateVariablesValue } from '../store/variablesSlice';
+import { updateVariablesValue } from '../store/slices/variablesSlice';
 
 const VariablesEditor = () => {
   const dispatch = useAppDispatch();
