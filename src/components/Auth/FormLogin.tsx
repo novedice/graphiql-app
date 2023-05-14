@@ -1,36 +1,62 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { FormattedMessage } from 'react-intl';
 
 interface FormProps {
-  title: string;
   handleClick: (email: string, password: string) => void;
 }
 
-const FormLogin: FC<FormProps> = ({ title, handleClick }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+interface IFormInput {
+  email: string;
+  password: string;
+}
+
+const FormLogin: FC<FormProps> = ({ handleClick }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormInput>();
+
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    handleClick(data.email, data.password);
+  };
+
   return (
-    <div className='m-6 flex flex-col'>
-      <input
-        className='mb-6 w-56 p-2 text-lg rounded-sm'
-        type='email'
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder='email'
-      />
+    <form className='m-6 flex flex-col' onSubmit={handleSubmit(onSubmit)}>
       <input
         className='w-56 p-2 text-lg rounded-sm'
+        type='text'
+        {...register('email', {
+          required: 'Please enter the email',
+          pattern: {
+            value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+            message: <FormattedMessage id='emailMessage' />,
+          },
+        })}
+        placeholder='email'
+      />
+      {errors.email && <p className='mt-2 text-red-500'>{errors.email?.message as string}</p>}
+      <input
+        className='w-56 mt-6 p-2 text-lg rounded-sm'
         type='password'
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        {...register('password', {
+          required: 'Please enter the password',
+          pattern: {
+            value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+            message: <FormattedMessage id='passwordMessage' />,
+          },
+        })}
         placeholder='password'
       />
+      {errors.password && <p className='mt-2 text-red-500'>{errors.password?.message as string}</p>}
       <button
-        className='w-32 mt-10 capitalize block text-xl px-4 py-2 text-gray-700  mr-2 bg-yellow-300 hover:bg-yellow-400 rounded'
-        onClick={() => handleClick(email, password)}
+        type='submit'
+        className='w-32 mt-10 capitalize block text-xl px-4 py-2 text-gray-700  mr-2 bg-yellow-300 hover:bg-yellow-400 rounded cursor-pointer'
       >
-        {title}
+        {<FormattedMessage id='sign_in' />}
       </button>
-    </div>
+    </form>
   );
 };
 

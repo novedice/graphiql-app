@@ -23,14 +23,14 @@ const Register = () => {
             token: user.refreshToken,
           })
         );
-        navigate('/');
+        navigate('/graphi-ql');
       })
       .catch((error) => {
         console.error('Error updating user profile:', error);
       });
   };
 
-  return <FormRegister title={<FormattedMessage id='register' />} handleClick={handleRegister} />;
+  return <FormRegister handleClick={handleRegister} />;
 };
 
 export default Register;

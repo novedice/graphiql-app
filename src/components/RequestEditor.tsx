@@ -15,6 +15,7 @@ const RequestEditor = () => {
   const dispatch = useAppDispatch();
 
   const { variables } = useTypeSelector((state) => state.variablesValue);
+  const { wholeWindow } = useTypeSelector((state) => state.variableView);
 
   const handleChange = (e: string | undefined) => {
     setInputValue(e ? e : '');
@@ -43,7 +44,7 @@ const RequestEditor = () => {
           <ControlledEditor
             width='100%'
             theme='light'
-            height='50vh'
+            height={wholeWindow ? '50vh' : '75vh'}
             defaultLanguage='graphql'
             onChange={handleChange}
             defaultValue={inputValue}

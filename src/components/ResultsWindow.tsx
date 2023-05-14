@@ -8,7 +8,7 @@ const ResultWindow = () => {
     <>
       <div className='flex justify-between w-[100%] h-[100%] pr-3 pt-5 pl-2 pb-2 mb-1 mr-1 bg-white rounded-tr-xl rounded-br-xl'>
         <Editor
-          height='82.5vh'
+          height='75vh'
           className='overflow-hidden'
           width='100%'
           defaultLanguage='graphql'

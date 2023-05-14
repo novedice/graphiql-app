@@ -12,7 +12,7 @@ const GraphQlPage = () => {
             <RequestEditor />
             <VariablesEditor />
           </div>
-          <div className='flex relative justify-center m-3 w-[30%]'>
+          <div className='flex relative justify-center m-2 ml-1 w-[30%]'>
             <ResultWindow />
             <Docs />
           </div>

@@ -1,44 +1,76 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { FormattedMessage } from 'react-intl';
 
 interface FormProps {
-  title: string;
   handleClick: (name: string, email: string, password: string) => void;
 }
 
-const FormRegister: FC<FormProps> = ({ title, handleClick }) => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+interface IFormInput {
+  name: string;
+  email: string;
+  password: string;
+}
+
+const FormRegister: FC<FormProps> = ({ handleClick }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormInput>();
+
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    handleClick(data.name, data.email, data.password);
+  };
+
   return (
-    <div className='m-6 flex flex-col'>
+    <form className='ml-6 flex flex-col' onSubmit={handleSubmit(onSubmit)}>
       <input
-        className='mb-6 w-56 p-2 text-lg rounded-sm'
+        className='w-56 p-2 text-lg rounded-sm'
         type='text'
-        value={name}
-        onChange={(e) => setName(e.target.value)}
         placeholder='name'
+        {...register('name', {
+          required: 'Please enter the name',
+          pattern: {
+            value: /^([А-ЯЁ][а-яё]*|[A-Z][a-z]*)$/,
+            message: <FormattedMessage id='nameMessage' />,
+          },
+        })}
       />
+      {errors.name && <p className='mt-2 text-red-500'>{errors.name?.message as string}</p>}
       <input
-        className='mb-6 w-56 p-2 text-lg rounded-sm'
-        type='email'
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        className='w-56 mt-6 p-2 text-lg rounded-sm'
+        type='text'
         placeholder='email'
+        {...register('email', {
+          required: 'Please enter the email',
+          pattern: {
+            value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+            message: <FormattedMessage id='emailMessage' />,
+          },
+        })}
       />
+      {errors.email && <p className='mt-2 text-red-500'>{errors.email?.message as string}</p>}
       <input
-        className='mb-6 w-56 p-2 text-lg rounded-sm'
+        className='w-56 mt-6 p-2 text-lg rounded-sm'
         type='password'
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
         placeholder='password'
+        {...register('password', {
+          required: 'Please enter the password',
+          pattern: {
+            value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+            message: <FormattedMessage id='passwordMessage' />,
+          },
+        })}
       />
+      {errors.password && <p className='mt-2 text-red-500'>{errors.password?.message as string}</p>}
       <button
-        className='w-44 mt-4 capitalize text-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-        onClick={() => handleClick(name, email, password)}
+        type='submit'
+        className='w-44 mt-10 capitalize text-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer'
       >
-        {title}
+        {<FormattedMessage id='sign_up' />}
       </button>
-    </div>
+    </form>
   );
 };
 
