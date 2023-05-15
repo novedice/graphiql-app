@@ -21,26 +21,24 @@ const Docs = () => {
   useEffect(() => {
     refLastElement.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }, [docs]);
+
   return (
     <section className='flex items-center absolute right-0 h-[100%] max-w-[100%] overflow-x-auto'>
-      <button className='h-min bg-yellow-300 p-2' onClick={toggleShow}>
+      <button className='fixed right-0 h-min bg-yellow-300 p-2' onClick={toggleShow}>
         Docs
       </button>
-      {isShow && (
-        <div className='h-[100%] text-black'>
-          <div className='flex h-[100%] py-4'>
-            {docs.map((doc, i) => (
-              <DocColumn
-                key={doc.id}
-                doc={doc}
-                appendDocumentation={appendDocumentation}
-                order={i}
-              />
-            ))}
-            <div ref={refLastElement}></div>
-          </div>
+      <div
+        className={`h-full transition duration-500 ease-in-out opacity-0 transform -translate-x-100 ${
+          isShow ? 'opacity-100 translate-x-0' : ''
+        }`}
+      >
+        <div className='flex h-[100%] py-4'>
+          {docs.map((doc, i) => (
+            <DocColumn key={doc.id} doc={doc} appendDocumentation={appendDocumentation} order={i} />
+          ))}
+          <div ref={refLastElement}></div>
         </div>
-      )}
+      </div>
     </section>
   );
 };

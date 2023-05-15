@@ -61,12 +61,12 @@ const RequestEditor = () => {
           />
         </div>
         <div className='flex justify-center w-[45px] mr-2'>
-          <div
+          <button
             className='bg-slate-300 flex min-w-[40px] max-h-[40px] justify-center items-center hover:bg-red-400 rounded-lg'
             onClick={handleSubmit}
           >
             <PlayIcon />
-          </div>
+          </button>
         </div>
       </div>
     </>

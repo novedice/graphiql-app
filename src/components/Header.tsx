@@ -22,7 +22,7 @@ const Header = () => {
 
   useEffect(() => {
     const listener = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 0) {
         setAnimateHeader(true);
       } else setAnimateHeader(false);
     };
@@ -71,7 +71,7 @@ const Header = () => {
     >
       <div
         className={`mx-auto container m-auto md:flex md:justify-between md:items-center
-        flex max-w-screen-xl items-center justify-between trasition ease-in-out duration-500`}
+        flex max-w-screen-xl items-center justify-between`}
       >
         <div className={`flex items-center justify-between`}>
           <Link to='/'>
