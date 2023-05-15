@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import DocColumn from './DocColumn';
+import { fetchDocSchema } from '../store/slices/docSlice';
+import { useAppDispatch } from '../hooks/redux-hooks';
 
 export type DocState = {
   type: string;
@@ -7,6 +9,7 @@ export type DocState = {
 };
 
 const Docs = () => {
+  const dispatch = useAppDispatch();
   const [isShow, setShow] = useState(false);
   const [docs, setDocs] = useState([{ type: 'Query', id: Date.now() }]);
   const refLastElement = useRef<HTMLDivElement>(null);
@@ -17,7 +20,9 @@ const Docs = () => {
       { type: type.replace('[', '').replace(']', ''), id: Date.now() },
     ]);
   };
-
+  useEffect(() => {
+    dispatch(fetchDocSchema());
+  }, []);
   useEffect(() => {
     refLastElement.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }, [docs]);
