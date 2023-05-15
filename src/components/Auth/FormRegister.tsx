@@ -30,40 +30,52 @@ const FormRegister: FC<FormProps> = ({ handleClick }) => {
         type='text'
         placeholder='name'
         {...register('name', {
-          required: 'Please enter the name',
+          required: 'nameRequiredMessage',
           pattern: {
             value: /^([А-ЯЁ][а-яё]*|[A-Z][a-z]*)$/,
-            message: <FormattedMessage id='nameMessage' />,
+            message: 'nameMessage',
           },
         })}
       />
-      {errors.name && <p className='mt-2 text-red-500'>{errors.name?.message as string}</p>}
+      {errors.name && (
+        <p className='mt-2 text-red-500'>
+          <FormattedMessage id={errors.name?.message as string} />
+        </p>
+      )}
       <input
         className='w-56 mt-6 p-2 text-lg rounded-sm'
         type='text'
         placeholder='email'
         {...register('email', {
-          required: 'Please enter the email',
+          required: 'emailRequiredMessage',
           pattern: {
             value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-            message: <FormattedMessage id='emailMessage' />,
+            message: 'emailMessage',
           },
         })}
       />
-      {errors.email && <p className='mt-2 text-red-500'>{errors.email?.message as string}</p>}
+      {errors.email && (
+        <p className='mt-2 text-red-500'>
+          <FormattedMessage id={errors.email?.message as string} />
+        </p>
+      )}
       <input
         className='w-56 mt-6 p-2 text-lg rounded-sm'
         type='password'
         placeholder='password'
         {...register('password', {
-          required: 'Please enter the password',
+          required: 'passwordRequiredMessage',
           pattern: {
             value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-            message: <FormattedMessage id='passwordMessage' />,
+            message: 'passwordMessage',
           },
         })}
       />
-      {errors.password && <p className='mt-2 text-red-500'>{errors.password?.message as string}</p>}
+      {errors.password && (
+        <p className='mt-2 text-red-500'>
+          <FormattedMessage id={errors.password?.message as string} />
+        </p>
+      )}
       <button
         type='submit'
         className='w-44 mt-10 capitalize text-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer'

@@ -1,9 +1,21 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router';
+import { useTypeSelector } from '../../hooks/redux-hooks';
 import ResultWindow from '../../components/ResultsWindow';
 import RequestEditor from '../../components/RequestEditor';
 import VariablesEditor from '../../components/VariablesEditor';
 import Docs from '../../components/Docs';
 
 const GraphQlPage = () => {
+  const { loggedIn } = useTypeSelector((state) => state.login);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!loggedIn) {
+      navigate('/');
+    }
+  }, [loggedIn, navigate]);
+
   return (
     <>
       <div className={`w-full bg-slate-300`}>

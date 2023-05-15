@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router';
+
 import GraphiQlLogo from '../assets/logo.png';
 
 import { useAuth } from '../hooks/use-auth';
-import { useAppDispatch } from '../hooks/redux-hooks';
+import { useAppDispatch, useTypeSelector } from '../hooks/redux-hooks';
 
 import { setUser, removeUser } from '../store/slices/userSlice';
+import { logIn, logOut } from '../store/slices/loginSlice';
 
 import LanguageSelector from './Auth/LanguageSelector';
 import { FormattedMessage } from 'react-intl';
@@ -15,8 +18,9 @@ import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
 
 const Header = () => {
   const dispatch = useAppDispatch();
-  const { isAuth, name } = useAuth();
+  const { name } = useAuth();
   const navigate = useNavigate();
+  const { loggedIn } = useTypeSelector((state) => state.login);
 
   const [animateHeader, setAnimateHeader] = useState(false);
 
@@ -36,6 +40,7 @@ const Header = () => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        dispatch(logIn());
         dispatch(
           setUser({
             name: user.displayName,
@@ -44,18 +49,18 @@ const Header = () => {
             token: user.refreshToken,
           })
         );
-        navigate('/graphi-ql');
       } else {
         return;
       }
     });
-  }, []);
+  });
 
   const logOutHandler = () => {
     dispatch(removeUser());
     const auth = getAuth();
     signOut(auth)
       .then(() => {
+        dispatch(logOut());
         navigate('/');
       })
       .catch((error) => {
@@ -77,7 +82,7 @@ const Header = () => {
           <Link to='/'>
             <img className='w-12' src={GraphiQlLogo} alt='React Logo' />
           </Link>
-          {isAuth ? (
+          {loggedIn ? (
             <h1 className='capitalize text-2xl ml-6 font-bold'>
               <FormattedMessage id='welcome' />, {name}
             </h1>
@@ -95,7 +100,7 @@ const Header = () => {
                 <FormattedMessage id='home' />
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 to='/about'
                 className='capitalize block text-xl px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
@@ -110,17 +115,25 @@ const Header = () => {
               >
                 <FormattedMessage id='contact' />
               </Link>
-            </li>
+            </li> */}
           </ul>
 
-          {isAuth ? (
-            <Link
-              to='/login'
-              className='capitalize block text-xl px-4 py-2 text-gray-700  ml-10 bg-red-400 hover:bg-red-500 rounded'
-              onClick={logOutHandler}
-            >
-              <FormattedMessage id='log_out' />
-            </Link>
+          {loggedIn ? (
+            <>
+              <Link
+                to='/graphi-ql'
+                className='capitalize block text-xl px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
+              >
+                <FormattedMessage id='to_graphi' />
+              </Link>
+              <Link
+                to='/login'
+                className='capitalize block text-xl px-4 py-2 text-gray-700  ml-10 bg-red-400 hover:bg-red-500 rounded'
+                onClick={logOutHandler}
+              >
+                <FormattedMessage id='log_out' />
+              </Link>
+            </>
           ) : (
             <div className='ml-4 flex items-center'>
               <Link
