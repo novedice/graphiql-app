@@ -100,22 +100,6 @@ const Header = () => {
                 <FormattedMessage id='home' />
               </Link>
             </li>
-            {/* <li>
-              <Link
-                to='/about'
-                className='capitalize block text-xl px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
-              >
-                <FormattedMessage id='about' />
-              </Link>
-            </li>
-            <li>
-              <Link
-                to='/contact'
-                className='capitalize block text-xl px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
-              >
-                <FormattedMessage id='contact' />
-              </Link>
-            </li> */}
           </ul>
 
           {loggedIn ? (
