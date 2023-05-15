@@ -29,8 +29,9 @@ const request = async (query: string) => {
     },
     body: JSON.stringify({ query }),
   });
-
-  return resp2.json();
+  const r = await resp2.json();
+  console.log(r);
+  return r;
 };
 
 export { request };

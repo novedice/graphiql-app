@@ -3,8 +3,10 @@ import { PAGE_STYLE } from '../../style-const/style-const';
 import ResultWindow from './components/ResultsWindow';
 import RequestEditor from './components/RequestEditor';
 import VariablesEditor from '../../components/VariablesEditor';
-import Docs from '../../components/Docs';
+// import Docs from '../../components/Docs';
+import { lazy, Suspense } from 'react';
 
+const Docs = lazy(() => import('../../components/Docs'));
 const GraphQlPage = () => {
   return (
     <>
@@ -15,8 +17,12 @@ const GraphQlPage = () => {
             <RequestEditor />
             <VariablesEditor />
           </div>
-          <ResultWindow />
-          <Docs />
+          <div className='flex relative justify-center m-2 ml-1 w-[30%]'>
+            <ResultWindow />
+            <Suspense fallback={<p>loading...</p>}>
+              <Docs />
+            </Suspense>
+          </div>
         </div>
       </div>
     </>
