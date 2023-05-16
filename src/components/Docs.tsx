@@ -1,25 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import DocColumn from './DocColumn';
 import { fetchDocSchema } from '../store/slices/docSlice';
-import { useAppDispatch } from '../hooks/redux-hooks';
-
-export type DocState = {
-  type: string;
-  id: number;
-};
+import { useAppDispatch, useTypeSelector } from '../hooks/redux-hooks';
 
 const Docs = () => {
   const dispatch = useAppDispatch();
   const [isShow, setShow] = useState(false);
-  const [docs, setDocs] = useState([{ type: 'Query', id: Date.now() }]);
+  const docs = useTypeSelector((state) => state.docSchema.docList);
   const refLastElement = useRef<HTMLDivElement>(null);
   const toggleShow = () => setShow((prev) => !prev);
-  const appendDocumentation = (type: string, order: number) => {
-    setDocs((prev) => [
-      ...prev.slice(0, order + 1),
-      { type: type.replace('[', '').replace(']', ''), id: Date.now() },
-    ]);
-  };
+
   useEffect(() => {
     dispatch(fetchDocSchema());
   }, []);
@@ -39,7 +29,7 @@ const Docs = () => {
       >
         <div className='flex h-[100%] py-4'>
           {docs.map((doc, i) => (
-            <DocColumn key={doc.id} doc={doc} appendDocumentation={appendDocumentation} order={i} />
+            <DocColumn key={doc.id} doc={doc} args={doc.args} order={i} />
           ))}
           <div ref={refLastElement}></div>
         </div>

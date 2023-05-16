@@ -1,29 +1,52 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { docQueryString } from '../../constants';
 import { request } from '../../requests/api';
-import { Root } from 'types';
+import { ArgType, SchemaItem } from 'types';
 import { parseSchema } from '../../utils';
+import { getIntrospectionQuery, IntrospectionQuery } from 'graphql';
 
-export const fetchDocSchema = createAsyncThunk<Root>('schema', async () => {
-  const response = await request(docQueryString);
-  return response;
+export const fetchDocSchema = createAsyncThunk<IntrospectionQuery>('schema', async () => {
+  const response = await request(getIntrospectionQuery());
+  return response.data;
 });
 
-type InitialStateType = {
-  schema: { [key: string]: { title: string; fields: string[][] | undefined } } | null;
+export type DocState = {
+  type: string;
+  args: ArgType | null;
+  id: number;
 };
 
-const initialState: InitialStateType = { schema: null };
+type InitialStateType = {
+  schema: SchemaItem[] | null;
+  docList: DocState[];
+};
 
-const requestSlice = createSlice({
+const initialState: InitialStateType = {
+  schema: null,
+  docList: [{ type: 'Query', id: Date.now(), args: null }],
+};
+
+const docSlice = createSlice({
   name: 'schema',
   initialState,
-  reducers: {},
+  reducers: {
+    updateDoc: (state, action) => {
+      const type = action.payload.type as string;
+      const order = action.payload.order as number;
+      const args = action.payload.args;
+
+      state.docList = [
+        ...state.docList.slice(0, order + 1),
+        { type: type.replace('[', '').replace(']', ''), id: Date.now(), args },
+      ];
+    },
+  },
   extraReducers(builder) {
     builder.addCase(fetchDocSchema.fulfilled, (state, action) => {
-      state.schema = parseSchema(action.payload);
+      const parsedSchema = parseSchema(action.payload) as SchemaItem[];
+      state.schema = parsedSchema;
     });
   },
 });
 
-export default requestSlice.reducer;
+export const { updateDoc } = docSlice.actions;
+export default docSlice.reducer;

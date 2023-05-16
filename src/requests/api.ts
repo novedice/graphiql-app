@@ -13,7 +13,6 @@ const request = async (query: string, variables?: string, header?: object) => {
     }),
   });
   const r = await resp2.json();
-  console.log(r);
   return r;
 };
 
