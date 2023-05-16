@@ -28,28 +28,36 @@ const FormLogin: FC<FormProps> = ({ handleClick }) => {
         className='w-56 p-2 text-lg rounded-sm'
         type='text'
         {...register('email', {
-          required: 'Please enter the email',
+          required: 'emailRequiredMessage',
           pattern: {
             value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-            message: <FormattedMessage id='emailMessage' />,
+            message: 'emailMessage',
           },
         })}
         placeholder='email'
       />
-      {errors.email && <p className='mt-2 text-red-500'>{errors.email?.message as string}</p>}
+      {errors.email && (
+        <p className='mt-2 text-red-500'>
+          <FormattedMessage id={errors.email?.message as string} />
+        </p>
+      )}
       <input
         className='w-56 mt-6 p-2 text-lg rounded-sm'
         type='password'
         {...register('password', {
-          required: 'Please enter the password',
+          required: 'passwordRequiredMessage',
           pattern: {
             value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-            message: <FormattedMessage id='passwordMessage' />,
+            message: 'passwordMessage',
           },
         })}
         placeholder='password'
       />
-      {errors.password && <p className='mt-2 text-red-500'>{errors.password?.message as string}</p>}
+      {errors.password && (
+        <p className='mt-2 text-red-500'>
+          <FormattedMessage id={errors.password?.message as string} />
+        </p>
+      )}
       <button
         type='submit'
         className='w-32 mt-10 capitalize block text-xl px-4 py-2 text-gray-700  mr-2 bg-yellow-300 hover:bg-yellow-400 rounded cursor-pointer'
