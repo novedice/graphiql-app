@@ -22,7 +22,7 @@ const Docs = () => {
   };
   useEffect(() => {
     dispatch(fetchDocSchema());
-  }, []);
+  });
   useEffect(() => {
     refLastElement.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }, [docs]);

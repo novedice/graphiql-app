@@ -18,8 +18,8 @@ import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
 
 const Header = () => {
   const dispatch = useAppDispatch();
-  const { name } = useAuth();
   const navigate = useNavigate();
+  const { name } = useAuth();
   const { loggedIn } = useTypeSelector((state) => state.login);
 
   const [animateHeader, setAnimateHeader] = useState(false);
@@ -50,10 +50,11 @@ const Header = () => {
           })
         );
       } else {
+        dispatch(logOut());
         return;
       }
     });
-  });
+  }, [dispatch]);
 
   const logOutHandler = () => {
     dispatch(removeUser());
@@ -90,8 +91,8 @@ const Header = () => {
             <></>
           )}
         </div>
-        <nav className=' md:flex md:items-center'>
-          <ul className='md:flex md:items-center'>
+        <nav className='flex md:flex md:items-center'>
+          <ul className='flex md:flex md:items-center'>
             <li>
               <Link
                 to='/'
@@ -134,6 +135,11 @@ const Header = () => {
               </Link>
             </div>
           )}
+          <div className='burger-icon space-y-2 sm:hidden'>
+            <div className='w-8 h-0.5 bg-gray-600'></div>
+            <div className='w-8 h-0.5 bg-gray-600'></div>
+            <div className='w-8 h-0.5 bg-gray-600'></div>
+          </div>
           <LanguageSelector />
         </nav>
       </div>

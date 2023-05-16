@@ -29,13 +29,17 @@ const VariablesEditor = () => {
           <div className='flex'>
             <h2
               onClick={openVariableWindow}
-              className='text-l bg-slate-300 hover:bg-blue-300 hover:cursor-pointer text-white font-bold py-1 px-4 mr-2 rounded'
+              className={`text-l ${
+                varWindow ? 'bg-gray-200' : ''
+              } hover:bg-blue-300 hover:cursor-pointer py-1 px-4 mr-2 rounded`}
             >
               <FormattedMessage id='variables_title' />
             </h2>
             <h2
               onClick={openHeaderWindow}
-              className='text-l uppercase bg-slate-300 hover:bg-blue-300 hover:cursor-pointer text-white font-bold py-1 px-4 rounded'
+              className={`text-l uppercase ${
+                !varWindow ? 'bg-gray-200' : ''
+              } hover:bg-blue-300 hover:cursor-pointer py-1 px-4 rounded`}
             >
               <FormattedMessage id='headers_title' />
             </h2>
