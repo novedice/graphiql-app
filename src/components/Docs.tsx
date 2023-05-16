@@ -12,6 +12,7 @@ const Docs = () => {
 
   useEffect(() => {
     dispatch(fetchDocSchema());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     refLastElement.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });

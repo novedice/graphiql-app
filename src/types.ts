@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 interface IUser {
   lang: 'en' | 'rus';
 }

@@ -49,7 +49,12 @@ const DocColumn: FC<DocColumnProps> = ({ doc, order, args }) => {
       {args && (
         <div>
           <h2>Arguments</h2>
-          {args.name}: {args.typeName}
+          <a
+            className='cursor-pointer block w-[100%] p-1 hover:text-blue-700 duration-300'
+            onClick={() => appendDocumentation(args.typeName, null, order)}
+          >
+            {args.name}: {args.typeName}
+          </a>
         </div>
       )}
     </div>

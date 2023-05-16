@@ -9,6 +9,7 @@ import {
   GraphQLList,
   GraphQLInputFieldMap,
   GraphQLArgument,
+  getNamedType,
 } from 'graphql';
 
 const getArgumentValues = (args: readonly GraphQLArgument[]) => {
@@ -22,19 +23,24 @@ const getArgumentValues = (args: readonly GraphQLArgument[]) => {
       const t = a.type as GraphQLInputObjectType;
       typeName = t.name;
     }
-
     return { name, typeName };
   });
   return argsValues;
 };
 
 const inputFieldsProcces = (fields: GraphQLInputFieldMap) => {
-  // console.log(Object.values(fields));
-  // TODO
+  const type = Object.values(fields).map((v) => {
+    const isList = v.type instanceof GraphQLList;
+    return {
+      name: v.name,
+      typeName: `${isList ? `[${getNamedType(v.type).name}]` : getNamedType(v.type).name}`,
+      args: [],
+    };
+  });
+  return type;
 };
 
 const fieldsProcces = (fields: GraphQLFieldMap<string, string>) => {
-  // console.log(Object.values(fields));
   const type = Object.values(fields).map((v) => {
     const name = v.name;
     const args = getArgumentValues(v.args);
@@ -79,9 +85,6 @@ const fieldsProcces = (fields: GraphQLFieldMap<string, string>) => {
 
 export const parseSchema = (data: IntrospectionQuery) => {
   const schema = buildClientSchema(data);
-
-  console.log(schema.getTypeMap());
-
   const types = Object.entries(schema.getTypeMap())
     .filter(([typeName]) => typeName[0] !== '_') // <--  ('_')  lol
     .map(([typeName, type]) => {
@@ -106,6 +109,5 @@ export const parseSchema = (data: IntrospectionQuery) => {
         };
       }
     });
-  console.log(types);
   return types;
 };
