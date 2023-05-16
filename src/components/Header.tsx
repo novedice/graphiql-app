@@ -90,7 +90,7 @@ const Header = () => {
             <></>
           )}
         </div>
-        <nav className='hidden md:flex md:items-center'>
+        <nav className=' md:flex md:items-center'>
           <ul className='md:flex md:items-center'>
             <li>
               <Link
