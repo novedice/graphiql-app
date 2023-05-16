@@ -35,6 +35,8 @@ export const messages = {
     passwordMessage: 'Minimum 8 symbols, at least one letter, one digit, one special character',
     variables_title: 'QUERY VARIABLES',
     headers_title: 'headers',
+    getStarted: 'get started',
+    notAMember: 'Not a member?',
   },
   [LOCALES.RUSSIAN]: {
     to_welcome_page: 'Домой',
@@ -71,5 +73,7 @@ export const messages = {
       'Минимум 8 символов, как минимум одна буква, одна цифра, один специальный символ',
     variables_title: 'переменные',
     headers_title: 'заголовки',
+    getStarted: 'начать',
+    notAMember: 'Не являетесь участником?',
   },
 };
