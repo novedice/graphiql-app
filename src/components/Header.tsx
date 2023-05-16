@@ -122,7 +122,7 @@ const Header = () => {
             <div className='ml-4 flex items-center'>
               <Link
                 to='/login'
-                className='capitalize block text-xl px-4 py-2 text-gray-700  mr-2 bg-yellow-300 hover:bg-yellow-400 rounded'
+                className='capitalize block text-xl px-4 py-2 text-gray-700  mr-2 font-bold bg-yellow-200 hover:bg-yellow-300 rounded'
               >
                 <FormattedMessage id='sign_in' />
               </Link>

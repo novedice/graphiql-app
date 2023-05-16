@@ -31,23 +31,23 @@ const ModalWindow: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         <div
           className={`w-auto fixed z-50 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-slate-800 rounded-lg p-8`}
         >
-          <h2 className='mb-5 text-2xl font-light'>
+          <h2 className='mt-4 mb-8 text-2xl font-light'>
             To start using the system, you need to be authorized
           </h2>
-          <div className='flex items-center justify-center gap-2'>
+          <div className='flex items-center justify-center gap-4'>
             <h3 className='text-2xl font-thin'>You have an account:</h3>
             <Link
               to='/login'
-              className='capitalize text-xl px-2 py-1 text-gray-700  mr-2 bg-yellow-300 hover:bg-yellow-400 rounded'
+              className='capitalize text-xl px-2 py-1 text-black mr-2 bg-yellow-200 hover:bg-yellow-300 rounded'
             >
               <FormattedMessage id='sign_in' />
             </Link>
           </div>
-          <div className='mt-4 flex items-center justify-center gap-2'>
-            <h3 className='text-2xl font-thin'>Don&prime;t have an account:</h3>
+          <div className='mt-8 flex items-center justify-center gap-2'>
+            <h3 className='text-2xl font-thin'>Don&prime;t have an account?</h3>
             <Link
               to='/register'
-              className='capitalize text-xl bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 py-1 rounded'
+              className='capitalize text-xl bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded'
             >
               <FormattedMessage id='sign_up' />
             </Link>
