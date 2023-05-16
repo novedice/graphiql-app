@@ -4,7 +4,7 @@ interface LoginInterface {
   loggedIn: boolean;
 }
 
-const initialState = { loggedIn: true } as LoginInterface;
+const initialState = { loggedIn: false } as LoginInterface;
 
 const loginSlice = createSlice({
   name: 'login',
