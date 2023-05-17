@@ -12,8 +12,8 @@ const request = async (query: string, variables?: string, header?: object) => {
       header: header,
     }),
   });
-
-  return resp2.json();
+  const r = await resp2.json();
+  return r;
 };
 
 export { request };
