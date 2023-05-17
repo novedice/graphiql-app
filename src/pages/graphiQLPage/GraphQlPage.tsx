@@ -30,12 +30,12 @@ const GraphQlPage = () => {
         <div>Loading...</div>
       ) : (
         <div className={`w-full bg-slate-300 `}>
-          <div className=' flex-col sm:flex-row flex justify-center'>
-            <div className='w-[100%] sm:w-[64%] m-2 flex flex-col'>
+          <div className='w-full flex-col sm:flex-row flex justify-center'>
+            <div className='w-[98%] sm:w-[50%] m-2 flex flex-col'>
               <RequestEditor />
               <VariablesEditor />
             </div>
-            <div className='w-[100%] sm:w-[30%] flex relative justify-center m-2 ml-1 '>
+            <div className='w-[98%] sm:w-[45%] flex relative justify-center m-2 ml-1 '>
               <ResultWindow />
               <Suspense fallback={<p>loading...</p>}>
                 <Docs />

@@ -24,7 +24,7 @@ const Header = () => {
   const { loggedIn } = useTypeSelector((state) => state.login);
 
   const [animateHeader, setAnimateHeader] = useState(false);
-  const [openMenu, setOpenMenu] = useState('');
+  const [openMenu, setOpenMenu] = useState('hidden');
 
   useEffect(() => {
     const listener = () => {
