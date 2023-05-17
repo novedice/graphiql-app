@@ -19,8 +19,10 @@ import BurgerIcon from './header/BurgerIcon';
 
 const Header = () => {
   const dispatch = useAppDispatch();
+
   const navigate = useNavigate();
   const { name } = useAuth();
+
   const { loggedIn } = useTypeSelector((state) => state.login);
 
   const [animateHeader, setAnimateHeader] = useState(false);
@@ -56,7 +58,9 @@ const Header = () => {
         return;
       }
     });
+
   }, [dispatch]);
+
 
   const logOutHandler = () => {
     dispatch(removeUser());
@@ -91,6 +95,7 @@ const Header = () => {
           </Link>
           {loggedIn && (
             <h1 className='ml-0 text-xl md:text-2xl capitalize  sm:ml-6 font-bold'>
+
               <FormattedMessage id='welcome' />, {name}
             </h1>
           )}
@@ -149,6 +154,7 @@ const Header = () => {
               <LanguageSelector />
             </li>
           </ul>
+
         </nav>
       </div>
     </header>

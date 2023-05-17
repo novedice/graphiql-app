@@ -1,5 +1,7 @@
+
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
+
 import ResultWindow from '../../components/ResultsWindow';
 import RequestEditor from '../../components/RequestEditor';
 import VariablesEditor from '../../components/VariablesEditor';
@@ -9,6 +11,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 const Docs = lazy(() => import('../../components/Docs'));
 
 const GraphQlPage = () => {
+
   const navigate = useNavigate();
   const [load, setLoad] = useState(true);
 
@@ -23,6 +26,7 @@ const GraphQlPage = () => {
       }
     });
   }, [navigate]);
+
 
   return (
     <>
