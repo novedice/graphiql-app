@@ -6,17 +6,16 @@ import { useAppDispatch, useTypeSelector } from '../hooks/redux-hooks';
 const Docs = () => {
   const dispatch = useAppDispatch();
   const [isShow, setShow] = useState(false);
-  const docs = useTypeSelector((state) => state.docSchema.docList);
+  const { schema, docList } = useTypeSelector((state) => state.docSchema);
   const refLastElement = useRef<HTMLDivElement>(null);
   const toggleShow = () => setShow((prev) => !prev);
 
   useEffect(() => {
-    dispatch(fetchDocSchema());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (!schema) dispatch(fetchDocSchema());
+  });
   useEffect(() => {
     refLastElement.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-  }, [docs]);
+  }, [docList]);
 
   return (
     <section className='flex items-center absolute right-0 h-[100%] max-w-[100%] overflow-x-auto'>
@@ -29,7 +28,7 @@ const Docs = () => {
         }`}
       >
         <div className='flex h-[100%] py-4'>
-          {docs.map((doc, i) => (
+          {docList.map((doc, i) => (
             <DocColumn key={doc.id} doc={doc} args={doc.args} order={i} />
           ))}
           <div ref={refLastElement}></div>
