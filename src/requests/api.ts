@@ -1,7 +1,7 @@
 const url = 'https://countries.trevorblades.com/graphql';
 
 const request = async (query: string, variables?: string, header?: object) => {
-  const resp = await fetch(url, {
+  const resp2 = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
@@ -12,8 +12,7 @@ const request = async (query: string, variables?: string, header?: object) => {
       header: header,
     }),
   });
-  const r = await resp.json();
-  console.log(r);
+  const r = await resp2.json();
   return r;
 };
 

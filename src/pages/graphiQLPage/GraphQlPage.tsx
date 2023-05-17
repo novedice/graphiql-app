@@ -29,9 +29,9 @@ const GraphQlPage = () => {
       {load ? (
         <div>Loading...</div>
       ) : (
-        <div className={`w-full bg-slate-300 mobile:max-sm:flex-col`}>
-          <div className='flex-col sm:flex-row w-[98%] flex justify-center'>
-            <div className='w-[100%] sm:w-[64%] m-2 mr-1 flex flex-col'>
+        <div className={`w-full bg-slate-300 `}>
+          <div className=' flex-col sm:flex-row flex justify-center'>
+            <div className='w-[100%] sm:w-[64%] m-2 flex flex-col'>
               <RequestEditor />
               <VariablesEditor />
             </div>

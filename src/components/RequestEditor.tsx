@@ -40,7 +40,7 @@ const RequestEditor = () => {
   return (
     <>
       <div className='flex justify-center pt-5 pl-2 pb-2 mb-1 mr-1 w-[100%] bg-white rounded-tl-xl'>
-        <div className='h-[200px] w-[95%] mr-2'>
+        <div className=' w-[95%] mr-2'>
           <ControlledEditor
             width='100%'
             theme='light'
