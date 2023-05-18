@@ -25,6 +25,7 @@ const LanguageSelector = () => {
     dispatch(changeToRu());
     localStorage.setItem('currentLanguage', 'rus');
   };
+
   return (
     <div className='flex items-center md:order-2 ml-4'>
       {lang === 'en' ? (
@@ -48,7 +49,7 @@ const LanguageSelector = () => {
       )}
 
       <div
-        className={`z-50 top-14 absolute ${
+        className={`top-60 z-50 sm:top-14 absolute ${
           isDropdownOpen ? '' : 'hidden'
         } my-4 bg-white text-base list-none divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700`}
       >

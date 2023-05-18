@@ -48,7 +48,7 @@ export const messages = {
     login: 'вход в систему',
     register: 'регистрация',
     welcome: 'приветствую',
-    home: 'главная страница',
+    home: 'домашняя страница',
     about: 'о нас',
     contact: 'контакты',
     log_out: 'выход',

@@ -1,7 +1,7 @@
-const url2 = 'https://countries.trevorblades.com/graphql';
+const url = 'https://countries.trevorblades.com/graphql';
 
 const request = async (query: string, variables?: string, header?: object) => {
-  const resp2 = await fetch(url2, {
+  const resp2 = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',

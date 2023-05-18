@@ -12,21 +12,22 @@ const VaraiblesWindow = () => {
 
   return (
     <>
-      <Editor
-        height='25vh'
-        width='80%'
-        defaultLanguage='graphql'
-        onChange={handleVarChange}
-        value={variables}
-        options={{
-          minimap: { enabled: false },
-          scrollbar: {
-            vertical: 'hidden',
-            horizontal: 'hidden',
-            handleMouseWheel: false,
-          },
-        }}
-      />
+      <div className='h-[20vh] sm:h-[25vh]'>
+        <Editor
+          height='inherit'
+          width='90%'
+          defaultLanguage='graphql'
+          onChange={handleVarChange}
+          value={variables}
+          options={{
+            minimap: { enabled: false },
+            scrollbar: {
+              vertical: 'hidden',
+              horizontal: 'hidden',
+            },
+          }}
+        />
+      </div>
     </>
   );
 };

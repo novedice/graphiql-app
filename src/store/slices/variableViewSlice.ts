@@ -7,7 +7,7 @@ interface VariableViewInterface {
 
 const initialState = {
   varWindow: true,
-  wholeWindow: true,
+  wholeWindow: false,
 } as VariableViewInterface;
 
 const variableViewSlice = createSlice({
