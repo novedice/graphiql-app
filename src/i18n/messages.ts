@@ -37,6 +37,10 @@ export const messages = {
     headers_title: 'headers',
     getStarted: 'get started',
     notAMember: 'Not a member?',
+    startUsing: 'To start using the system, you need to be authorized',
+    haveAccount: 'You have an account:',
+    dontHaveAccount: `Don't have an account?`,
+    playground: 'playground',
   },
   [LOCALES.RUSSIAN]: {
     to_welcome_page: 'Домой',
@@ -75,5 +79,9 @@ export const messages = {
     headers_title: 'заголовки',
     getStarted: 'начать',
     notAMember: 'Не являетесь участником?',
+    startUsing: 'Чтобы начать пользоваться системой, вам необходимо пройти авторизацию',
+    haveAccount: 'У вас есть аккаунт:',
+    dontHaveAccount: `У вас нет аккаунта?`,
+    playground: 'песочница',
   },
 };

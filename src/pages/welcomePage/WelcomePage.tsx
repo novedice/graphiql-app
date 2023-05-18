@@ -22,7 +22,9 @@ const WelcomePage = () => {
     <>
       <div className={`${PAGE_STYLE}`}>
         <div className='h-[600px] bg-welcomePage flex justify-center bg-top'>
-          <h1 className='ml-3 mt-72 text-[30px] text-rose-500'>GraphQl playground</h1>
+          <h1 className='ml-3 mt-72 text-[30px] text-rose-500'>
+            GraphQl <FormattedMessage id='playground' />
+          </h1>
           <button
             className='ml-3 absolute mt-96 capitalize text-3xl px-4 py-2 text-white border-[1px] font-sans border-white rounded font-thin hover:text-black hover:bg-white'
             onClick={() => {
