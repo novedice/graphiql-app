@@ -16,6 +16,7 @@ const RequestEditor = () => {
 
   const { variables } = useTypeSelector((state) => state.variablesValue);
   const { wholeWindow } = useTypeSelector((state) => state.variableView);
+  // const { result, error } = useResults();
 
   const handleChange = (e: string | undefined) => {
     setInputValue(e ? e : '');
@@ -25,14 +26,20 @@ const RequestEditor = () => {
     dispatch(addRequest(inputValue));
     try {
       JSON.parse(variables);
-      const res = await request(inputValue, variables);
-      if (res) {
-        dispatch(addResults(JSON.stringify(res, null, 2)));
+      const { result, error } = await request(inputValue, variables);
+      if (result) {
+        dispatch(addResults(JSON.stringify(result, null, 2)));
+      }
+      if (error) {
+        alert(`this is error: ${error}`);
       }
     } catch (e) {
-      const res = await request(inputValue);
-      if (res) {
-        dispatch(addResults(JSON.stringify(res, null, 2)));
+      const { result, error } = await request(inputValue);
+      if (result) {
+        dispatch(addResults(JSON.stringify(result, null, 2)));
+      }
+      if (error) {
+        alert(`this is error: ${error}`);
       }
     }
   };

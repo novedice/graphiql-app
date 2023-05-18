@@ -31,7 +31,7 @@ const VariablesEditor = () => {
               onClick={openVariableWindow}
               className={`text-sm md:text-lg ${
                 varWindow && wholeWindow ? 'bg-gray-200' : ''
-              } hover:bg-blue-300 hover:cursor-pointer py-1 px-4 mr-2 rounded`}
+              } hover:bg-blue-300 flex items-center hover:cursor-pointer py-1 px-4 mr-2 rounded`}
             >
               <FormattedMessage id='variables_title' />
             </h2>
@@ -39,7 +39,7 @@ const VariablesEditor = () => {
               onClick={openHeaderWindow}
               className={`text-sm md:text-lg uppercase ${
                 !varWindow && wholeWindow ? 'bg-gray-200' : ''
-              } hover:bg-blue-300 hover:cursor-pointer py-1 px-4 rounded`}
+              } hover:bg-blue-300 flex items-center hover:cursor-pointer py-1 px-4 rounded`}
             >
               <FormattedMessage id='headers_title' />
             </h2>

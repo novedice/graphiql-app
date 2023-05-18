@@ -2,19 +2,22 @@ import { createSlice } from '@reduxjs/toolkit';
 
 interface ModalWindowInterface {
   show: boolean;
+  message: string;
 }
 
-const initialState = { show: false } as ModalWindowInterface;
+const initialState = { show: false, message: '' } as ModalWindowInterface;
 
 const modalWindowSlice = createSlice({
   name: 'modalWindow',
   initialState,
   reducers: {
-    openModalWindow: (state) => {
+    openModalWindow: (state, action: { payload: string }) => {
       state.show = true;
+      state.message = action.payload;
     },
     closeModalWindow: (state) => {
       state.show = false;
+      state.message = '';
     },
   },
 });

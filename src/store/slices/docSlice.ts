@@ -4,9 +4,14 @@ import { ArgType, SchemaItem } from 'types';
 import { parseSchema } from '../../utils';
 import { getIntrospectionQuery, IntrospectionQuery } from 'graphql';
 
-export const fetchDocSchema = createAsyncThunk<IntrospectionQuery>('schema', async () => {
-  const response = await request(getIntrospectionQuery());
-  return response.data;
+export const fetchDocSchema = createAsyncThunk<{
+  res: IntrospectionQuery;
+  error: string | undefined;
+}>('schema', async () => {
+  const { result, error } = await request(getIntrospectionQuery());
+  const res = result.data;
+
+  return { res, error };
 });
 
 export type DocState = {
@@ -42,7 +47,7 @@ const docSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(fetchDocSchema.fulfilled, (state, action) => {
-      const parsedSchema = parseSchema(action.payload) as SchemaItem[];
+      const parsedSchema = parseSchema(action.payload.res) as SchemaItem[];
       state.schema = parsedSchema;
     });
   },
