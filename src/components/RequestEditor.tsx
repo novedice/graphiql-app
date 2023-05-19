@@ -5,6 +5,7 @@ import { addRequest } from '../store/slices/requestSlice';
 import { request } from '../requests/api';
 import { addResults } from '../store/slices/resultSlice';
 import PlayIcon from './play-sign';
+import { openModalWindow } from '../store/slices/modalWindowSlice';
 
 const RequestEditor = () => {
   const [inputValue, setInputValue] = useState(`query NewQuery {
@@ -16,7 +17,6 @@ const RequestEditor = () => {
 
   const { variables } = useTypeSelector((state) => state.variablesValue);
   const { wholeWindow } = useTypeSelector((state) => state.variableView);
-  // const { result, error } = useResults();
 
   const handleChange = (e: string | undefined) => {
     setInputValue(e ? e : '');
@@ -31,7 +31,7 @@ const RequestEditor = () => {
         dispatch(addResults(JSON.stringify(result, null, 2)));
       }
       if (error) {
-        alert(`this is error: ${error}`);
+        dispatch(openModalWindow(error));
       }
     } catch (e) {
       const { result, error } = await request(inputValue);
@@ -39,7 +39,7 @@ const RequestEditor = () => {
         dispatch(addResults(JSON.stringify(result, null, 2)));
       }
       if (error) {
-        alert(`this is error: ${error}`);
+        dispatch(openModalWindow(error));
       }
     }
   };
