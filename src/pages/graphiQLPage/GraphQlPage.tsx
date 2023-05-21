@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
+
 import ResultWindow from '../../components/ResultsWindow';
 import RequestEditor from '../../components/RequestEditor';
 import VariablesEditor from '../../components/VariablesEditor';
