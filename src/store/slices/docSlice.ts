@@ -4,9 +4,12 @@ import { ArgType, SchemaItem } from 'types';
 import { parseSchema } from '../../utils';
 import { getIntrospectionQuery, IntrospectionQuery } from 'graphql';
 
-export const fetchDocSchema = createAsyncThunk<IntrospectionQuery>('schema', async () => {
-  const response = await request(getIntrospectionQuery());
-  return response.data;
+export const fetchDocSchema = createAsyncThunk<{
+  result: { data: IntrospectionQuery } | undefined;
+  error: string | undefined;
+}>('schema', async () => {
+  const { result, error } = await request(getIntrospectionQuery());
+  return { result, error };
 });
 
 export type DocState = {
@@ -18,11 +21,13 @@ export type DocState = {
 type InitialStateType = {
   schema: SchemaItem[] | null;
   docList: DocState[];
+  docError: string | undefined;
 };
 
 const initialState: InitialStateType = {
   schema: null,
   docList: [{ type: 'Query', id: Date.now(), args: null }],
+  docError: '',
 };
 
 const docSlice = createSlice({
@@ -42,8 +47,11 @@ const docSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(fetchDocSchema.fulfilled, (state, action) => {
-      const parsedSchema = parseSchema(action.payload) as SchemaItem[];
-      state.schema = parsedSchema;
+      if (action.payload.result) {
+        const parsedSchema = parseSchema(action.payload.result?.data) as SchemaItem[];
+        state.schema = parsedSchema;
+      }
+      state.docError = action.payload.error;
     });
   },
 });

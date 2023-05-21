@@ -5,6 +5,7 @@ import { addRequest } from '../store/slices/requestSlice';
 import { request } from '../requests/api';
 import { addResults } from '../store/slices/resultSlice';
 import PlayIcon from './play-sign';
+import { openModalWindow } from '../store/slices/modalWindowSlice';
 
 const RequestEditor = () => {
   const [inputValue, setInputValue] = useState(`query NewQuery {
@@ -25,26 +26,32 @@ const RequestEditor = () => {
     dispatch(addRequest(inputValue));
     try {
       JSON.parse(variables);
-      const res = await request(inputValue, variables);
-      if (res) {
-        dispatch(addResults(JSON.stringify(res, null, 2)));
+      const { result, error } = await request(inputValue, variables);
+      if (result) {
+        dispatch(addResults(JSON.stringify(result, null, 2)));
+      }
+      if (error) {
+        dispatch(openModalWindow(error));
       }
     } catch (e) {
-      const res = await request(inputValue);
-      if (res) {
-        dispatch(addResults(JSON.stringify(res, null, 2)));
+      const { result, error } = await request(inputValue);
+      if (result) {
+        dispatch(addResults(JSON.stringify(result, null, 2)));
+      }
+      if (error) {
+        dispatch(openModalWindow(error));
       }
     }
   };
 
   return (
     <>
-      <div className='flex justify-center pt-5 pl-2 pb-2 mb-1 mr-1 w-[100%] bg-white rounded-tl-xl'>
-        <div className='w-[95%] mr-2'>
+      <div className='query-editor-wrap rounded-t-xl flex justify-center pt-5 pl-2 pb-2 mb-1 mr-1 w-[100%] bg-white sm:rounded-tr-none'>
+        <div className={`h-[300px] ${wholeWindow ? 'sm:h-[50vh]' : 'sm:h-[75vh]'} w-[95%] mr-2`}>
           <ControlledEditor
             width='100%'
             theme='light'
-            height={wholeWindow ? '50vh' : '75vh'}
+            height='inherit'
             defaultLanguage='graphql'
             onChange={handleChange}
             defaultValue={inputValue}

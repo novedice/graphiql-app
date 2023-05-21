@@ -1,4 +1,4 @@
-import { Editor } from '@monaco-editor/react';
+import ControlledEditor from '@monaco-editor/react';
 import { useTypeSelector } from '../hooks/redux-hooks';
 
 const ResultWindow = () => {
@@ -6,24 +6,28 @@ const ResultWindow = () => {
 
   return (
     <>
-      <div className='flex justify-between w-[100%] h-[100%] pr-3 pt-5 pl-2 pb-2 mb-1 mr-1 bg-white rounded-tr-xl rounded-br-xl'>
-        <Editor
-          height='75vh'
-          className='overflow-hidden'
-          width='100%'
-          defaultLanguage='graphql'
-          value={`${resultValue}`}
-          options={{
-            readOnly: true,
-            lineNumbers: 'off',
-            minimap: { enabled: false },
-            scrollbar: {
-              vertical: 'hidden',
-              horizontal: 'hidden',
-              handleMouseWheel: false,
-            },
-          }}
-        />
+      <div className='result-window-wrap rounded-xl flex justify-center pt-5 pl-2 pb-2 mb-1 mr-1 w-[100%] bg-white sm:rounded-tl-none sm:rounded-bl-none'>
+        <div className='w-[95%] h-[35vh] sm:h-[81.5vh]  mr-1 '>
+          <ControlledEditor
+            width='100%'
+            theme='light'
+            height='inherit'
+            defaultLanguage='graphql'
+            value={resultValue}
+            className='overflow-hidden'
+            options={{
+              readOnly: true,
+              lineNumbers: 'off',
+              minimap: { enabled: false },
+              overviewRulerLanes: 0,
+              overviewRulerBorder: false,
+              scrollbar: {
+                vertical: 'hidden',
+                horizontal: 'hidden',
+              },
+            }}
+          />
+        </div>
       </div>
     </>
   );
