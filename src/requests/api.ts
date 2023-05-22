@@ -7,15 +7,15 @@ export type RequestParamsType = {
 };
 
 export const request = async (params: RequestParamsType) => {
+  const headers = params.header
+    ? { ...params.header, 'Content-type': 'application/json' }
+    : { 'Content-type': 'application/json' };
   const resp2 = await fetch(url, {
     method: 'POST',
-    headers: {
-      'Content-type': 'application/json',
-    },
+    headers: headers,
     body: JSON.stringify({
       query: params.query,
       variables: params.variables,
-      header: params.header,
     }),
   });
   const r = await resp2.json();

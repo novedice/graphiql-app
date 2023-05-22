@@ -2,8 +2,6 @@ import ControlledEditor from '@monaco-editor/react';
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useTypeSelector } from '../hooks/redux-hooks';
 import { fetchResult } from '../store/slices/requestSlice';
-// import { request } from '../requests/api';
-// import { addResults } from '../store/slices/resultSlice';
 import PlayIcon from './play-sign';
 import { openModalWindow } from '../store/slices/modalWindowSlice';
 
@@ -15,7 +13,7 @@ const RequestEditor = () => {
         }`);
   const dispatch = useAppDispatch();
 
-  const { variables } = useTypeSelector((state) => state.variablesValue);
+  const { variables, headers } = useTypeSelector((state) => state.variablesValue);
   const { wholeWindow } = useTypeSelector((state) => state.variableView);
   const { status } = useTypeSelector((state) => state.requestValue);
 
@@ -24,23 +22,19 @@ const RequestEditor = () => {
   };
 
   const handleSubmit = async () => {
-    // dispatch(addRequest(inputValue));
     let parsedVariables: object;
+    let parsedHeaders: object;
     try {
       parsedVariables = JSON.parse(variables);
     } catch {
       parsedVariables = {};
     }
-    dispatch(fetchResult({ query: inputValue, variables: parsedVariables }));
-    // if (result) {
-    //   dispatch(addResults(JSON.stringify(result, null, 2)));
-    // }
-    // } catch (e) {
-    //   dispatch(fetchResult({ query: inputValue, variables }));
-    //   // if (result) {
-    //   //   dispatch(addResults(JSON.stringify(result, null, 2)));
-    //   // }
-    // }
+    try {
+      parsedHeaders = JSON.parse(headers);
+    } catch {
+      parsedHeaders = {};
+    }
+    dispatch(fetchResult({ query: inputValue, variables: parsedVariables, header: parsedHeaders }));
   };
 
   useEffect(() => {

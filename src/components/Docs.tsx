@@ -32,7 +32,7 @@ const Docs = () => {
 
   return (
     <section className='flex items-center absolute top-2 right-0 max-h-[90%] max-w-[100%] overflow-x-auto'>
-      <button className='h-min fixed right-0 bg-yellow-300 p-2' onClick={toggleShow}>
+      <button className='z-50 h-min fixed right-0 bg-yellow-300 p-2' onClick={toggleShow}>
         Docs
       </button>
       <div
