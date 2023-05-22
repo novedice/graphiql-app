@@ -38,7 +38,7 @@ const docSlice = createSlice({
 
       state.docList = [
         ...state.docList.slice(0, order + 1),
-        { type: type.replace('[', '').replace(']', ''), id: Date.now(), args },
+        { type: type.replace(/\]|\[|!|\$/g, ''), id: Date.now(), args },
       ];
     },
   },
