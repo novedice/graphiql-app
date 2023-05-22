@@ -3,6 +3,7 @@ import DocColumn from './DocColumn';
 import { fetchDocSchema } from '../store/slices/docSlice';
 import { useAppDispatch, useTypeSelector } from '../hooks/redux-hooks';
 import { openModalWindow } from '../store/slices/modalWindowSlice';
+import { Spinner } from 'flowbite-react';
 
 const Docs = () => {
   const dispatch = useAppDispatch();
@@ -14,9 +15,6 @@ const Docs = () => {
     setShow((prev) => !prev);
     if (!schema) {
       dispatch(fetchDocSchema());
-      // if (docError) {
-      //   dispatch(openModalWindow(docError));
-      // }
     }
   };
 
@@ -31,12 +29,20 @@ const Docs = () => {
   }, [docList]);
 
   return (
-    <section className='flex items-center absolute top-2 right-0 max-h-[90%] max-w-[100%] overflow-x-auto'>
-      <button className='z-50 h-min fixed right-0 bg-yellow-300 p-2' onClick={toggleShow}>
+    <section className=' z-9 flex items-center absolute top-0 right-0 max-h-[90%] h-[100%] max-w-[100%] overflow-x-auto'>
+      <button
+        className='z-10 h-min fixed top-[350px] right-0 bg-yellow-300 p-2'
+        onClick={toggleShow}
+      >
         Docs
+        {status === 'pending' && (
+          <div className='absolute top-[8px] left-[-25px]'>
+            <Spinner />
+          </div>
+        )}
       </button>
       <div
-        className={`h-full transition duration-500 ease-in-out opacity-0 transform -translate-x-100 ${
+        className={`documentation h-[100%] transition duration-500 ease-in-out opacity-0 transform -translate-x-100 ${
           isShow ? 'opacity-100 translate-x-0' : ''
         }`}
       >
