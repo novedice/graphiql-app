@@ -39,10 +39,10 @@ const FormLogin: FC<FormProps> = ({ handleClick }) => {
           className='w-full p-2 text-lg rounded'
           type='text'
           {...register('email', {
-            required: 'Email is required',
+            required: 'emailRequiredMessage',
             pattern: {
               value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-              message: 'Invalid email',
+              message: 'emailMessage',
             },
           })}
           placeholder='email'
@@ -61,10 +61,10 @@ const FormLogin: FC<FormProps> = ({ handleClick }) => {
           className='w-full p-2 text-lg rounded'
           type='password'
           {...register('password', {
-            required: 'Password is required',
+            required: 'passwordRequiredMessage',
             pattern: {
               value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-              message: 'Invalid password',
+              message: 'passwordMessage',
             },
           })}
           placeholder='password'

@@ -1,9 +1,9 @@
 import ControlledEditor from '@monaco-editor/react';
 import { useEffect, useState } from 'react';
-import { useAppDispatch, useTypeSelector } from '../hooks/redux-hooks';
-import { fetchResult } from '../store/slices/requestSlice';
+import { useAppDispatch, useTypeSelector } from '../../../hooks/redux-hooks';
+import { fetchResult } from '../../../store/slices/requestSlice';
 import PlayIcon from './play-sign';
-import { openModalWindow } from '../store/slices/modalWindowSlice';
+import { openModalWindow } from '../../../store/slices/modalWindowSlice';
 
 const RequestEditor = () => {
   const [inputValue, setInputValue] = useState(`query NewQuery {

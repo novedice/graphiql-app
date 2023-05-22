@@ -1,7 +1,7 @@
-import { useAppDispatch, useTypeSelector } from '../hooks/redux-hooks';
+import { useAppDispatch, useTypeSelector } from '../../../hooks/redux-hooks';
 import { FormattedMessage } from 'react-intl';
 import HideSign from './hide-sign';
-import { changeWholeView, closeVar, openVar } from '../store/slices/variableViewSlice';
+import { changeWholeView, closeVar, openVar } from '../../../store/slices/variableViewSlice';
 import ShowSign from './show-sign';
 import VaraiblesWindow from './VariablesWindow';
 import HeadersWindow from './HeadersWindow';

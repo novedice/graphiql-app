@@ -1,6 +1,6 @@
 import { FormattedMessage } from 'react-intl';
-import { useAppDispatch } from '../hooks/redux-hooks';
-import { closeModalWindow } from '../store/slices/modalWindowSlice';
+import { useAppDispatch } from '../../../hooks/redux-hooks';
+import { closeModalWindow } from '../../../store/slices/modalWindowSlice';
 
 const ErrorWindow = () => {
   const dispatch = useAppDispatch();

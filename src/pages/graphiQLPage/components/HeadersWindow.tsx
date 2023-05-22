@@ -1,6 +1,6 @@
 import { Editor } from '@monaco-editor/react';
-import { useAppDispatch, useTypeSelector } from '../hooks/redux-hooks';
-import { updateHeadersValue } from '../store/slices/variablesSlice';
+import { useAppDispatch, useTypeSelector } from '../../../hooks/redux-hooks';
+import { updateHeadersValue } from '../../../store/slices/variablesSlice';
 
 const HeadersWindow = () => {
   const { headers } = useTypeSelector((state) => state.variablesValue);

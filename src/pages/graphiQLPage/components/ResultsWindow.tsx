@@ -1,5 +1,5 @@
 import ControlledEditor from '@monaco-editor/react';
-import { useTypeSelector } from '../hooks/redux-hooks';
+import { useTypeSelector } from '../../../hooks/redux-hooks';
 
 const ResultWindow = () => {
   const { result } = useTypeSelector((state) => state.requestValue);

@@ -1,6 +1,6 @@
 import { Editor } from '@monaco-editor/react';
-import { useAppDispatch, useTypeSelector } from '../hooks/redux-hooks';
-import { updateVariablesValue } from '../store/slices/variablesSlice';
+import { useAppDispatch, useTypeSelector } from '../../../hooks/redux-hooks';
+import { updateVariablesValue } from '../../../store/slices/variablesSlice';
 
 const VaraiblesWindow = () => {
   const { variables } = useTypeSelector((state) => state.variablesValue);
