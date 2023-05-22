@@ -8,6 +8,7 @@ import { lazy, Suspense } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useTypeSelector } from '../../hooks/redux-hooks';
 import ErrorWindow from '../../components/ErrorWindow';
+import { Spinner } from 'flowbite-react';
 
 const Docs = lazy(() => import('../../components/Docs'));
 
@@ -41,7 +42,13 @@ const GraphQlPage = () => {
             </div>
             <div className='w-[98%] sm:w-[45%] flex justify-center m-2 ml-1 '>
               <ResultWindow />
-              <Suspense fallback={<p>loading...</p>}>
+              <Suspense
+                fallback={
+                  <div className='fixed right-[10px] top-[350px]'>
+                    <Spinner />
+                  </div>
+                }
+              >
                 <Docs />
               </Suspense>
             </div>

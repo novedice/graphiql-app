@@ -3,6 +3,7 @@ import DocColumn from './DocColumn';
 import { fetchDocSchema } from '../store/slices/docSlice';
 import { useAppDispatch, useTypeSelector } from '../hooks/redux-hooks';
 import { openModalWindow } from '../store/slices/modalWindowSlice';
+import { Spinner } from 'flowbite-react';
 
 const Docs = () => {
   const dispatch = useAppDispatch();
@@ -34,6 +35,11 @@ const Docs = () => {
         onClick={toggleShow}
       >
         Docs
+        {status === 'pending' && (
+          <div className='absolute top-[8px] left-[-25px]'>
+            <Spinner />
+          </div>
+        )}
       </button>
       <div
         className={`documentation h-[100%] transition duration-500 ease-in-out opacity-0 transform -translate-x-100 ${
