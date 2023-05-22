@@ -1,15 +1,16 @@
 import {
   buildClientSchema,
   IntrospectionQuery,
-  GraphQLScalarType,
-  GraphQLObjectType,
   GraphQLInputObjectType,
   GraphQLFieldMap,
-  GraphQLNonNull,
-  GraphQLList,
   GraphQLInputFieldMap,
   GraphQLArgument,
   getNamedType,
+  isScalarType,
+  isObjectType,
+  isInputObjectType,
+  isNonNullType,
+  isListType,
 } from 'graphql';
 
 const getArgumentValues = (args: readonly GraphQLArgument[]) => {
@@ -17,8 +18,8 @@ const getArgumentValues = (args: readonly GraphQLArgument[]) => {
   const argsValues = args.map((a) => {
     const name = a.name;
     let typeName: string;
-    if (a.type instanceof GraphQLNonNull && a.type.ofType instanceof GraphQLScalarType) {
-      typeName = a.type.ofType.name;
+    if (isNonNullType(a.type) && isScalarType(a.type.ofType)) {
+      typeName = a.type.ofType.name + '!';
     } else {
       const t = a.type as GraphQLInputObjectType;
       typeName = t.name;
@@ -30,10 +31,11 @@ const getArgumentValues = (args: readonly GraphQLArgument[]) => {
 
 const inputFieldsProcces = (fields: GraphQLInputFieldMap) => {
   const type = Object.values(fields).map((v) => {
-    const isList = v.type instanceof GraphQLList;
     return {
       name: v.name,
-      typeName: `${isList ? `[${getNamedType(v.type).name}]` : getNamedType(v.type).name}`,
+      typeName: `${
+        isListType(v.type) ? `[${getNamedType(v.type).name}!]` : getNamedType(v.type).name
+      }`,
       args: [],
     };
   });
@@ -45,38 +47,38 @@ const fieldsProcces = (fields: GraphQLFieldMap<string, string>) => {
     const name = v.name;
     const args = getArgumentValues(v.args);
     let typeName: string;
-    if (v.type instanceof GraphQLScalarType) {
+    if (isScalarType(v.type)) {
       typeName = v.type.name;
       return { name, typeName, args };
     }
-    if (v.type instanceof GraphQLObjectType) {
+    if (isObjectType(v.type)) {
       typeName = v.type.name;
       return { name, typeName, args };
     }
-    if (v.type instanceof GraphQLNonNull && v.type.ofType instanceof GraphQLScalarType) {
-      typeName = v.type.ofType.name;
+    if (isNonNullType(v.type) && isScalarType(v.type.ofType)) {
+      typeName = v.type.ofType.name + '!';
       return { name, typeName, args };
     }
-    if (v.type instanceof GraphQLNonNull && v.type.ofType instanceof GraphQLObjectType) {
-      typeName = v.type.ofType.name;
-      return { name, typeName, args };
-    }
-    if (
-      v.type instanceof GraphQLNonNull &&
-      v.type.ofType instanceof GraphQLList &&
-      v.type.ofType.ofType instanceof GraphQLNonNull &&
-      v.type.ofType.ofType.ofType instanceof GraphQLObjectType
-    ) {
-      typeName = `[${v.type.ofType.ofType.ofType.name}]`;
+    if (isNonNullType(v.type) && isObjectType(v.type.ofType)) {
+      typeName = v.type.ofType.name + '!';
       return { name, typeName, args };
     }
     if (
-      v.type instanceof GraphQLNonNull &&
-      v.type.ofType instanceof GraphQLList &&
-      v.type.ofType.ofType instanceof GraphQLNonNull &&
-      v.type.ofType.ofType.ofType instanceof GraphQLScalarType
+      isNonNullType(v.type) &&
+      isListType(v.type.ofType) &&
+      isNonNullType(v.type.ofType.ofType) &&
+      isObjectType(v.type.ofType.ofType.ofType)
     ) {
-      typeName = `[${v.type.ofType.ofType.ofType.name}]`;
+      typeName = `[${v.type.ofType.ofType.ofType.name}!]!`;
+      return { name, typeName, args };
+    }
+    if (
+      isNonNullType(v.type) &&
+      isListType(v.type.ofType) &&
+      isNonNullType(v.type.ofType.ofType) &&
+      isScalarType(v.type.ofType.ofType.ofType)
+    ) {
+      typeName = `[${v.type.ofType.ofType.ofType.name}!]!`;
       return { name, typeName, args };
     }
   });
@@ -88,20 +90,20 @@ export const parseSchema = (data: IntrospectionQuery) => {
   const types = Object.entries(schema.getTypeMap())
     .filter(([typeName]) => typeName[0] !== '_') // <--  ('_')  lol
     .map(([typeName, type]) => {
-      if (type instanceof GraphQLScalarType) {
+      if (isScalarType(type)) {
         return {
           name: typeName,
           description: type.description,
         };
       }
-      if (type instanceof GraphQLObjectType) {
+      if (isObjectType(type)) {
         return {
           name: typeName,
           description: null,
           fields: fieldsProcces(type.getFields()),
         };
       }
-      if (type instanceof GraphQLInputObjectType) {
+      if (isInputObjectType(type)) {
         return {
           name: typeName,
           description: null,
