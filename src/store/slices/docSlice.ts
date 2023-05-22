@@ -5,7 +5,7 @@ import { parseSchema } from '../../utils';
 import { getIntrospectionQuery, IntrospectionQuery } from 'graphql';
 
 export const fetchDocSchema = createAsyncThunk<IntrospectionQuery>('schema', async () => {
-  const response = await request(getIntrospectionQuery());
+  const response = await request({ query: getIntrospectionQuery() });
   return response.data;
 });
 
@@ -18,11 +18,13 @@ export type DocState = {
 type InitialStateType = {
   schema: SchemaItem[] | null;
   docList: DocState[];
+  status: 'idle' | 'pending' | 'succeeded' | 'failed';
 };
 
 const initialState: InitialStateType = {
   schema: null,
   docList: [{ type: 'Query', id: Date.now(), args: null }],
+  status: 'idle',
 };
 
 const docSlice = createSlice({
@@ -44,6 +46,13 @@ const docSlice = createSlice({
     builder.addCase(fetchDocSchema.fulfilled, (state, action) => {
       const parsedSchema = parseSchema(action.payload) as SchemaItem[];
       state.schema = parsedSchema;
+      state.status = 'succeeded';
+    });
+    builder.addCase(fetchDocSchema.rejected, (state) => {
+      state.status = 'failed';
+    });
+    builder.addCase(fetchDocSchema.pending, (state) => {
+      state.status = 'pending';
     });
   },
 });

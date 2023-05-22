@@ -35,6 +35,7 @@ export const messages = {
     passwordMessage: 'Minimum 8 symbols, at least one letter, one digit, one special character',
     variables_title: 'QUERY VARIABLES',
     headers_title: 'headers',
+    error_message: 'Something went wrong... Please try again later. ',
   },
   [LOCALES.RUSSIAN]: {
     to_welcome_page: 'Домой',
@@ -71,5 +72,6 @@ export const messages = {
       'Минимум 8 символов, как минимум одна буква, одна цифра, один специальный символ',
     variables_title: 'переменные',
     headers_title: 'заголовки',
+    error_message: 'Что-то пошло не так... Попробуйте повторить попытку через некоторое время  ',
   },
 };

@@ -1,10 +1,9 @@
 import ControlledEditor from '@monaco-editor/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch, useTypeSelector } from '../hooks/redux-hooks';
-import { addRequest } from '../store/slices/requestSlice';
-import { request } from '../requests/api';
-import { addResults } from '../store/slices/resultSlice';
+import { fetchResult } from '../store/slices/requestSlice';
 import PlayIcon from './play-sign';
+import { openModalWindow } from '../store/slices/modalWindowSlice';
 
 const RequestEditor = () => {
   const [inputValue, setInputValue] = useState(`query NewQuery {
@@ -16,26 +15,27 @@ const RequestEditor = () => {
 
   const { variables } = useTypeSelector((state) => state.variablesValue);
   const { wholeWindow } = useTypeSelector((state) => state.variableView);
+  const { status } = useTypeSelector((state) => state.requestValue);
 
   const handleChange = (e: string | undefined) => {
     setInputValue(e ? e : '');
   };
 
   const handleSubmit = async () => {
-    dispatch(addRequest(inputValue));
+    let parsedVariables: object;
     try {
-      JSON.parse(variables);
-      const res = await request(inputValue, variables);
-      if (res) {
-        dispatch(addResults(JSON.stringify(res, null, 2)));
-      }
-    } catch (e) {
-      const res = await request(inputValue);
-      if (res) {
-        dispatch(addResults(JSON.stringify(res, null, 2)));
-      }
+      parsedVariables = JSON.parse(variables);
+    } catch {
+      parsedVariables = {};
     }
+    dispatch(fetchResult({ query: inputValue, variables: parsedVariables }));
   };
+
+  useEffect(() => {
+    if (status === 'failed') {
+      dispatch(openModalWindow(status));
+    }
+  }, [status, dispatch]);
 
   return (
     <>
