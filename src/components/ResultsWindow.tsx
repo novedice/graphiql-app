@@ -2,7 +2,7 @@ import ControlledEditor from '@monaco-editor/react';
 import { useTypeSelector } from '../hooks/redux-hooks';
 
 const ResultWindow = () => {
-  const { resultValue } = useTypeSelector((state) => state.resultValue);
+  const { result } = useTypeSelector((state) => state.requestValue);
 
   return (
     <>
@@ -13,7 +13,7 @@ const ResultWindow = () => {
             theme='light'
             height='inherit'
             defaultLanguage='graphql'
-            value={resultValue}
+            value={result}
             className='overflow-hidden'
             options={{
               readOnly: true,

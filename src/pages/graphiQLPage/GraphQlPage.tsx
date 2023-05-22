@@ -39,7 +39,7 @@ const GraphQlPage = () => {
               <RequestEditor />
               <VariablesEditor />
             </div>
-            <div className='w-[98%] sm:w-[45%] flex relative justify-center m-2 ml-1 '>
+            <div className='relative w-[98%] sm:w-[45%] flex justify-center m-2 ml-1 '>
               <ResultWindow />
               <Suspense fallback={<p>loading...</p>}>
                 <Docs />

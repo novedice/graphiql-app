@@ -1,9 +1,9 @@
 import ControlledEditor from '@monaco-editor/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch, useTypeSelector } from '../hooks/redux-hooks';
-import { addRequest } from '../store/slices/requestSlice';
-import { request } from '../requests/api';
-import { addResults } from '../store/slices/resultSlice';
+import { fetchResult } from '../store/slices/requestSlice';
+// import { request } from '../requests/api';
+// import { addResults } from '../store/slices/resultSlice';
 import PlayIcon from './play-sign';
 import { openModalWindow } from '../store/slices/modalWindowSlice';
 
@@ -17,32 +17,37 @@ const RequestEditor = () => {
 
   const { variables } = useTypeSelector((state) => state.variablesValue);
   const { wholeWindow } = useTypeSelector((state) => state.variableView);
+  const { status } = useTypeSelector((state) => state.requestValue);
 
   const handleChange = (e: string | undefined) => {
     setInputValue(e ? e : '');
   };
 
   const handleSubmit = async () => {
-    dispatch(addRequest(inputValue));
+    // dispatch(addRequest(inputValue));
+    let parsedVariables: object;
     try {
-      JSON.parse(variables);
-      const { result, error } = await request(inputValue, variables);
-      if (result) {
-        dispatch(addResults(JSON.stringify(result, null, 2)));
-      }
-      if (error) {
-        dispatch(openModalWindow(error));
-      }
-    } catch (e) {
-      const { result, error } = await request(inputValue);
-      if (result) {
-        dispatch(addResults(JSON.stringify(result, null, 2)));
-      }
-      if (error) {
-        dispatch(openModalWindow(error));
-      }
+      parsedVariables = JSON.parse(variables);
+    } catch {
+      parsedVariables = {};
     }
+    dispatch(fetchResult({ query: inputValue, variables: parsedVariables }));
+    // if (result) {
+    //   dispatch(addResults(JSON.stringify(result, null, 2)));
+    // }
+    // } catch (e) {
+    //   dispatch(fetchResult({ query: inputValue, variables }));
+    //   // if (result) {
+    //   //   dispatch(addResults(JSON.stringify(result, null, 2)));
+    //   // }
+    // }
   };
+
+  useEffect(() => {
+    if (status === 'failed') {
+      dispatch(openModalWindow(status));
+    }
+  }, [status, dispatch]);
 
   return (
     <>

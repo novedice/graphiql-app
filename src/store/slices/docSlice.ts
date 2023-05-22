@@ -4,12 +4,9 @@ import { ArgType, SchemaItem } from 'types';
 import { parseSchema } from '../../utils';
 import { getIntrospectionQuery, IntrospectionQuery } from 'graphql';
 
-export const fetchDocSchema = createAsyncThunk<{
-  result: { data: IntrospectionQuery } | undefined;
-  error: string | undefined;
-}>('schema', async () => {
-  const { result, error } = await request(getIntrospectionQuery());
-  return { result, error };
+export const fetchDocSchema = createAsyncThunk<IntrospectionQuery>('schema', async () => {
+  const response = await request({ query: getIntrospectionQuery() });
+  return response.data;
 });
 
 export type DocState = {
@@ -21,13 +18,13 @@ export type DocState = {
 type InitialStateType = {
   schema: SchemaItem[] | null;
   docList: DocState[];
-  docError: string | undefined;
+  status: 'idle' | 'pending' | 'succeeded' | 'failed';
 };
 
 const initialState: InitialStateType = {
   schema: null,
   docList: [{ type: 'Query', id: Date.now(), args: null }],
-  docError: '',
+  status: 'idle',
 };
 
 const docSlice = createSlice({
@@ -47,11 +44,15 @@ const docSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(fetchDocSchema.fulfilled, (state, action) => {
-      if (action.payload.result) {
-        const parsedSchema = parseSchema(action.payload.result?.data) as SchemaItem[];
-        state.schema = parsedSchema;
-      }
-      state.docError = action.payload.error;
+      const parsedSchema = parseSchema(action.payload) as SchemaItem[];
+      state.schema = parsedSchema;
+      state.status = 'succeeded';
+    });
+    builder.addCase(fetchDocSchema.rejected, (state) => {
+      state.status = 'failed';
+    });
+    builder.addCase(fetchDocSchema.pending, (state) => {
+      state.status = 'pending';
     });
   },
 });

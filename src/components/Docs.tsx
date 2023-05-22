@@ -7,26 +7,32 @@ import { openModalWindow } from '../store/slices/modalWindowSlice';
 const Docs = () => {
   const dispatch = useAppDispatch();
   const [isShow, setShow] = useState(false);
-  const { schema, docList, docError } = useTypeSelector((state) => state.docSchema);
+  const { schema, docList, status } = useTypeSelector((state) => state.docSchema);
   const refLastElement = useRef<HTMLDivElement>(null);
 
   const toggleShow = () => {
     setShow((prev) => !prev);
     if (!schema) {
       dispatch(fetchDocSchema());
-      if (docError) {
-        dispatch(openModalWindow(docError));
-      }
+      // if (docError) {
+      //   dispatch(openModalWindow(docError));
+      // }
     }
   };
+
+  useEffect(() => {
+    if (status === 'failed') {
+      dispatch(openModalWindow(status));
+    }
+  }, [status, dispatch]);
 
   useEffect(() => {
     refLastElement.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }, [docList]);
 
   return (
-    <section className='flex items-center absolute right-0 h-[100%] max-w-[100%] overflow-x-auto'>
-      <button className='z-10 fixed right-0 h-min bg-yellow-300 p-2' onClick={toggleShow}>
+    <section className='flex items-center absolute top-2 right-0 max-h-[90%] max-w-[100%] overflow-x-auto'>
+      <button className='h-min fixed right-0 bg-yellow-300 p-2' onClick={toggleShow}>
         Docs
       </button>
       <div
