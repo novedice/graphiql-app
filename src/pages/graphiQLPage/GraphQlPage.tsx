@@ -35,7 +35,7 @@ const GraphQlPage = () => {
         <div>Loading...</div>
       ) : (
         <div className={`relative w-full bg-slate-300 `}>
-          <div className='w-full flex-col sm:flex-row flex justify-center'>
+          <div className='w-full flex-col sm:flex-row flex justify-center pt-[20px] pb-[82px]'>
             <div className='w-[98%] sm:w-[50%] m-2 mr-0 flex flex-col'>
               <RequestEditor />
               <VariablesEditor />
