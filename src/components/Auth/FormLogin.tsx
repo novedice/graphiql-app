@@ -77,7 +77,7 @@ const FormLogin: FC<FormProps> = ({ handleClick }) => {
       </div>
       <button
         type='submit'
-        className='capitalize text-xl w-full py-2 px-4 text-white font-light bg-green-400 hover:bg-green-500 rounded-lg shadow-lg'
+        className='normal-case text-xl w-full py-2 px-4 text-white font-light bg-green-400 hover:bg-green-500 rounded-lg shadow-lg'
       >
         <FormattedMessage id='login' />
       </button>
