@@ -1,5 +1,4 @@
 import { FormattedMessage } from 'react-intl';
-import { PAGE_STYLE } from '../../style-const/style-const';
 import '../../index.css';
 
 import { useTypeSelector } from '../../hooks/redux-hooks';
@@ -19,7 +18,7 @@ const WelcomePage = () => {
 
   return (
     <>
-      <div className={``}>
+      <div>
         <div className='h-[600px] bg-welcomePage bg-top pt-28'>
           <div className='flex justify-around'>
             <div className='w-[300px] bg-black bg-opacity-50 p-5 rounded-xl'>
