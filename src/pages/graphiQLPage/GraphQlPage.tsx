@@ -8,7 +8,7 @@ import { lazy, Suspense } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useTypeSelector } from '../../hooks/redux-hooks';
 import ErrorWindow from '../../components/ErrorWindow';
-import { Spinner } from 'flowbite-react';
+import Spinner from '../../components/Spinner';
 
 const Docs = lazy(() => import('../../components/Docs'));
 
