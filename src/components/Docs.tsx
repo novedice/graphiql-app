@@ -3,7 +3,7 @@ import DocColumn from './DocColumn';
 import { fetchDocSchema } from '../store/slices/docSlice';
 import { useAppDispatch, useTypeSelector } from '../hooks/redux-hooks';
 import { openModalWindow } from '../store/slices/modalWindowSlice';
-import { Spinner } from 'flowbite-react';
+import Spinner from './Spinner';
 
 const Docs = () => {
   const dispatch = useAppDispatch();
@@ -36,7 +36,7 @@ const Docs = () => {
       >
         Docs
         {status === 'pending' && (
-          <div className='absolute top-[8px] left-[-25px]'>
+          <div className='absolute top-[42px] left-[5px]'>
             <Spinner />
           </div>
         )}
