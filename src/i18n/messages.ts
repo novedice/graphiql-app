@@ -3,7 +3,7 @@ import { LOCALES } from './locales';
 export const messages = {
   [LOCALES.ENGLISH]: {
     to_welcome_page: `Home`,
-    to_graphi: 'Main',
+    to_graphi: 'GraphiQL page',
     to_auth: 'Login/signup',
     page_not_found: 'Page not found. ',
     go_to_main: 'Go to home page',
@@ -13,7 +13,7 @@ export const messages = {
     login: 'login',
     register: 'register',
     welcome: 'welcome',
-    home: 'home',
+    homePage: 'home page',
     about: 'about',
     contact: 'contact',
     log_out: 'log out',
@@ -41,10 +41,17 @@ export const messages = {
     haveAccount: 'You have an account:',
     dontHaveAccount: `Don't have an account?`,
     playground: 'playground',
+    makeRequest: 'Ask for what you want',
+    getResponse: 'Get predictable results',
+    queryLanguageTitle: 'A query language for your API',
+    queryLanguageDesc: `GraphQL is a query language for APIs and a runtime for fulfilling those queries with
+    your existing data. GraphQL provides a complete and understandable description of the
+    data in your API, gives clients the power to ask for exactly what they need and nothing
+    more, makes it easier to evolve APIs over time, and enables powerful developer tools.`,
   },
   [LOCALES.RUSSIAN]: {
     to_welcome_page: 'Домой',
-    to_graphi: 'Главная',
+    to_graphi: 'GraphiQL страница',
     to_auth: 'Вход/регистрация',
     page_not_found: 'Страница не найдена. ',
     go_to_main: 'Вернуться на главную. ',
@@ -54,7 +61,7 @@ export const messages = {
     login: 'вход в систему',
     register: 'регистрация',
     welcome: 'приветствую',
-    home: 'главная страница',
+    homePage: 'главная страница',
     about: 'о нас',
     contact: 'контакты',
     log_out: 'выход',
@@ -83,5 +90,9 @@ export const messages = {
     haveAccount: 'У вас есть аккаунт:',
     dontHaveAccount: `У вас нет аккаунта?`,
     playground: 'песочница',
+    makeRequest: 'Осуществляйте запросы',
+    getResponse: 'Получайте предсказуемые результаты',
+    queryLanguageTitle: 'Язык запросов для вашего API',
+    queryLanguageDesc: `GraphQL - это язык запросов для API и среда выполнения для выполнения этих запросов с использованием существующими данными. GraphQL предоставляет полное и понятное описание данных в вашем API, дает клиентам возможность запрашивать именно то, что им нужно, и ничего больше. больше, облегчает развитие API со временем и позволяет использовать мощные инструменты разработчика.`,
   },
 };

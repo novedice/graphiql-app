@@ -19,40 +19,57 @@ const WelcomePage = () => {
 
   return (
     <>
-      <div className={`${PAGE_STYLE}`}>
-        <div className='h-[600px] bg-welcomePage bg-top pt-32'>
+      <div className={``}>
+        <div className='h-[600px] bg-welcomePage bg-top pt-28'>
           <div className='flex justify-around'>
-            <pre className='bg-black bg-opacity-50 p-5 rounded-xl'>
-              <h2 className='text-white text-[16px] font-bold mb-10'>Ask for what you want</h2>
-              <code className='text-[14px] text-white'>
-                <span className='text-[#555]'>{`{`}</span>
-                {`
-  country`}{' '}
-                <span className='text-[#555]'>{`(`}</span>
-                <span className='text-[#1f61a0]'>code: </span>
-                <span className='text-[#d64292]'>{`"PT"`}</span>
-                <span className='text-[#555]'>{`)`}</span>
-                <span className='text-[#555]'>{` {`}</span>
-                {`
+            <div className='w-[300px] bg-black bg-opacity-50 p-5 rounded-xl'>
+              <h2 className='text-white text-[16px] font-bold mb-5'>
+                <FormattedMessage id='makeRequest' />
+              </h2>
+              <pre>
+                <code className='text-[14px] text-white'>
+                  <span className='text-[#555]'>{`{`}</span>
+                  {`
+  country`}
+                  <span className='text-[#555]'>{`(`}</span>
+                  <span className='text-blue-400'>code: </span>
+                  <span className='text-[#d64292]'>{`"PT"`}</span>
+                  <span className='text-[#555]'>{`)`}</span>
+                  <span className='text-[#555]'>{` {`}</span>
+                  {`
     name`}
-                <br />
-                <span className='text-[#555]'>{`  }`}</span>
-                <br />
-                <span className='text-[#555]'>{`}`}</span>
-              </code>
-            </pre>
-            <pre className='bg-black bg-opacity-50 p-5 rounded-xl'>
-              <h2 className='text-white font-bold mb-10'>Get predictable results</h2>
-              <code className='text-[14px] text-white'>
-                {`{
-  "data": {
-    "country": {
-      "name": "Portugal"
-    }
-  }
-}`}
-              </code>
-            </pre>
+                  <br />
+                  <span className='text-[#555]'>{`  }`}</span>
+                  <br />
+                  <span className='text-[#555]'>{`}`}</span>
+                </code>
+              </pre>
+            </div>
+            <div className='w-[300px] bg-black bg-opacity-50 p-5 rounded-xl'>
+              <h2 className='w-[300px] text-white font-bold mb-5'>
+                <FormattedMessage id='getResponse' />
+              </h2>
+              <pre>
+                <code className='text-[14px] text-white'>
+                  <span className='text-[#555]'>{`{`}</span>
+                  <br />
+                  <span className='text-blue-400'>{`  data: `}</span>
+                  <span className='text-[#555]'>{`{`}</span>
+                  <br />
+                  <span className='text-blue-400'>{`    "country":`}</span>
+                  <span className='text-[#555]'>{` {`}</span>
+                  <br />
+                  <span className='text-blue-400'>{`      "name":`}</span>
+                  <span className='text-[#d64292]'>{` "Portugal"`}</span>
+                  <br />
+                  <span className='text-[#555]'>{`    }`}</span>
+                  <br />
+                  <span className='text-[#555]'>{`  }`}</span>
+                  <br />
+                  <span className='text-[#555]'>{`}`}</span>
+                </code>
+              </pre>
+            </div>
           </div>
 
           <h1 className='ml-3 text-[30px] text-rose-500 text-center'>
@@ -69,15 +86,12 @@ const WelcomePage = () => {
             </button>
           </div>
         </div>
-        <div className='bg-[#f5f6f8] h-[500px]'>
+        <div className='bg-[#f5f6f8] pb-[132px]'>
           <h1 className='pt-[132px] text-[40px] font-light text-center'>
-            A query language for your API
+            <FormattedMessage id='queryLanguageTitle' />
           </h1>
           <p className='w-[720px] text-center mt-[30px] font-extralight leading-[35.2px] text-[24px] mx-auto text-[#202020]'>
-            GraphQL is a query language for APIs and a runtime for fulfilling those queries with
-            your existing data. GraphQL provides a complete and understandable description of the
-            data in your API, gives clients the power to ask for exactly what they need and nothing
-            more, makes it easier to evolve APIs over time, and enables powerful developer tools.
+            <FormattedMessage id='queryLanguageDesc' />
           </p>
         </div>
         <ModalWindow isOpen={isOpen} onClose={handleCloseModal} />
