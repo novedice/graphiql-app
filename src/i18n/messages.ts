@@ -48,6 +48,7 @@ export const messages = {
     your existing data. GraphQL provides a complete and understandable description of the
     data in your API, gives clients the power to ask for exactly what they need and nothing
     more, makes it easier to evolve APIs over time, and enables powerful developer tools.`,
+    error_message: 'Something went wrong... Please try again later. ',
   },
   [LOCALES.RUSSIAN]: {
     to_welcome_page: 'Домой',
@@ -94,5 +95,6 @@ export const messages = {
     getResponse: 'Получайте предсказуемые результаты',
     queryLanguageTitle: 'Язык запросов для вашего API',
     queryLanguageDesc: `GraphQL - это язык запросов для API и среда выполнения для выполнения этих запросов с использованием существующими данными. GraphQL предоставляет полное и понятное описание данных в вашем API, дает клиентам возможность запрашивать именно то, что им нужно, и ничего больше. больше, облегчает развитие API со временем и позволяет использовать мощные инструменты разработчика.`,
+    error_message: 'Что-то пошло не так... Попробуйте повторить попытку через некоторое время  ',
   },
 };

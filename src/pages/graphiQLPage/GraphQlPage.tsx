@@ -1,35 +1,61 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { useTypeSelector } from '../../hooks/redux-hooks';
+
 import ResultWindow from '../../components/ResultsWindow';
 import RequestEditor from '../../components/RequestEditor';
 import VariablesEditor from '../../components/VariablesEditor';
-import Docs from '../../components/Docs';
+import { lazy, Suspense } from 'react';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { useTypeSelector } from '../../hooks/redux-hooks';
+import ErrorWindow from '../../components/ErrorWindow';
+import { Spinner } from 'flowbite-react';
+
+const Docs = lazy(() => import('../../components/Docs'));
 
 const GraphQlPage = () => {
-  const { loggedIn } = useTypeSelector((state) => state.login);
   const navigate = useNavigate();
+  const [load, setLoad] = useState(true);
+  const { show } = useTypeSelector((state) => state.modalWindow);
 
   useEffect(() => {
-    if (!loggedIn) {
-      navigate('/');
-    }
-  }, [loggedIn, navigate]);
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        navigate('/');
+        setLoad(true);
+      } else {
+        setLoad(false);
+      }
+    });
+  }, [navigate]);
 
   return (
     <>
-      <div className={`w-full bg-slate-300`}>
-        <div className='w-[98%] flex justify-center'>
-          <div className='w-[64%] m-2 mr-1 flex flex-col'>
-            <RequestEditor />
-            <VariablesEditor />
-          </div>
-          <div className='flex relative justify-center m-2 ml-1 w-[30%]'>
-            <ResultWindow />
-            <Docs />
+      {load ? (
+        <div>Loading...</div>
+      ) : (
+        <div className={`relative w-full bg-slate-300 `}>
+          <div className='w-full flex-col sm:flex-row flex justify-center'>
+            <div className='w-[98%] sm:w-[50%] m-2 mr-0 flex flex-col'>
+              <RequestEditor />
+              <VariablesEditor />
+            </div>
+            <div className='w-[98%] sm:w-[45%] flex justify-center m-2 ml-1 '>
+              <ResultWindow />
+              <Suspense
+                fallback={
+                  <div className='fixed right-[10px] top-[350px]'>
+                    <Spinner />
+                  </div>
+                }
+              >
+                <Docs />
+              </Suspense>
+            </div>
           </div>
         </div>
-      </div>
+      )}
+      {show && <ErrorWindow />}
     </>
   );
 };

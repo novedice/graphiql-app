@@ -1,19 +1,23 @@
-const url2 = 'https://countries.trevorblades.com/graphql';
+import { url } from './constants';
 
-const request = async (query: string, variables?: string, header?: object) => {
-  const resp2 = await fetch(url2, {
+export type RequestParamsType = {
+  query: string;
+  variables?: object;
+  header?: object;
+};
+
+export const request = async (params: RequestParamsType) => {
+  const resp2 = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
     },
     body: JSON.stringify({
-      query,
-      variables: variables ? JSON.parse(variables) : '',
-      header: header,
+      query: params.query,
+      variables: params.variables,
+      header: params.header,
     }),
   });
-
-  return resp2.json();
+  const r = await resp2.json();
+  return r;
 };
-
-export { request };
