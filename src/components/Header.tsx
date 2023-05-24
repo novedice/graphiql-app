@@ -58,9 +58,7 @@ const Header = () => {
         return;
       }
     });
-
   }, [dispatch]);
-
 
   const logOutHandler = () => {
     dispatch(removeUser());
@@ -94,8 +92,7 @@ const Header = () => {
             <img className='w-12 ml-2 sm:ml-0' src={GraphiQlLogo} alt='React Logo' />
           </Link>
           {loggedIn && (
-            <h1 className='ml-0 text-xl md:text-2xl capitalize  sm:ml-6 font-bold'>
-
+            <h1 className='ml-0 text-xl md:text-2xl capitalize sm:ml-6'>
               <FormattedMessage id='welcome' />, {name}
             </h1>
           )}
@@ -110,7 +107,7 @@ const Header = () => {
                 to='/'
                 className='first-letter:uppercase block text-xl px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
               >
-                <FormattedMessage id='home' />
+                <FormattedMessage id='welcomePage' />
               </Link>
             </li>
 
@@ -119,7 +116,7 @@ const Header = () => {
                 <li>
                   <Link
                     to='/graphi-ql'
-                    className='capitalize block text-xl px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
+                    className='block text-xl px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
                   >
                     <FormattedMessage id='to_graphi' />
                   </Link>
@@ -138,7 +135,7 @@ const Header = () => {
               <div className='ml-4 flex items-center'>
                 <Link
                   to='/login'
-                  className='capitalize block text-xl px-4 py-2 text-gray-700  mr-2 bg-yellow-300 hover:bg-yellow-400 rounded'
+                  className='capitalize block text-xl px-4 py-2 text-gray-700  mr-2 font-bold bg-yellow-200 hover:bg-yellow-300 rounded'
                 >
                   <FormattedMessage id='sign_in' />
                 </Link>
@@ -154,7 +151,6 @@ const Header = () => {
               <LanguageSelector />
             </li>
           </ul>
-
         </nav>
       </div>
     </header>

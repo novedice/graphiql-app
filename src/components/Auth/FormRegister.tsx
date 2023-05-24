@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
+import { Link } from 'react-router-dom';
 
 interface FormProps {
   handleClick: (name: string, email: string, password: string) => void;
@@ -24,64 +25,91 @@ const FormRegister: FC<FormProps> = ({ handleClick }) => {
   };
 
   return (
-    <form className='ml-6 flex flex-col' onSubmit={handleSubmit(onSubmit)}>
-      <input
-        className='w-56 p-2 text-lg rounded-sm'
-        type='text'
-        placeholder='name'
-        {...register('name', {
-          required: 'nameRequiredMessage',
-          pattern: {
-            value: /^([А-ЯЁ][а-яё]*|[A-Z][a-z]*)$/,
-            message: 'nameMessage',
-          },
-        })}
-      />
-      {errors.name && (
-        <p className='mt-2 text-red-500'>
-          <FormattedMessage id={errors.name?.message as string} />
-        </p>
-      )}
-      <input
-        className='w-56 mt-6 p-2 text-lg rounded-sm'
-        type='text'
-        placeholder='email'
-        {...register('email', {
-          required: 'emailRequiredMessage',
-          pattern: {
-            value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-            message: 'emailMessage',
-          },
-        })}
-      />
-      {errors.email && (
-        <p className='mt-2 text-red-500'>
-          <FormattedMessage id={errors.email?.message as string} />
-        </p>
-      )}
-      <input
-        className='w-56 mt-6 p-2 text-lg rounded-sm'
-        type='password'
-        placeholder='password'
-        {...register('password', {
-          required: 'passwordRequiredMessage',
-          pattern: {
-            value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-            message: 'passwordMessage',
-          },
-        })}
-      />
-      {errors.password && (
-        <p className='mt-2 text-red-500'>
-          <FormattedMessage id={errors.password?.message as string} />
-        </p>
-      )}
+    <form
+      className='max-w-md mx-auto mt-20 mb-28 p-8 bg-white rounded-lg shadow-lg'
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <h2 className='capitalize text-2xl font-semibold text-center mb-6'>
+        <FormattedMessage id='sign_up' />
+      </h2>
+      <div className='mb-6'>
+        <label htmlFor='name' className='capitalize block text-gray-700 font-medium mb-2'>
+          <FormattedMessage id='name' />
+        </label>
+        <input
+          className='w-full p-2 text-lg rounded'
+          type='text'
+          placeholder='name'
+          {...register('name', {
+            required: 'nameRequiredMessage',
+            pattern: {
+              value: /^([А-ЯЁ][а-яё]*|[A-Z][a-z]*)$/,
+              message: 'nameMessage',
+            },
+          })}
+        />
+        {errors.name && (
+          <p className='text-red-500 text-sm mt-1'>
+            <FormattedMessage id={errors.name?.message as string} />
+          </p>
+        )}
+      </div>
+      <div className='mb-6'>
+        <label htmlFor='email' className='capitalize block text-gray-700 font-medium mb-2'>
+          <FormattedMessage id='email' />
+        </label>
+        <input
+          className='w-full p-2 text-lg rounded'
+          type='text'
+          placeholder='email'
+          {...register('email', {
+            required: 'emailRequiredMessage',
+            pattern: {
+              value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+              message: 'emailMessage',
+            },
+          })}
+        />
+        {errors.email && (
+          <p className='text-red-500 text-sm mt-1'>
+            <FormattedMessage id={errors.email?.message as string} />
+          </p>
+        )}
+      </div>
+      <div className='mb-6'>
+        <label htmlFor='password' className='capitalize block text-gray-700 font-medium mb-2'>
+          <FormattedMessage id='password' />
+        </label>
+        <input
+          className='w-full p-2 text-lg rounded'
+          type='password'
+          placeholder='password'
+          {...register('password', {
+            required: 'passwordRequiredMessage',
+            pattern: {
+              value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+              message: 'passwordMessage',
+            },
+          })}
+        />
+        {errors.password && (
+          <p className='text-red-500 text-sm mt-1'>
+            <FormattedMessage id={errors.password?.message as string} />
+          </p>
+        )}
+      </div>
       <button
         type='submit'
-        className='w-44 mt-10 capitalize text-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer'
+        className='capitalize text-xl w-full py-2 px-4 text-white font-light bg-purple-400 hover:bg-purple-500 rounded-lg shadow-lg'
       >
         {<FormattedMessage id='sign_up' />}
       </button>
+      <p className='mt-4'>
+        <FormattedMessage id='have_an_account' />{' '}
+        <Link to='/login' className='capitalize text-blue-500'>
+          <FormattedMessage id='sign_in' />
+        </Link>
+      </p>
     </form>
   );
 };

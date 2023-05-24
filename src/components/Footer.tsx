@@ -7,7 +7,7 @@ import { FormattedMessage } from 'react-intl';
 const Footer = () => {
   return (
     <>
-      <footer className='bg-gray-200 py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center bottom-0 w-full'>
+      <footer className='bg-gray-200 py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center w-full'>
         <div className='flex items-center'>
           <Link to={'https://github.com/novedice/graphiql-app'} target='_blank'>
             <FaGithub className='text-black' size={60} />
