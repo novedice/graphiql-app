@@ -105,7 +105,11 @@ const Header = () => {
             <li>
               <Link
                 to='/'
-                className='first-letter:uppercase block text-xl px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
+                className={`first-letter:uppercase block text-xl px-4 py-2 rounded ${
+                  animateHeader
+                    ? 'text-gray-100 hover:bg-gray-600'
+                    : 'text-gray-700 hover:bg-gray-200'
+                }`}
               >
                 <FormattedMessage id='welcomePage' />
               </Link>

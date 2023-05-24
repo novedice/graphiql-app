@@ -49,6 +49,13 @@ export const messages = {
     data in your API, gives clients the power to ask for exactly what they need and nothing
     more, makes it easier to evolve APIs over time, and enables powerful developer tools.`,
     error_message: 'Something went wrong... Please try again later. ',
+    natalia: 'Natalia Ushakova',
+    maxim: 'Maksim Abdulkhalikov',
+    kirill: 'Kirill Kolchanov',
+    discord: 'Discord',
+    github: 'Github',
+    telegram: 'Telegram',
+    ourTeam: 'Our team',
   },
   [LOCALES.RUSSIAN]: {
     to_welcome_page: 'Домой',
@@ -96,5 +103,12 @@ export const messages = {
     queryLanguageTitle: 'Язык запросов для вашего API',
     queryLanguageDesc: `GraphQL - это язык запросов для API и среда выполнения для выполнения этих запросов с использованием существующими данными. GraphQL предоставляет полное и понятное описание данных в вашем API, дает клиентам возможность запрашивать именно то, что им нужно, и ничего больше. больше, облегчает развитие API со временем и позволяет использовать мощные инструменты разработчика.`,
     error_message: 'Что-то пошло не так... Попробуйте повторить попытку через некоторое время  ',
+    natalia: 'Наталья Ушакова',
+    maxim: 'Максим Абдулхаликов',
+    kirill: 'Кирилл Колчанов',
+    discord: 'Диксорд',
+    github: 'Гитхаб',
+    telegram: 'Телеграм',
+    ourTeam: 'Наша команда',
   },
 };
