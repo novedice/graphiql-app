@@ -34,14 +34,17 @@ const RequestEditor = () => {
     } catch {
       parsedHeaders = {};
     }
-    dispatch(fetchResult({ query: inputValue, variables: parsedVariables, header: parsedHeaders }));
+    await dispatch(
+      fetchResult({ query: inputValue, variables: parsedVariables, header: parsedHeaders })
+    );
   };
 
-  useEffect(() => {
-    if (status === 'failed') {
-      dispatch(openModalWindow(status));
-    }
-  }, [status, dispatch]);
+  // useEffect(() => {
+  //   if (status === 'failed') {
+  //     console.log('open modalWindow in Request editor useEffect');
+  //     dispatch(openModalWindow());
+  //   }
+  // }, [status]);
 
   return (
     <>

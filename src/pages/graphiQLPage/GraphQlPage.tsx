@@ -7,7 +7,8 @@ import { lazy, Suspense } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useTypeSelector } from '../../hooks/redux-hooks';
 import ErrorWindow from './components/ErrorWindow';
-import { Spinner } from 'flowbite-react';
+import Spinner from '../../components/Spinner';
+import ModalWindow from '../../components/ModalWindow';
 
 const Docs = lazy(() => import('./components/Docs'));
 
@@ -28,6 +29,10 @@ const GraphQlPage = () => {
     });
   }, [navigate]);
 
+  useEffect(() => {
+    console.log('show  in graphpage', show);
+  });
+
   return (
     <>
       <div className='bg-welcomePage bg-top'>
@@ -35,7 +40,7 @@ const GraphQlPage = () => {
           <div>Loading...</div>
         ) : (
           <div className={`relative w-full `}>
-            <div className='w-full flex-col sm:flex-row flex justify-center'>
+            <div className='w-full flex-col sm:flex-row flex justify-center pt-[20px] pb-[82px]'>
               <div className='w-[98%] sm:w-[50%] m-2 mr-0 flex flex-col'>
                 <RequestEditor />
                 <VariablesEditor />
@@ -55,7 +60,11 @@ const GraphQlPage = () => {
             </div>
           </div>
         )}
-        {show && <ErrorWindow />}
+        {show && (
+          <ModalWindow>
+            <ErrorWindow />
+          </ModalWindow>
+        )}
       </div>
     </>
   );

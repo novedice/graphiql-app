@@ -20,7 +20,8 @@ const Docs = () => {
 
   useEffect(() => {
     if (status === 'failed') {
-      dispatch(openModalWindow(status));
+      console.log('open modal in docs useEffect');
+      dispatch(openModalWindow());
     }
   }, [status, dispatch]);
 
