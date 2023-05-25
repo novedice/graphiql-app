@@ -21,6 +21,7 @@ const VaraiblesWindow = () => {
           value={variables}
           options={{
             minimap: { enabled: false },
+            fontSize: 16,
             scrollbar: {
               vertical: 'hidden',
               horizontal: 'hidden',

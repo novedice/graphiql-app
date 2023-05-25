@@ -57,11 +57,12 @@ const RequestEditor = () => {
             defaultLanguage='graphql'
             onChange={handleChange}
             defaultValue={inputValue}
-            className='overflow-hidden'
+            className='overflow-hidden text-2xl'
             options={{
               minimap: { enabled: false },
               overviewRulerLanes: 0,
               overviewRulerBorder: false,
+              fontSize: 16,
               scrollbar: {
                 vertical: 'hidden',
                 horizontal: 'hidden',

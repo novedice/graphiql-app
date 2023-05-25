@@ -21,6 +21,7 @@ const ResultWindow = () => {
               minimap: { enabled: false },
               overviewRulerLanes: 0,
               overviewRulerBorder: false,
+              fontSize: 16,
               scrollbar: {
                 vertical: 'hidden',
                 horizontal: 'hidden',

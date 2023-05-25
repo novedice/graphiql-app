@@ -21,6 +21,7 @@ const HeadersWindow = () => {
           value={headers}
           options={{
             minimap: { enabled: false },
+            fontSize: 16,
             scrollbar: {
               vertical: 'hidden',
               horizontal: 'hidden',
