@@ -1,3 +1,3 @@
-const url = 'https://countries1.trevorblades.com/graphql';
+const url = 'https://countries.trevorblades.com/graphql';
 
 export { url };
