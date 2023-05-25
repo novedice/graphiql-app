@@ -2,14 +2,8 @@ import { Navigate, Route, Routes } from 'react-router';
 import { IntlProvider } from 'react-intl';
 import { LOCALES } from './i18n/locales';
 import { messages } from './i18n/messages';
-import WelcomePage from './pages/welcomePage/WelcomePage';
-import GraphQlPage from './pages/graphiQLPage/GraphQlPage';
-import Page404 from './pages/page404/Page404';
+import { WelcomePage, GraphQlPage, Page404, LoginPage, RegisterPage } from './pages/';
 import Layout from './components/Layout';
-import './App.css';
-import LoginPage from './pages/authPage/LoginPage';
-import RegisterPage from './pages/authPage/RegisterPage';
-
 import './App.css';
 import { useTypeSelector } from './hooks/redux-hooks';
 

@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import DocColumn from './DocColumn';
+import { Spinner } from 'flowbite-react';
 import { fetchDocSchema } from '../../../store/slices/docSlice';
 import { useAppDispatch, useTypeSelector } from '../../../hooks/redux-hooks';
 import { openModalWindow } from '../../../store/slices/modalWindowSlice';
-import { Spinner } from 'flowbite-react';
+import DocColumn from './DocColumn';
 
 const Docs = () => {
   const dispatch = useAppDispatch();

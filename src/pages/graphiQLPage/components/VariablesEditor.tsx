@@ -1,10 +1,7 @@
 import { useAppDispatch, useTypeSelector } from '../../../hooks/redux-hooks';
 import { FormattedMessage } from 'react-intl';
-import HideSign from './hide-sign';
 import { changeWholeView, closeVar, openVar } from '../../../store/slices/variableViewSlice';
-import ShowSign from './show-sign';
-import VaraiblesWindow from './VariablesWindow';
-import HeadersWindow from './HeadersWindow';
+import { HideSign, ShowSign, VaraiblesWindow, HeadersWindow } from './';
 
 const VariablesEditor = () => {
   const { wholeWindow, varWindow } = useTypeSelector((state) => state.variableView);
@@ -29,7 +26,7 @@ const VariablesEditor = () => {
           <div className='flex'>
             <h2
               onClick={openVariableWindow}
-              className={`text-sm md:text-lg ${
+              className={`text-sm md:text-lg uppercase ${
                 varWindow && wholeWindow ? 'bg-gray-200' : ''
               } hover:bg-blue-300 flex items-center hover:cursor-pointer py-1 px-4 mr-2 rounded`}
             >

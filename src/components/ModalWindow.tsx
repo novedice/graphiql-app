@@ -10,6 +10,11 @@ const ModalWindow = ({ children }: ModalProps) => {
   const { show } = useTypeSelector((state) => state.modalWindow);
   const dispatch = useAppDispatch();
 
+  const handleCloseModal = () => {
+    document.body.classList.remove('overflow-hidden');
+    dispatch(closeModalWindow());
+  };
+
   return (
     <>
       <Transition
@@ -23,7 +28,7 @@ const ModalWindow = ({ children }: ModalProps) => {
         className='fixed inset-0 z-50 bg-black bg-opacity-50'
         onClick={(event) => {
           if (event.target === event.currentTarget) {
-            dispatch(closeModalWindow());
+            handleCloseModal();
           }
         }}
       >

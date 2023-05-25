@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import ModalWindow from '../../components/ModalWindow';
 import { closeModalWindow, openModalWindow } from '../../store/slices/modalWindowSlice';
 import ModalGetStarted from './components/ModalGetStarted';
+import { updateStatusDoc } from '../../store/slices/docSlice';
+import { updateStatusRequest } from '../../store/slices/requestSlice';
 
 const WelcomePage = () => {
   const { show } = useTypeSelector((state) => state.modalWindow);
@@ -13,21 +15,14 @@ const WelcomePage = () => {
   const navigate = useNavigate();
   const { loggedIn } = useTypeSelector((state) => state.login);
 
-  const handleCloseModal = () => {
-    document.body.classList.remove('overflow-hidden');
-    dispatch(closeModalWindow());
-  };
-
   const getStart = () => {
     if (loggedIn) {
-      console.log('show before in getstart', show);
       dispatch(closeModalWindow());
-      console.log('show after in getstart', show);
+      dispatch(updateStatusDoc());
+      dispatch(updateStatusRequest());
 
       navigate('/graphi-ql');
-      console.log('show after redirect in getstart', show);
     } else {
-      console.log('open modal in getStart welcome page');
       dispatch(openModalWindow());
     }
   };

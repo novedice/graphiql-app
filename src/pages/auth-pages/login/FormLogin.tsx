@@ -2,26 +2,17 @@ import { FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
+import { FormLoginProps, IFormLogin } from '../types';
 
-interface FormProps {
-  handleClick: (name: string, email: string, password: string) => void;
-}
-
-interface IFormInput {
-  name: string;
-  email: string;
-  password: string;
-}
-
-const FormRegister: FC<FormProps> = ({ handleClick }) => {
+const FormLogin: FC<FormLoginProps> = ({ handleClick }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormInput>();
+  } = useForm<IFormLogin>();
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    handleClick(data.name, data.email, data.password);
+  const onSubmit: SubmitHandler<IFormLogin> = (data) => {
+    handleClick(data.email, data.password);
   };
 
   return (
@@ -30,30 +21,8 @@ const FormRegister: FC<FormProps> = ({ handleClick }) => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <h2 className='capitalize text-2xl font-semibold text-center mb-6'>
-        <FormattedMessage id='sign_up' />
+        <FormattedMessage id='sign_in' />
       </h2>
-      <div className='mb-6'>
-        <label htmlFor='name' className='capitalize block text-gray-700 font-medium mb-2'>
-          <FormattedMessage id='name' />
-        </label>
-        <input
-          className='w-full p-2 text-lg rounded'
-          type='text'
-          placeholder='name'
-          {...register('name', {
-            required: 'nameRequiredMessage',
-            pattern: {
-              value: /^([А-ЯЁ][а-яё]*|[A-Z][a-z]*)$/,
-              message: 'nameMessage',
-            },
-          })}
-        />
-        {errors.name && (
-          <p className='text-red-500 text-sm mt-1'>
-            <FormattedMessage id={errors.name?.message as string} />
-          </p>
-        )}
-      </div>
       <div className='mb-6'>
         <label htmlFor='email' className='capitalize block text-gray-700 font-medium mb-2'>
           <FormattedMessage id='email' />
@@ -61,7 +30,6 @@ const FormRegister: FC<FormProps> = ({ handleClick }) => {
         <input
           className='w-full p-2 text-lg rounded'
           type='text'
-          placeholder='email'
           {...register('email', {
             required: 'emailRequiredMessage',
             pattern: {
@@ -69,6 +37,7 @@ const FormRegister: FC<FormProps> = ({ handleClick }) => {
               message: 'emailMessage',
             },
           })}
+          placeholder='email'
         />
         {errors.email && (
           <p className='text-red-500 text-sm mt-1'>
@@ -83,7 +52,6 @@ const FormRegister: FC<FormProps> = ({ handleClick }) => {
         <input
           className='w-full p-2 text-lg rounded'
           type='password'
-          placeholder='password'
           {...register('password', {
             required: 'passwordRequiredMessage',
             pattern: {
@@ -91,6 +59,7 @@ const FormRegister: FC<FormProps> = ({ handleClick }) => {
               message: 'passwordMessage',
             },
           })}
+          placeholder='password'
         />
         {errors.password && (
           <p className='text-red-500 text-sm mt-1'>
@@ -100,18 +69,19 @@ const FormRegister: FC<FormProps> = ({ handleClick }) => {
       </div>
       <button
         type='submit'
-        className='capitalize text-xl w-full py-2 px-4 text-white font-light bg-purple-400 hover:bg-purple-500 rounded-lg shadow-lg'
+        className='normal-case text-xl w-full py-2 px-4 text-white font-light bg-green-400 hover:bg-green-500 rounded-lg shadow-lg'
       >
-        {<FormattedMessage id='sign_up' />}
+        <FormattedMessage id='login' />
       </button>
+
       <p className='mt-4'>
-        <FormattedMessage id='have_an_account' />{' '}
-        <Link to='/login' className='capitalize text-blue-500'>
-          <FormattedMessage id='sign_in' />
+        <FormattedMessage id='notAMember' />{' '}
+        <Link to='/register' className='capitalize text-blue-500'>
+          <FormattedMessage id='register' />
         </Link>
       </p>
     </form>
   );
 };
 
-export { FormRegister };
+export { FormLogin };

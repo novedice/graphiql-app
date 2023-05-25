@@ -1,25 +1,20 @@
 import { useEffect, useState } from 'react';
-
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
-
-import GraphiQlLogo from '../../assets/logo.png';
+import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
+import { FormattedMessage } from 'react-intl';
 
 import { useAuth } from '../../hooks/use-auth';
 import { useAppDispatch, useTypeSelector } from '../../hooks/redux-hooks';
 
 import { setUser, removeUser } from '../../store/slices/userSlice';
 import { logIn, logOut } from '../../store/slices/loginSlice';
+import { LanguageSelector, BurgerIcon } from './components/';
 
-import LanguageSelector from '../../pages/authPage/components/LanguageSelector';
-import { FormattedMessage } from 'react-intl';
-
-import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
-import BurgerIcon from './BurgerIcon';
+import GraphiQlLogo from '../../assets/logo.png';
 
 const Header = () => {
   const dispatch = useAppDispatch();
-
   const navigate = useNavigate();
   const { name } = useAuth();
 

@@ -2,7 +2,7 @@ import ControlledEditor from '@monaco-editor/react';
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useTypeSelector } from '../../../hooks/redux-hooks';
 import { fetchResult } from '../../../store/slices/requestSlice';
-import PlayIcon from './play-sign';
+import PlayIcon from './PlaySign';
 import { openModalWindow } from '../../../store/slices/modalWindowSlice';
 
 const RequestEditor = () => {
@@ -39,12 +39,12 @@ const RequestEditor = () => {
     );
   };
 
-  // useEffect(() => {
-  //   if (status === 'failed') {
-  //     console.log('open modalWindow in Request editor useEffect');
-  //     dispatch(openModalWindow());
-  //   }
-  // }, [status]);
+  useEffect(() => {
+    if (status === 'failed') {
+      console.log('open modalWindow in Request editor useEffect');
+      dispatch(openModalWindow());
+    }
+  }, [dispatch, status]);
 
   return (
     <>

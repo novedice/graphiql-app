@@ -22,7 +22,11 @@ const initialState: InitialStateType = {
 const requestSlice = createSlice({
   name: 'requestValue',
   initialState,
-  reducers: {},
+  reducers: {
+    updateStatusRequest: (state) => {
+      state.status = 'idle';
+    },
+  },
   extraReducers(builder) {
     builder.addCase(fetchResult.fulfilled, (state, action) => {
       state.result = JSON.stringify(action.payload, null, 2);
@@ -37,4 +41,5 @@ const requestSlice = createSlice({
   },
 });
 
+export const { updateStatusRequest } = requestSlice.actions;
 export default requestSlice.reducer;
