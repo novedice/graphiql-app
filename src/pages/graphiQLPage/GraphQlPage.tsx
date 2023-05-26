@@ -24,10 +24,6 @@ const GraphQlPage = () => {
     });
   }, [navigate]);
 
-  useEffect(() => {
-    console.log('show  in graphpage', show);
-  });
-
   return (
     <>
       <div className='bg-welcomePage bg-top'>
@@ -35,12 +31,12 @@ const GraphQlPage = () => {
           <div>Loading...</div>
         ) : (
           <div className={`relative w-full `}>
-            <div className='w-full flex-col sm:flex-row flex justify-center pt-[20px] pb-[82px]'>
-              <div className='w-[98%] sm:w-[50%] m-2 mr-0 flex flex-col'>
+            <div className='windows-container w-full flex-col sm:flex-row flex justify-center pt-[20px] pb-[20px]'>
+              <div className='left-part-container w-[98%] sm:w-[50%] m-2 mr-0 flex flex-col'>
                 <Components.RequestEditor />
                 <Components.VariablesEditor />
               </div>
-              <div className='w-[98%] sm:w-[45%] flex justify-center m-2 ml-1 '>
+              <div className='right-part-container w-[98%] sm:w-[45%] mb-1 flex justify-center m-2 ml-1 '>
                 <Components.ResultWindow />
                 <Suspense
                   fallback={
