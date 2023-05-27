@@ -1,10 +1,12 @@
-import { useAppDispatch, useTypeSelector } from '../hooks/redux-hooks';
+import { useAppDispatch, useTypeSelector } from '../../../hooks/redux-hooks';
 import { FormattedMessage } from 'react-intl';
-import HideSign from './hide-sign';
-import { changeWholeView, closeVar, openVar } from '../store/slices/variableViewSlice';
-import ShowSign from './show-sign';
-import VaraiblesWindow from './VariablesWindow';
-import HeadersWindow from './HeadersWindow';
+import {
+  changeWholeView,
+  closeVar,
+  openVar,
+  openWholeView,
+} from '../../../store/slices/variableViewSlice';
+import { HideSign, ShowSign, VaraiblesWindow, HeadersWindow } from './';
 
 const VariablesEditor = () => {
   const { wholeWindow, varWindow } = useTypeSelector((state) => state.variableView);
@@ -16,10 +18,12 @@ const VariablesEditor = () => {
 
   const openVariableWindow = () => {
     dispatch(openVar());
+    dispatch(openWholeView());
   };
 
   const openHeaderWindow = () => {
     dispatch(closeVar());
+    dispatch(openWholeView());
   };
 
   return (
@@ -29,7 +33,7 @@ const VariablesEditor = () => {
           <div className='flex'>
             <h2
               onClick={openVariableWindow}
-              className={`text-sm md:text-lg ${
+              className={`text-sm md:text-lg uppercase ${
                 varWindow && wholeWindow ? 'bg-gray-200' : ''
               } hover:bg-blue-300 flex items-center hover:cursor-pointer py-1 px-4 mr-2 rounded`}
             >
@@ -44,8 +48,11 @@ const VariablesEditor = () => {
               <FormattedMessage id='headers_title' />
             </h2>
           </div>
-          <button className='self-center' onClick={handleView}>
+          <button className='self-center hidden sm:block' onClick={handleView}>
             {wholeWindow ? <HideSign /> : <ShowSign />}
+          </button>
+          <button className='self-center sm:hidden block' onClick={handleView}>
+            {!wholeWindow ? <HideSign /> : <ShowSign />}
           </button>
         </div>
         {wholeWindow && varWindow && <VaraiblesWindow />}

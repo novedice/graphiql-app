@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import { useAppDispatch, useTypeSelector } from '../hooks/redux-hooks';
+import { useAppDispatch, useTypeSelector } from '../../../hooks/redux-hooks';
 import { ArgType, SchemaItem } from 'types';
-import { DocState, updateDoc } from '../store/slices/docSlice';
+import { DocState, updateDoc } from '../../../store/slices/docSlice';
 
 type DocColumnProps = {
   doc: DocState;

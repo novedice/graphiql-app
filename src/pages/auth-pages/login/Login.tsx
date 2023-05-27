@@ -1,10 +1,11 @@
 import { FormLogin } from './FormLogin';
 import { useNavigate } from 'react-router';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { setUser } from '../../store/slices/userSlice';
-import { useAppDispatch, useTypeSelector } from '../../hooks/redux-hooks';
-import { logIn } from '../../store/slices/loginSlice';
+import { setUser } from '../../../store/slices/userSlice';
+import { useAppDispatch, useTypeSelector } from '../../../hooks/redux-hooks';
+import { logIn } from '../../../store/slices/loginSlice';
 import { useEffect } from 'react';
+import { closeModalWindow } from '../../../store/slices/modalWindowSlice';
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -31,6 +32,7 @@ const Login = () => {
           })
         );
         dispatch(logIn());
+        dispatch(closeModalWindow());
         navigate('/graphi-ql');
       })
       .catch(() => alert('Such a user does not exist'));

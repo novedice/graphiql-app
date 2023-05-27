@@ -1,6 +1,6 @@
 import { Editor } from '@monaco-editor/react';
-import { useAppDispatch, useTypeSelector } from '../hooks/redux-hooks';
-import { updateVariablesValue } from '../store/slices/variablesSlice';
+import { useAppDispatch, useTypeSelector } from '../../../hooks/redux-hooks';
+import { updateVariablesValue } from '../../../store/slices/variablesSlice';
 
 const VaraiblesWindow = () => {
   const { variables } = useTypeSelector((state) => state.variablesValue);
@@ -21,6 +21,7 @@ const VaraiblesWindow = () => {
           value={variables}
           options={{
             minimap: { enabled: false },
+            fontSize: 16,
             scrollbar: {
               vertical: 'hidden',
               horizontal: 'hidden',

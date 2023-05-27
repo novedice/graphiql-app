@@ -1,6 +1,6 @@
 import { FaGithub } from 'react-icons/fa';
 
-import RSSchoolLogo from '../assets/rs_school_logo.svg';
+import RSSchoolLogo from '../../assets/rs_school_logo.svg';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 

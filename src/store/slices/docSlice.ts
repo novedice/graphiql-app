@@ -41,6 +41,9 @@ const docSlice = createSlice({
         { type: type.replace(/\]|\[|!|\$/g, ''), id: Date.now(), args },
       ];
     },
+    updateStatusDoc: (state) => {
+      state.status = 'idle';
+    },
   },
   extraReducers(builder) {
     builder.addCase(fetchDocSchema.fulfilled, (state, action) => {
@@ -57,5 +60,5 @@ const docSlice = createSlice({
   },
 });
 
-export const { updateDoc } = docSlice.actions;
+export const { updateDoc, updateStatusDoc } = docSlice.actions;
 export default docSlice.reducer;

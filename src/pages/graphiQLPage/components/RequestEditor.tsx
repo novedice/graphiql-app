@@ -1,9 +1,9 @@
 import ControlledEditor from '@monaco-editor/react';
 import { useEffect, useState } from 'react';
-import { useAppDispatch, useTypeSelector } from '../hooks/redux-hooks';
-import { fetchResult } from '../store/slices/requestSlice';
-import PlayIcon from './play-sign';
-import { openModalWindow } from '../store/slices/modalWindowSlice';
+import { useAppDispatch, useTypeSelector } from '../../../hooks/redux-hooks';
+import { fetchResult } from '../../../store/slices/requestSlice';
+import PlayIcon from './PlaySign';
+import { openModalWindow } from '../../../store/slices/modalWindowSlice';
 
 const RequestEditor = () => {
   const [inputValue, setInputValue] = useState(`query NewQuery {
@@ -13,7 +13,7 @@ const RequestEditor = () => {
         }`);
   const dispatch = useAppDispatch();
 
-  const { variables } = useTypeSelector((state) => state.variablesValue);
+  const { variables, headers } = useTypeSelector((state) => state.variablesValue);
   const { wholeWindow } = useTypeSelector((state) => state.variableView);
   const { status } = useTypeSelector((state) => state.requestValue);
 
@@ -23,36 +23,46 @@ const RequestEditor = () => {
 
   const handleSubmit = async () => {
     let parsedVariables: object;
+    let parsedHeaders: object;
     try {
       parsedVariables = JSON.parse(variables);
     } catch {
       parsedVariables = {};
     }
-    dispatch(fetchResult({ query: inputValue, variables: parsedVariables }));
+    try {
+      parsedHeaders = JSON.parse(headers);
+    } catch {
+      parsedHeaders = {};
+    }
+    await dispatch(
+      fetchResult({ query: inputValue, variables: parsedVariables, header: parsedHeaders })
+    );
   };
 
   useEffect(() => {
     if (status === 'failed') {
-      dispatch(openModalWindow(status));
+      console.log('open modalWindow in Request editor useEffect');
+      dispatch(openModalWindow());
     }
-  }, [status, dispatch]);
+  }, [dispatch, status]);
 
   return (
     <>
       <div className='query-editor-wrap rounded-t-xl flex justify-center pt-5 pl-2 pb-2 mb-1 mr-1 w-[100%] bg-white sm:rounded-tr-none'>
         <div className={`h-[300px] ${wholeWindow ? 'sm:h-[50vh]' : 'sm:h-[75vh]'} w-[95%] mr-2`}>
           <ControlledEditor
-            width='100%'
+            width='95%'
             theme='light'
             height='inherit'
             defaultLanguage='graphql'
             onChange={handleChange}
             defaultValue={inputValue}
-            className='overflow-hidden'
+            className='overflow-hidden text-2xl'
             options={{
               minimap: { enabled: false },
               overviewRulerLanes: 0,
               overviewRulerBorder: false,
+              fontSize: 16,
               scrollbar: {
                 vertical: 'hidden',
                 horizontal: 'hidden',

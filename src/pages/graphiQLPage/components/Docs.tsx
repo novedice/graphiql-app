@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
+import { Spinner } from './index';
+import { fetchDocSchema } from '../../../store/slices/docSlice';
+import { useAppDispatch, useTypeSelector } from '../../../hooks/redux-hooks';
+import { openModalWindow } from '../../../store/slices/modalWindowSlice';
 import DocColumn from './DocColumn';
-import { fetchDocSchema } from '../store/slices/docSlice';
-import { useAppDispatch, useTypeSelector } from '../hooks/redux-hooks';
-import { openModalWindow } from '../store/slices/modalWindowSlice';
-import Spinner from './Spinner';
 
 const Docs = () => {
   const dispatch = useAppDispatch();
@@ -20,7 +20,7 @@ const Docs = () => {
 
   useEffect(() => {
     if (status === 'failed') {
-      dispatch(openModalWindow(status));
+      dispatch(openModalWindow());
     }
   }, [status, dispatch]);
 
@@ -36,14 +36,14 @@ const Docs = () => {
       >
         Docs
         {status === 'pending' && (
-          <div className='absolute top-[42px] left-[5px]'>
+          <div className='absolute top-[8px] left-[-25px]'>
             <Spinner />
           </div>
         )}
       </button>
       <div
         className={`documentation h-[100%] transition duration-500 ease-in-out opacity-0 transform -translate-x-100 ${
-          isShow ? 'opacity-100 translate-x-0' : ''
+          isShow ? 'opacity-100 translate-x-0' : 'hidden'
         }`}
       >
         <div className='flex h-[100%] py-4'>
