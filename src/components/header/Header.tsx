@@ -75,32 +75,32 @@ const Header = () => {
       }`}
     >
       <div
-        className={`flex-col sm:flex-row mx-auto container m-auto md:flex md:justify-between md:items-center
+        className={`flex-col md:flex-row mx-auto container m-auto lg:flex lg:justify-between lg:items-center
         flex max-w-screen-xl items-center justify-between`}
       >
         <div
-          className={`welcome w-[100%] pb-2 sm:pb-0 ${
+          className={`welcome w-[100%] pb-2 md:pb-0 ${
             openMenu === 'hidden' ? '' : 'border-b-2'
-          } flex items-center justify-between sm:w-auto sm:border-b-0`}
+          } flex items-center justify-between md:w-auto md:border-b-0`}
         >
           <Link to='/'>
-            <img className='w-12 ml-2 sm:ml-0' src={GraphiQlLogo} alt='React Logo' />
+            <img className='w-12 ml-2 md:ml-0' src={GraphiQlLogo} alt='React Logo' />
           </Link>
           {loggedIn && (
-            <h1 className='ml-0 text-l md:text-2xl capitalize sm:ml-4 md:ml-6 font-bold'>
+            <h1 className='ml-0 text-l lg:text-2xl capitalize md:ml-4 lg:ml-6 font-bold'>
               <FormattedMessage id='welcome' />, {name}
             </h1>
           )}
           <BurgerIcon setOpen={setOpenMenu} open={openMenu} />
         </div>
-        <nav className='flex w-[100%] sm:w-auto  md:flex md:items-center'>
+        <nav className='flex w-[100%] md:w-auto  lg:flex lg:items-center'>
           <ul
-            className={`${openMenu} w-[100%] flex items-center sm:flex flex-col sm:flex-row md:flex md:items-center`}
+            className={`${openMenu} w-[100%] flex items-center md:flex flex-col md:flex-row lg:flex lg:items-center`}
           >
             <li>
               <Link
                 to='/'
-                className='first-letter:uppercase block text-l md:text-xl sm:px-3 md:px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
+                className='first-letter:uppercase block text-l lg:text-xl md:px-3 lg:px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
               >
                 <FormattedMessage id='home' />
               </Link>
@@ -111,7 +111,7 @@ const Header = () => {
                 <li>
                   <Link
                     to='/graphi-ql'
-                    className='capitalize block text-l md:text-xl sm:px-2 md:px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
+                    className='capitalize block text-l lg:text-xl md:px-2 lg:px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
                   >
                     <FormattedMessage id='to_graphi' />
                   </Link>
@@ -119,7 +119,7 @@ const Header = () => {
                 <li>
                   <Link
                     to='/login'
-                    className='py-1 mb-2 px-2 ml-0 capitalize block text-l md:text-xl sm:px-2 md:px-4 sm:mb-0 sm:py-2 text-gray-700 sm:ml-10 bg-red-400 hover:bg-red-500 rounded'
+                    className='py-1 mb-2 px-2 ml-0 capitalize block text-l lg:text-xl md:px-2 lg:px-4 md:mb-0 md:py-2 text-gray-700 md:ml-10 bg-red-400 hover:bg-red-500 rounded'
                     onClick={logOutHandler}
                   >
                     <FormattedMessage id='log_out' />
@@ -130,13 +130,13 @@ const Header = () => {
               <div className='ml-4 flex items-center'>
                 <Link
                   to='/login'
-                  className='capitalize block text-l md:text-xl sm:px-2 md:px-4 py-2 text-gray-700  mr-2 font-bold bg-yellow-200 hover:bg-yellow-300 rounded'
+                  className='capitalize block text-l lg:text-xl md:px-2 lg:px-4 py-2 text-gray-700  mr-2 font-bold bg-yellow-200 hover:bg-yellow-300 rounded'
                 >
                   <FormattedMessage id='sign_in' />
                 </Link>
                 <Link
                   to='/register'
-                  className='capitalize text-l md:text-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+                  className='capitalize text-l lg:text-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
                 >
                   <FormattedMessage id='sign_up' />
                 </Link>

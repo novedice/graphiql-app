@@ -4,6 +4,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useTypeSelector } from '../../hooks/redux-hooks';
 import ModalWindow from '../../components/ModalWindow';
 import * as Components from './components/index';
+import Loading from '../../components/Loading';
 
 const Docs = lazy(() => import('./components/Docs'));
 
@@ -28,7 +29,7 @@ const GraphQlPage = () => {
     <>
       <div className='bg-welcomePage bg-top'>
         {load ? (
-          <div>Loading...</div>
+          <Loading color={'white'} />
         ) : (
           <div className={`relative w-full `}>
             <div className='windows-container w-full flex-col items-center sm:items-stretch sm:flex-row flex justify-center pt-[20px] pb-[20px]'>

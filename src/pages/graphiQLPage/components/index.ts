@@ -5,7 +5,7 @@ import VariablesEditor from './VariablesEditor';
 import HeadersWindow from './HeadersWindow';
 import Docs from './Docs';
 import ErrorWindow from './ErrorWindow';
-import Spinner from './Spinner';
+import Spinner from '../../../components/Spinner';
 import ShowSign from './ShowSign';
 import HideSign from './HideSign';
 import PlayIcon from './PlaySign';
