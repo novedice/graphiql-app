@@ -51,7 +51,7 @@ const RequestEditor = () => {
       <div className='query-editor-wrap rounded-t-xl flex justify-center pt-5 pl-2 pb-2 mb-1 mr-1 w-[100%] bg-white sm:rounded-tr-none'>
         <div className={`h-[300px] ${wholeWindow ? 'sm:h-[50vh]' : 'sm:h-[75vh]'} w-[95%] mr-2`}>
           <ControlledEditor
-            width='100%'
+            width='95%'
             theme='light'
             height='inherit'
             defaultLanguage='graphql'

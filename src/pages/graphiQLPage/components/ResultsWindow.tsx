@@ -6,7 +6,7 @@ const ResultWindow = () => {
 
   return (
     <>
-      <div className='result-window-wrap rounded-xl flex justify-center pt-5 pl-2 pb-2 mb-1 mr-1 w-[100%] bg-white sm:rounded-tl-none sm:rounded-bl-none'>
+      <div className='result-window-wrap rounded-xl flex justify-center pt-5 pl-2 pb-2 mb-1 sm:mr-1 w-[100%] bg-white sm:rounded-tl-none sm:rounded-bl-none'>
         <div className='w-[95%] h-[35vh] sm:h-[81.5vh]  mr-1 '>
           <ControlledEditor
             width='100%'

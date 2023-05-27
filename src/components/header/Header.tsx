@@ -119,7 +119,7 @@ const Header = () => {
                 <li>
                   <Link
                     to='/login'
-                    className='py-1 mb-2 ml-0 capitalize block text-l md:text-xl sm:px-2 md:px-4 sm:mb-0 sm:py-2 text-gray-700 sm:ml-10 bg-red-400 hover:bg-red-500 rounded'
+                    className='py-1 mb-2 px-2 ml-0 capitalize block text-l md:text-xl sm:px-2 md:px-4 sm:mb-0 sm:py-2 text-gray-700 sm:ml-10 bg-red-400 hover:bg-red-500 rounded'
                     onClick={logOutHandler}
                   >
                     <FormattedMessage id='log_out' />

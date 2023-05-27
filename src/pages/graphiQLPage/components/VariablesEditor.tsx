@@ -1,6 +1,11 @@
 import { useAppDispatch, useTypeSelector } from '../../../hooks/redux-hooks';
 import { FormattedMessage } from 'react-intl';
-import { changeWholeView, closeVar, openVar } from '../../../store/slices/variableViewSlice';
+import {
+  changeWholeView,
+  closeVar,
+  openVar,
+  openWholeView,
+} from '../../../store/slices/variableViewSlice';
 import { HideSign, ShowSign, VaraiblesWindow, HeadersWindow } from './';
 
 const VariablesEditor = () => {
@@ -13,10 +18,12 @@ const VariablesEditor = () => {
 
   const openVariableWindow = () => {
     dispatch(openVar());
+    dispatch(openWholeView());
   };
 
   const openHeaderWindow = () => {
     dispatch(closeVar());
+    dispatch(openWholeView());
   };
 
   return (
@@ -41,8 +48,11 @@ const VariablesEditor = () => {
               <FormattedMessage id='headers_title' />
             </h2>
           </div>
-          <button className='self-center' onClick={handleView}>
+          <button className='self-center hidden sm:block' onClick={handleView}>
             {wholeWindow ? <HideSign /> : <ShowSign />}
+          </button>
+          <button className='self-center sm:hidden block' onClick={handleView}>
+            {!wholeWindow ? <HideSign /> : <ShowSign />}
           </button>
         </div>
         {wholeWindow && varWindow && <VaraiblesWindow />}
