@@ -11,11 +11,17 @@ export const fetchResult = createAsyncThunk<string, RequestParamsType>(
 
 type InitialStateType = {
   result: string;
+  request: string;
   status: 'idle' | 'pending' | 'succeeded' | 'failed';
 };
 
 const initialState: InitialStateType = {
   result: '',
+  request: `query NewQuery {
+          country(code:"PT") {
+            name
+          }
+        }`,
   status: 'idle',
 };
 
@@ -23,6 +29,9 @@ const requestSlice = createSlice({
   name: 'requestValue',
   initialState,
   reducers: {
+    updateRequest: (state, action: { payload: string }) => {
+      state.request = action.payload;
+    },
     updateStatusRequest: (state) => {
       state.status = 'idle';
     },
@@ -41,5 +50,5 @@ const requestSlice = createSlice({
   },
 });
 
-export const { updateStatusRequest } = requestSlice.actions;
+export const { updateStatusRequest, updateRequest } = requestSlice.actions;
 export default requestSlice.reducer;
