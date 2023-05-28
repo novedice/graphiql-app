@@ -29,29 +29,27 @@ const Docs = () => {
   }, [docList]);
 
   return (
-    <section className=' z-9 flex items-center absolute top-0 right-0 max-h-[90%] h-[100%] max-w-[100%] overflow-x-auto'>
+    <section className='docs z-9 flex items-center fixed top-[120px] bottom-[10px] right-0 max-h-[75%] max-w-[100%] overflow-auto'>
       <button
-        className='z-10 h-min fixed top-[350px] right-0 bg-yellow-300 p-2'
+        className='docs-btn z-10 h-min fixed top-[45%] right-0 bg-yellow-300 p-2'
         onClick={toggleShow}
       >
         Docs
         {status === 'pending' && (
-          <div className='absolute top-[8px] left-[-25px]'>
+          <div className='absolute top-0 left-[-42px]'>
             <Spinner />
           </div>
         )}
       </button>
       <div
-        className={`documentation h-[100%] transition duration-500 ease-in-out opacity-0 transform -translate-x-100 ${
+        className={`docs-wrapper flex h-[100%] transition duration-500 ease-in-out opacity-0 transform -translate-x-100 ${
           isShow ? 'opacity-100 translate-x-0' : 'hidden'
         }`}
       >
-        <div className='flex h-[100%] py-4'>
-          {docList.map((doc, i) => (
-            <DocColumn key={doc.id} doc={doc} args={doc.args} order={i} />
-          ))}
-          <div ref={refLastElement}></div>
-        </div>
+        {docList.map((doc, i) => (
+          <DocColumn key={doc.id} doc={doc} args={doc.args} order={i} />
+        ))}
+        <div ref={refLastElement}></div>
       </div>
     </section>
   );

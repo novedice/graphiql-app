@@ -24,7 +24,7 @@ const DocColumn: FC<DocColumnProps> = ({ doc, order, args }) => {
   const list = type.fields;
   return (
     <div
-      className={`w-[280px] flex flex-col gap-y-2 p-2 shadow-md  shadow-gray-700 bg-rose-100  ${
+      className={`w-[280px] h-[100%] flex flex-col gap-y-2 p-2 shadow-md  shadow-gray-700 bg-rose-100  ${
         order % 2 && 'shadow-inner'
       }`}
     >
