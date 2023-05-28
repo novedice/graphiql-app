@@ -9,6 +9,7 @@ const BurgerIcon = ({ setOpen, open }: BurgerIconProps) => {
   const toggleOpenMenu = () => {
     setOpen((state) => (state === 'hidden' ? '' : 'hidden'));
   };
+
   return (
     <>
       <div className={` burger-icon space-y-2 md:hidden mr-4`} onClick={toggleOpenMenu}>

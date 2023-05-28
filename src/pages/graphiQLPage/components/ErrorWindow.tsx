@@ -15,7 +15,6 @@ const ErrorWindow = () => {
 
   return (
     <>
-      {/* <div className='fixed opacity-50 top-0 right-0 left-0 bottom-0 bg-black' onClick={handleOk} /> */}
       <div className='flex flex-col items-center'>
         <FormattedMessage id='error_message' />
         <button
