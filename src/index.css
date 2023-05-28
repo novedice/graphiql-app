@@ -12,3 +12,21 @@ body {
   background-image: url('./assets/bg_welcomePage.png');
   background-size: cover;
 }
+
+.imgKirill {
+  width: 150px;
+  height: 150px;
+  background-image: url('./assets/imgKirill.jpg');
+}
+
+.imgMax {
+  width: 150px;
+  height: 150px;
+  background-image: url('./assets/imgMax.jpeg');
+}
+
+.imgNatasha {
+  width: 150px;
+  height: 150px;
+  background-image: url('./assets/imgNatasha.jpeg');
+}
