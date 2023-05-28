@@ -2,7 +2,7 @@ import { FormattedMessage } from 'react-intl';
 import '../../index.css';
 
 import { useAppDispatch, useTypeSelector } from '../../hooks/redux-hooks';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ModalWindow from '../../components/ModalWindow';
 import { closeModalWindow, openModalWindow } from '../../store/slices/modalWindowSlice';
 import ModalGetStarted from './components/ModalGetStarted';
@@ -94,6 +94,7 @@ const WelcomePage = () => {
             </button>
           </div>
         </div>
+
         <div className='bg-[#f5f6f8] py-[132px] max-lg:py-[80px] max-sm:py-[40px]'>
           <h1 className='text-[40px] font-light text-center max-sm:text-[30px]'>
             <FormattedMessage id='queryLanguageTitle' />
@@ -102,13 +103,14 @@ const WelcomePage = () => {
             <FormattedMessage id='queryLanguageDesc' />
           </p>
         </div>
+
         <div className='pt-[80px] pb-[132px] max-lg:py-[60px] max-md:pt-[30px]'>
           <h1 className='text-center text-[65px] font-light max-sm:text-[30px]'>
             <FormattedMessage id='ourTeam' />
           </h1>
           <div className='flex flex-wrap justify-around mt-10 max-md:mt-[0px]'>
             <div className='flex mt-[30px] items-center justify-around rounded-lg shadow-xl border-2 w-[450px] hover:scale-105 duration-300 max-sm:flex-col max-sm:py-[20px] max-sm:w-[300px]'>
-              <h1 className='m-[30px] max-sm:mt-[0] max-sm:mb-[10px]'>
+              <div className='m-[30px] max-sm:mt-[0] max-sm:mb-[10px]'>
                 <span className='font-bold'>
                   <FormattedMessage id='natalia' />
                 </span>
@@ -116,19 +118,23 @@ const WelcomePage = () => {
                   <FormattedMessage id='discord' />:{' '}
                   <span className='italic text-blue-500'>elkora#7166</span>
                 </p>
-                <a href='https://github.com/novedice' className='text-blue-500'>
+                <Link to='https://github.com/novedice' className='text-blue-500' target='_blank'>
                   <FormattedMessage id='github' />
-                </a>
+                </Link>
                 <div className='mt-3 text-blue-500 max-sm:mt-2'>
-                  <a href='https://t.me/Natashka_novedice'>
+                  <Link to='https://t.me/Natashka_novedice' target='_blank'>
                     <FormattedMessage id='telegram' />
-                  </a>
+                  </Link>
                 </div>
-              </h1>
-              <div className='imgNatasha bg-cover bg-right items-center rounded-full' />
+              </div>
+              <Link
+                to={'https://github.com/novedice'}
+                className='imgNatasha bg-cover bg-right items-center rounded-full'
+                target='_blank'
+              />
             </div>
             <div className='flex mt-[30px] items-center justify-around rounded-lg shadow-xl border-2 w-[450px] hover:scale-105 duration-300 max-sm:flex-col max-sm:py-[20px] max-sm:w-[300px]'>
-              <h1 className='m-[20px] max-sm:mt-[0] max-sm:mb-[10px]'>
+              <div className='m-[20px] max-sm:mt-[0] max-sm:mb-[10px]'>
                 <span className='font-bold'>
                   <FormattedMessage id='maxim' />
                 </span>
@@ -136,19 +142,23 @@ const WelcomePage = () => {
                   <FormattedMessage id='discord' />:{' '}
                   <span className='italic text-blue-500'>Max15(Maksim)#9275</span>
                 </p>
-                <a href='https://github.com/Maksim1509' className='text-blue-500'>
+                <Link to='https://github.com/Maksim1509' className='text-blue-500' target='_blank'>
                   <FormattedMessage id='github' />
-                </a>
+                </Link>
                 <div className='mt-3 text-blue-500 max-sm:mt-2'>
-                  <a href='https://t.me/Maksim_1509'>
+                  <Link to='https://t.me/Maksim_1509' target='_blank'>
                     <FormattedMessage id='telegram' />
-                  </a>
+                  </Link>
                 </div>
-              </h1>
-              <div className='imgMax bg-cover bg-right items-center rounded-full' />
+              </div>
+              <Link
+                to={'https://github.com/Maksim1509'}
+                className='imgMax bg-cover bg-right items-center rounded-full'
+                target='_blank'
+              />
             </div>
             <div className='flex mt-[30px] items-center justify-around rounded-lg shadow-xl border-2 w-[450px] hover:scale-105 duration-300 max-sm:flex-col max-sm:py-[20px] max-sm:w-[300px]'>
-              <h1 className='m-[20px] max-sm:mt-[0] max-sm:mb-[10px]'>
+              <div className='m-[20px] max-sm:mt-[0] max-sm:mb-[10px]'>
                 <span className='font-bold'>
                   <FormattedMessage id='kirill' />
                 </span>
@@ -156,19 +166,157 @@ const WelcomePage = () => {
                   <FormattedMessage id='discord' />:{' '}
                   <span className='italic text-blue-500'>KirillKolchanov#2036</span>
                 </p>
-                <a href='https://github.com/KirillKolchanov/' className='text-blue-500'>
+                <Link
+                  to='https://github.com/KirillKolchanov/'
+                  className='text-blue-500'
+                  target='_blank'
+                >
                   <FormattedMessage id='github' />
-                </a>
+                </Link>
                 <div className='mt-3 text-blue-500 max-sm:mt-2'>
-                  <a href='https://t.me/kirya_ko'>
+                  <Link to='https://t.me/kirya_ko' target='_blank'>
                     <FormattedMessage id='telegram' />
-                  </a>
+                  </Link>
                 </div>
-              </h1>
-              <div className='imgKirill bg-cover bg-bottom items-center rounded-full' />
+              </div>
+              <Link
+                to={'https://github.com/KirillKolchanov/'}
+                className='imgKirill bg-cover bg-bottom items-center rounded-full'
+                target='_blank'
+              />
             </div>
           </div>
         </div>
+
+        <div className='bg-[#f5f6f8] pt-[40px] pb-[132px]'>
+          <h1 className='text-center text-[65px] font-light max-sm:text-[30px]'>
+            <FormattedMessage id='projectDescription' />
+          </h1>
+          <div className='flex border-2 items-center w-[800px] m-auto mt-10'>
+            <div className='w-[30%] flex justify-center'>
+              <Link
+                to={
+                  'https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/graphiql.md#graphiql'
+                }
+                className='font-bold text-[30px] text-blue-500'
+                target='_blank'
+              >
+                GraphiQL
+              </Link>
+            </div>
+            <div className='w-[70%]'>
+              <p className='p-8 border-l-2 font-extralight leading-[35.2px] text-[24px] mx-auto text-[#202020] max-md:w-[520px] max-sm:text-[20px] max-sm:w-[320px]'>
+                <FormattedMessage id='projectGraphText' />
+              </p>
+            </div>
+          </div>
+          <div className='flex border-2 items-center w-[800px] m-auto mt-10'>
+            <div className='w-[30%] flex justify-center'>
+              <Link
+                to={
+                  'https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/graphiql.md#theoretical-notes'
+                }
+                className='font-bold text-[30px] text-blue-500 flex text-center'
+                target='_blank'
+              >
+                <FormattedMessage id='projectNotes' />
+              </Link>
+            </div>
+            <div className='w-[70%]'>
+              <p className='p-8 border-l-2 font-extralight leading-[35.2px] text-[24px] mx-auto text-[#202020] max-md:w-[520px] max-sm:text-[20px] max-sm:w-[320px]'>
+                <FormattedMessage id='projectTheorText1' />
+                <Link
+                  to={'https://www.npmjs.com/package/@graphiql/react'}
+                  className='text-blue-500'
+                  target='_blank'
+                >
+                  <FormattedMessage id='projectTheorLink' />
+                </Link>
+                <FormattedMessage id='projectTheorText2' />
+              </p>
+            </div>
+          </div>
+          <div className='flex border-2 items-center w-[800px] m-auto mt-10'>
+            <div className='w-[30%] flex justify-center'>
+              <Link
+                to={
+                  'https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/graphiql.md#building-a-team'
+                }
+                className='font-bold text-[30px] text-blue-500 flex text-center'
+                target='_blank'
+              >
+                <FormattedMessage id='projectTeam' />
+              </Link>
+            </div>
+            <div className='w-[70%]'>
+              <p className='p-8 border-l-2 font-extralight leading-[35.2px] text-[24px] mx-auto text-[#202020] max-md:w-[520px] max-sm:text-[20px] max-sm:w-[320px]'>
+                <FormattedMessage id='projectTeamText' />
+                <Link
+                  to={'https://docs.rs.school/#/teams'}
+                  className='text-blue-500'
+                  target='_blank'
+                >
+                  <FormattedMessage id='projectDocs' />
+                </Link>
+              </p>
+            </div>
+          </div>
+          <div className='flex border-2 items-center w-[800px] m-auto mt-10'>
+            <div className='w-[30%] flex justify-center'>
+              <Link
+                to={
+                  'https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/graphiql.md#backend'
+                }
+                className='font-bold text-[30px] text-blue-500 flex text-center'
+                target='_blank'
+              >
+                Backend
+              </Link>
+            </div>
+            <div className='w-[70%]'>
+              <p className='p-8 border-l-2 font-extralight leading-[35.2px] text-[24px] mx-auto text-[#202020] max-md:w-[520px] max-sm:text-[20px] max-sm:w-[320px]'>
+                <FormattedMessage id='projectBackendText' />
+              </p>
+            </div>
+          </div>
+          <h3 className='text-center mt-10 font-extralight text-[28px]'>
+            <FormattedMessage id='projectFullDesc' />
+            <Link
+              to={
+                'https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/graphiql.md'
+              }
+              className='text-blue-500'
+              target='_blank'
+            >
+              <FormattedMessage id='here' />
+            </Link>
+          </h3>
+        </div>
+
+        <div className='pt-[40px] pb-[132px]'>
+          <h1 className='text-center text-[65px] font-light max-sm:text-[30px]'>
+            <FormattedMessage id='courseTitle' />
+          </h1>
+          <div className='flex flex-col w-[800px] m-auto'>
+            <p className='mt-[30px] font-extralight leading-[35.2px] text-[24px] mx-auto text-[#202020] max-md:w-[520px] max-sm:text-[20px] max-sm:w-[320px]'>
+              <FormattedMessage id='courseDesc' />
+            </p>
+            <ul className='text-[22px] list-disc ml-10 mt-7 font-extralight leading-[40px]'>
+              <li>JavaScript</li>
+              <li>TypeScript</li>
+              <li>
+                Git, GitHub (clone, add, commit, push, pull, merge, rebase, pull request flow)
+              </li>
+              <li>NPM, Webpack</li>
+              <li>CSS3 / HTML5</li>
+              <li>Chrome DevTools, Figma</li>
+              <li>
+                <FormattedMessage id='courseListItem' />
+              </li>
+            </ul>
+          </div>
+        </div>
+
         {show && (
           <ModalWindow>
             <ModalGetStarted />

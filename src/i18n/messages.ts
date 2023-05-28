@@ -59,6 +59,25 @@ export const messages = {
     github: 'Github',
     telegram: 'Telegram',
     ourTeam: 'Our team',
+    projectDescription: 'Project description',
+    projectNotes: 'Theoretical Notes',
+    projectTeam: 'Building a team',
+    projectGraphText: 'GraphiQL is a playground/IDE for graphQL requests.',
+    projectTheorText1: 'GraphiQL is an open-source tool which you can use as an example ',
+    projectTheorLink: '(https://www.npmjs.com/package/@graphiql/react)',
+    projectTheorText2:
+      '. However, the app should also include authorization/authentication capabilities, to give access to the tool to only to authorized users.',
+    projectTeamText: 'The project should be done in a team of 3 members. Teamwork guidelines ',
+    projectDocs: 'RSSchool Docs',
+    projectBackendText:
+      "Application doesn't require a backend. It can be any open GraphQL api which supports CORS, or create a proxy service as part of the app and use it to make requests to any GraphQL api (even those which do not support CORS)",
+    courseTitle: 'About the course',
+    courseDesc:
+      'This course is aimed to the students of the RS School which passed RS School stage #2 and for the new students, which have experience with:',
+    here: 'here',
+    projectFullDesc: 'A full project description is ',
+    courseListItem:
+      'Understanding of how to interact with apis (general understanding of REST andGraphQL)',
   },
   [LOCALES.RUSSIAN]: {
     to_welcome_page: 'Домой',
@@ -116,5 +135,25 @@ export const messages = {
     github: 'Гитхаб',
     telegram: 'Телеграм',
     ourTeam: 'Наша команда',
+    projectDescription: 'Описание проекта',
+    projectTeam: 'Команда',
+    projectNotes: 'Теоретические замечания',
+    projectGraphText: 'GraphiQL - это игровая площадка/IDE для запросов graphQL.',
+    projectTheorText1:
+      'GraphiQL - это инструмент с открытым исходным кодом, который можно использовать в качестве примера ',
+    projectTheorLink: '(https://www.npmjs.com/package/@graphiql/react)',
+    projectTheorText2:
+      '. Однако приложение также должно включать возможность авторизации/аутентификации, чтобы предоставить доступ к инструменту только авторизованным пользователям.',
+    projectTeamText:
+      'Проект должен быть выполнен в команде из 3 человек. Руководство по командной работе ',
+    projectDocs: 'RSSchool Docs',
+    projectBackendText:
+      'Приложению не требуется бэкендной составляющей. Это может быть любой открытый GraphQL api, который поддерживает CORS, или создайте прокси-сервис как часть приложения и используйте его для выполнения запросов к любому GraphQL api (даже к тем, которые не поддерживают CORS).',
+    courseTitle: 'О курсе',
+    courseDesc:
+      'Данный курс предназначен для студентов школы RS, прошедших этап №2, а также для новых студентов, имеющих опыт работы с:',
+    here: 'тут',
+    projectFullDesc: 'Полное описание проекта ',
+    courseListItem: 'Понимание того, как взаимодействовать с API (общее понимание REST и GraphQL)',
   },
 };
