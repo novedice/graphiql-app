@@ -68,6 +68,10 @@ const Header = () => {
       });
   };
 
+  const closeMenu = () => {
+    setOpenMenu('hidden');
+  };
+
   return (
     <header
       className={`w-full top-0 backdrop-filter backdrop-blur-lg sticky z-10 trasition ease-in-out duration-500 shadow-xl ${
@@ -84,7 +88,7 @@ const Header = () => {
           } flex items-center justify-between md:w-auto md:border-b-0`}
         >
           <Link to='/'>
-            <img className='w-12 ml-2 md:ml-0' src={GraphiQlLogo} alt='React Logo' />
+            <img className='w-12 ml-2 md:ml-3' src={GraphiQlLogo} alt='React Logo' />
           </Link>
           {loggedIn && (
             <h1 className='ml-0 text-l lg:text-2xl capitalize md:ml-4 lg:ml-6 font-bold'>
@@ -97,10 +101,10 @@ const Header = () => {
           <ul
             className={`${openMenu} w-[100%] flex items-center md:flex flex-col md:flex-row lg:flex lg:items-center`}
           >
-            <li>
+            <li onClick={closeMenu}>
               <Link
                 to='/'
-                className='first-letter:uppercase block text-l lg:text-xl md:px-3 lg:px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
+                className='first-letter:uppercase px-2 block text-l lg:text-xl md:px-3 lg:px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
               >
                 <FormattedMessage id='home' />
               </Link>
@@ -108,15 +112,15 @@ const Header = () => {
 
             {loggedIn ? (
               <>
-                <li>
+                <li onClick={closeMenu}>
                   <Link
                     to='/graphi-ql'
-                    className='capitalize block text-l lg:text-xl md:px-2 lg:px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
+                    className='capitalize block px-2 text-l lg:text-xl md:px-2 lg:px-4 py-2 text-gray-700 hover:bg-gray-100 rounded'
                   >
                     <FormattedMessage id='to_graphi' />
                   </Link>
                 </li>
-                <li>
+                <li onClick={closeMenu}>
                   <Link
                     to='/login'
                     className='py-1 mb-2 px-2 ml-0 capitalize block text-l lg:text-xl md:px-2 lg:px-4 md:mb-0 md:py-2 text-gray-700 md:ml-10 bg-red-400 hover:bg-red-500 rounded'
@@ -127,16 +131,16 @@ const Header = () => {
                 </li>
               </>
             ) : (
-              <div className='ml-4 flex items-center'>
+              <div onClick={closeMenu} className='ml-4 flex flex-col md:flex-row  items-center'>
                 <Link
                   to='/login'
-                  className='capitalize block text-l lg:text-xl md:px-2 lg:px-4 py-2 text-gray-700  mr-2 font-bold bg-yellow-200 hover:bg-yellow-300 rounded'
+                  className='capitalize block mb-3 md:mb-0 px-4 text-l lg:text-xl md:px-2 lg:px-4 py-2 text-gray-700  mr-2 font-bold bg-yellow-200 hover:bg-yellow-300 rounded'
                 >
                   <FormattedMessage id='sign_in' />
                 </Link>
                 <Link
                   to='/register'
-                  className='capitalize text-l lg:text-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+                  className='capitalize text-l mb-3 md:mb-0 lg:text-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
                 >
                   <FormattedMessage id='sign_up' />
                 </Link>

@@ -1,14 +1,18 @@
+import { useAppDispatch } from '../../../hooks/redux-hooks';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
+import { closeModalWindow } from '../../../store/slices/modalWindowSlice';
 
 const ModalGetStarted = () => {
+  const dispatch = useAppDispatch();
+
   return (
     <>
-      <h2 className='mt-4 mb-8 text-2xl font-light'>
+      <h2 className='mt-4 mb-8 text-lg md:text-2xl font-light'>
         <FormattedMessage id='startUsing' />
       </h2>
-      <div className='flex items-center justify-center gap-4'>
-        <h3 className='text-2xl font-thin'>
+      <div className='flex flex-col sm:flex-row items-center justify-center gap-4'>
+        <h3 className='text-sm md:text-2xl md:font-thin'>
           <FormattedMessage id='haveAccount' />
         </h3>
         <Link
@@ -18,13 +22,13 @@ const ModalGetStarted = () => {
           <FormattedMessage id='sign_in' />
         </Link>
       </div>
-      <div className='mt-8 flex items-center justify-center gap-2'>
-        <h3 className='text-2xl font-thin'>
+      <div className='mt-8 flex flex-col sm:flex-row items-center justify-center gap-2'>
+        <h3 className='text-sm md:text-2xl md:font-thin'>
           <FormattedMessage id='dontHaveAccount' />
         </h3>
         <Link
           to='/register'
-          className='capitalize text-xl bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded'
+          className='capitalize text-xl w-[100px] bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded'
         >
           <FormattedMessage id='sign_up' />
         </Link>
@@ -33,7 +37,9 @@ const ModalGetStarted = () => {
       <div className='absolute top-0 right-0 p-2'>
         <button
           className='text-gray-500 hover:text-gray-700 p-0'
-          // onClick={handleModalClose}
+          onClick={() => {
+            dispatch(closeModalWindow());
+          }}
         >
           <svg className='w-8 h-8 fill-current' viewBox='0 0 20 20'>
             <path

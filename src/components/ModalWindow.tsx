@@ -33,7 +33,7 @@ const ModalWindow = ({ children }: ModalProps) => {
         }}
       >
         <div
-          className={`w-auto fixed z-50 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-slate-800 rounded-lg p-8`}
+          className={`w-[300px] md:w-auto fixed z-50 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-slate-800 rounded-lg p-3 md:p-8`}
         >
           {children}
         </div>
