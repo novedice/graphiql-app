@@ -99,17 +99,17 @@ const WelcomePage = () => {
           <h1 className='text-[40px] font-light text-center max-sm:text-[30px]'>
             <FormattedMessage id='queryLanguageTitle' />
           </h1>
-          <p className='w-[720px] text-center mt-[30px] font-extralight leading-[35.2px] text-[24px] mx-auto text-[#202020] max-md:w-[520px] max-sm:text-[20px] max-sm:w-[320px]'>
+          <p className='w-[720px] text-center mt-[30px] font-extralight leading-[35.2px] text-[24px] mx-auto text-[#202020] max-md:w-[520px] max-sm:text-[15px] max-sm:w-[300px]'>
             <FormattedMessage id='queryLanguageDesc' />
           </p>
         </div>
 
-        <div className='pt-[80px] pb-[132px] max-lg:py-[60px] max-md:pt-[30px]'>
-          <h1 className='text-center text-[65px] font-light max-sm:text-[30px]'>
+        <div className='pt-[80px] pb-[132px] max-lg:py-[60px] max-md:pt-[30px] px-10'>
+          <h1 className='text-center text-[65px] font-light max-sm:text-[30px] max-md:text-[40px]'>
             <FormattedMessage id='ourTeam' />
           </h1>
-          <div className='flex flex-wrap justify-around mt-10 max-md:mt-[0px]'>
-            <div className='flex mt-[30px] items-center justify-around rounded-lg shadow-xl border-2 w-[450px] hover:scale-105 duration-300 max-sm:flex-col max-sm:py-[20px] max-sm:w-[300px]'>
+          <div className='flex flex-wrap justify-around mt-10 max-md:mt-[0px] gap-[15px] max-sm:mt-[20px]'>
+            <div className='flex mt-[30px] items-center justify-around rounded-lg shadow-xl border-2 w-[450px] hover:scale-105 duration-300 max-sm:flex-col max-sm:py-[20px] max-sm:w-[300px] max-sm:mt-0'>
               <div className='m-[30px] max-sm:mt-[0] max-sm:mb-[10px]'>
                 <span className='font-bold'>
                   <FormattedMessage id='natalia' />
@@ -188,42 +188,42 @@ const WelcomePage = () => {
           </div>
         </div>
 
-        <div className='bg-[#f5f6f8] pt-[40px] pb-[132px]'>
-          <h1 className='text-center text-[65px] font-light max-sm:text-[30px]'>
+        <div className='bg-[#f5f6f8] pt-[40px] pb-[132px] max-sm:py-[40px]'>
+          <h1 className='text-center text-[65px] font-light max-sm:text-[30px] max-lg:text-[55px] max-md:text-[40px]'>
             <FormattedMessage id='projectDescription' />
           </h1>
-          <div className='flex border-2 items-center w-[800px] m-auto mt-10'>
-            <div className='w-[30%] flex justify-center'>
+          <div className='flex border-2 items-center w-[800px] m-auto mt-10 max-lg:w-[600px] max-md:w-[500px] max-sm:w-[300px] max-sm:flex-col'>
+            <div className='w-[30%] flex justify-center max-sm:mt-5'>
               <Link
                 to={
                   'https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/graphiql.md#graphiql'
                 }
-                className='font-bold text-[30px] text-blue-500'
+                className='font-bold text-[30px] text-blue-500 max-lg:text-[20px]'
                 target='_blank'
               >
                 GraphiQL
               </Link>
             </div>
-            <div className='w-[70%]'>
-              <p className='p-8 border-l-2 font-extralight leading-[35.2px] text-[24px] mx-auto text-[#202020] max-md:w-[520px] max-sm:text-[20px] max-sm:w-[320px]'>
+            <div className='w-[70%] max-sm:w-auto'>
+              <p className='p-8 border-l-2 font-extralight leading-[35.2px] text-[24px] mx-auto text-[#202020] max-lg:text-[20px] max-md:w-[350px] max-sm:text-[15px] max-sm:border-0 max-sm:w-[300px] max-sm:p-4 max-sm:text-center'>
                 <FormattedMessage id='projectGraphText' />
               </p>
             </div>
           </div>
-          <div className='flex border-2 items-center w-[800px] m-auto mt-10'>
-            <div className='w-[30%] flex justify-center'>
+          <div className='flex border-2 items-center w-[800px] m-auto mt-10 max-lg:w-[600px] max-md:w-[500px] max-sm:w-[300px] max-sm:flex-col'>
+            <div className='w-[30%] flex justify-center max-sm:mt-5'>
               <Link
                 to={
                   'https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/graphiql.md#theoretical-notes'
                 }
-                className='font-bold text-[30px] text-blue-500 flex text-center'
+                className='font-bold text-[30px] text-blue-500 flex text-center max-lg:text-[20px] max-md:text-[15px] max-sm:text-[20px]'
                 target='_blank'
               >
                 <FormattedMessage id='projectNotes' />
               </Link>
             </div>
-            <div className='w-[70%]'>
-              <p className='p-8 border-l-2 font-extralight leading-[35.2px] text-[24px] mx-auto text-[#202020] max-md:w-[520px] max-sm:text-[20px] max-sm:w-[320px]'>
+            <div className='w-[70%] max-sm:w-auto'>
+              <p className='p-8 border-l-2 font-extralight leading-[35.2px] text-[24px] mx-auto text-[#202020] max-lg:text-[20px] max-md:w-[350px] max-sm:text-[15px] max-sm:w-[300px] max-sm:border-0 max-sm:p-4 max-sm:text-center'>
                 <FormattedMessage id='projectTheorText1' />
                 <Link
                   to={'https://www.npmjs.com/package/@graphiql/react'}
@@ -236,20 +236,20 @@ const WelcomePage = () => {
               </p>
             </div>
           </div>
-          <div className='flex border-2 items-center w-[800px] m-auto mt-10'>
-            <div className='w-[30%] flex justify-center'>
+          <div className='flex border-2 items-center w-[800px] m-auto mt-10 max-lg:w-[600px] max-md:w-[500px] max-sm:w-[300px] max-sm:flex-col'>
+            <div className='w-[30%] flex justify-center max-sm:mt-5'>
               <Link
                 to={
                   'https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/graphiql.md#building-a-team'
                 }
-                className='font-bold text-[30px] text-blue-500 flex text-center'
+                className='font-bold text-[30px] text-blue-500 flex text-center max-lg:text-[20px] max-md:text-[15px] max-sm:text-[20px]'
                 target='_blank'
               >
                 <FormattedMessage id='projectTeam' />
               </Link>
             </div>
-            <div className='w-[70%]'>
-              <p className='p-8 border-l-2 font-extralight leading-[35.2px] text-[24px] mx-auto text-[#202020] max-md:w-[520px] max-sm:text-[20px] max-sm:w-[320px]'>
+            <div className='w-[70%] max-sm:w-auto'>
+              <p className='p-8 border-l-2 font-extralight leading-[35.2px] text-[24px] mx-auto text-[#202020] max-lg:text-[20px] max-md:w-[350px] max-sm:text-[15px] max-sm:w-[300px] max-sm:border-0 max-sm:p-4 max-sm:text-center'>
                 <FormattedMessage id='projectTeamText' />
                 <Link
                   to={'https://docs.rs.school/#/teams'}
@@ -261,25 +261,25 @@ const WelcomePage = () => {
               </p>
             </div>
           </div>
-          <div className='flex border-2 items-center w-[800px] m-auto mt-10'>
-            <div className='w-[30%] flex justify-center'>
+          <div className='flex border-2 items-center w-[800px] m-auto mt-10 max-lg:w-[600px] max-md:w-[500px] max-sm:w-[300px] max-sm:flex-col'>
+            <div className='w-[30%] flex justify-center max-sm:mt-5'>
               <Link
                 to={
                   'https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/graphiql.md#backend'
                 }
-                className='font-bold text-[30px] text-blue-500 flex text-center'
+                className='font-bold text-[30px] text-blue-500 flex text-center max-lg:text-[20px]'
                 target='_blank'
               >
                 Backend
               </Link>
             </div>
-            <div className='w-[70%]'>
-              <p className='p-8 border-l-2 font-extralight leading-[35.2px] text-[24px] mx-auto text-[#202020] max-md:w-[520px] max-sm:text-[20px] max-sm:w-[320px]'>
+            <div className='w-[70%] max-sm:w-auto'>
+              <p className='p-8 border-l-2 font-extralight leading-[35.2px] text-[24px] mx-auto text-[#202020] max-lg:text-[20px] max-md:w-[350px] max-sm:text-[15px] max-sm:w-[300px] max-sm:border-0 max-sm:p-4 max-sm:text-center'>
                 <FormattedMessage id='projectBackendText' />
               </p>
             </div>
           </div>
-          <h3 className='text-center mt-10 font-extralight text-[28px]'>
+          <h3 className='text-center mt-10 font-extralight text-[28px] max-sm:text-[20px]'>
             <FormattedMessage id='projectFullDesc' />
             <Link
               to={
@@ -293,15 +293,15 @@ const WelcomePage = () => {
           </h3>
         </div>
 
-        <div className='pt-[40px] pb-[132px]'>
-          <h1 className='text-center text-[65px] font-light max-sm:text-[30px]'>
+        <div className='pt-[40px] pb-[132px] max-sm:py-[40px]'>
+          <h1 className='text-center text-[65px] font-light max-md:text-[40px] max-sm:text-[30px]'>
             <FormattedMessage id='courseTitle' />
           </h1>
-          <div className='flex flex-col w-[800px] m-auto'>
-            <p className='mt-[30px] font-extralight leading-[35.2px] text-[24px] mx-auto text-[#202020] max-md:w-[520px] max-sm:text-[20px] max-sm:w-[320px]'>
+          <div className='flex flex-col w-[800px] m-auto max-lg:w-[600px] max-md:w-[400px] max-sm:w-[300px]'>
+            <p className='mt-[30px] font-extralight leading-[35.2px] text-[24px] mx-auto text-[#202020] max-md:w-[400px] max-sm:w-[300px] max-sm:text-[15px]'>
               <FormattedMessage id='courseDesc' />
             </p>
-            <ul className='text-[22px] list-disc ml-10 mt-7 font-extralight leading-[40px]'>
+            <ul className='text-[22px] list-disc ml-10 mt-7 font-extralight leading-[40px] max-sm:text-[15px]'>
               <li>JavaScript</li>
               <li>TypeScript</li>
               <li>

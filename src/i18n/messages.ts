@@ -63,8 +63,8 @@ export const messages = {
     projectNotes: 'Theoretical Notes',
     projectTeam: 'Building a team',
     projectGraphText: 'GraphiQL is a playground/IDE for graphQL requests.',
-    projectTheorText1: 'GraphiQL is an open-source tool which you can use as an example ',
-    projectTheorLink: '(https://www.npmjs.com/package/@graphiql/react)',
+    projectTheorText1: 'GraphiQL is an open-source tool which you can use as an ',
+    projectTheorLink: 'example',
     projectTheorText2:
       '. However, the app should also include authorization/authentication capabilities, to give access to the tool to only to authorized users.',
     projectTeamText: 'The project should be done in a team of 3 members. Teamwork guidelines ',
@@ -140,8 +140,8 @@ export const messages = {
     projectNotes: 'Теоретические замечания',
     projectGraphText: 'GraphiQL - это игровая площадка/IDE для запросов graphQL.',
     projectTheorText1:
-      'GraphiQL - это инструмент с открытым исходным кодом, который можно использовать в качестве примера ',
-    projectTheorLink: '(https://www.npmjs.com/package/@graphiql/react)',
+      'GraphiQL - это инструмент с открытым исходным кодом, который можно использовать в качестве ',
+    projectTheorLink: 'примера',
     projectTheorText2:
       '. Однако приложение также должно включать возможность авторизации/аутентификации, чтобы предоставить доступ к инструменту только авторизованным пользователям.',
     projectTeamText:
