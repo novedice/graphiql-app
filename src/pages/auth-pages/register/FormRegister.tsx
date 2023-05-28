@@ -34,7 +34,7 @@ const FormRegister: FC<FormRegisterProps> = ({ handleClick }) => {
           {...register('name', {
             required: 'nameRequiredMessage',
             pattern: {
-              value: /^([А-ЯЁ][а-яё]*|[A-Z][a-z]*)$/,
+              value: /^([А-ЯЁ][а-яё]{1,15}|[A-Z][a-z]{1,15})$/,
               message: 'nameMessage',
             },
           })}
