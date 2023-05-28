@@ -20,7 +20,9 @@ const LoginPage = () => {
     });
   }, [navigate]);
 
-  return <div className='m-12'>{loading ? <Loading color={'black'} /> : <Login />}</div>;
+  return (
+    <div className='m-12 min-h-[68vh]'>{loading ? <Loading color={'black'} /> : <Login />}</div>
+  );
 };
 
 export default LoginPage;

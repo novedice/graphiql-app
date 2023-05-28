@@ -20,7 +20,9 @@ const RegisterPage = () => {
     });
   }, [navigate]);
 
-  return <div className='m-12'>{loading ? <Loading color={'black'} /> : <Register />}</div>;
+  return (
+    <div className='m-12 min-h-[68vh]'>{loading ? <Loading color={'black'} /> : <Register />}</div>
+  );
 };
 
 export default RegisterPage;
