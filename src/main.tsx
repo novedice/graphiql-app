@@ -7,6 +7,7 @@ import './firebase';
 import 'flowbite';
 import App from './App';
 import './index.css';
+import './assets/graphql.svg';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
