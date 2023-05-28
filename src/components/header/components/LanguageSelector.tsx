@@ -49,7 +49,7 @@ const LanguageSelector = () => {
       )}
 
       <div
-        className={`top-60 z-50 sm:top-14 absolute ${
+        className={`top-60 z-50 md:top-14 absolute ${
           isDropdownOpen ? '' : 'hidden'
         } my-4 bg-white text-base list-none divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700`}
       >

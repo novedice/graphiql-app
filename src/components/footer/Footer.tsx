@@ -10,7 +10,7 @@ const Footer = () => {
       <footer className='bg-gray-200 py-4 px-4 md:px-6 lg:px-8 flex justify-between items-center w-full'>
         <div className='flex items-center'>
           <Link to={'https://github.com/novedice/graphiql-app'} target='_blank'>
-            <FaGithub className='text-black w-[50px] sm:w-[60px]' size={60} />
+            <FaGithub className='text-black w-[40px] sm:w-[60px]' size={60} />
           </Link>
           <div className='hidden sm:flex flex-col ml-8'>
             <p className='font-bold'>
@@ -32,7 +32,7 @@ const Footer = () => {
             to={
               'https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/graphiql.md'
             }
-            className='text-lg sm:text-2xl font-bold underline'
+            className='text-sm sm:text-2xl font-bold underline'
             target='_blank'
           >
             GraphiQL <FormattedMessage id='project' />
@@ -44,7 +44,7 @@ const Footer = () => {
           className='flex-col items-center justify-center'
           target='_blank'
         >
-          <img src={RSSchoolLogo} alt='Company Logo' className='w-20 sm:w-24 mr-2' />
+          <img src={RSSchoolLogo} alt='Company Logo' className='w-16 sm:w-24 mr-2' />
         </Link>
       </footer>
     </>

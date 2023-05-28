@@ -39,19 +39,19 @@ const GraphQlPage = () => {
               </div>
               <div className='right-part-container w-[98%] sm:w-[45%] sm:mb-1 flex justify-center sm:m-2 sm:ml-1 '>
                 <Components.ResultWindow />
-                <Suspense
-                  fallback={
-                    <div className='fixed right-[10px] top-[350px]'>
-                      <Components.Spinner />
-                    </div>
-                  }
-                >
-                  <Docs />
-                </Suspense>
               </div>
             </div>
           </div>
         )}
+        <Suspense
+          fallback={
+            <div className='fixed right-[10px] top-[350px]'>
+              <Components.Spinner />
+            </div>
+          }
+        >
+          <Docs />
+        </Suspense>
         {show && (
           <ModalWindow>
             <Components.ErrorWindow />

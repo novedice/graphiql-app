@@ -32,7 +32,7 @@ export const messages = {
     emailRequiredMessage: 'Please enter the email',
     passwordRequiredMessage: 'Please enter the password',
     nameMessage:
-      'Please enter the name correctly (with a capital letter, no numbers, no special characters)',
+      'Please enter the name correctly (length 2-16, with a capital letter, no numbers, no special characters)',
     emailMessage: 'Please enter the correct email address',
     passwordMessage: 'Minimum 8 symbols, at least one letter, one digit, one special character',
     variables_title: 'QUERY VARIABLES',
@@ -110,7 +110,7 @@ export const messages = {
     emailRequiredMessage: 'Пожалуйста, введите электронную почту',
     passwordRequiredMessage: 'Пожалуйста, введите пароль',
     nameMessage:
-      'Пожалуйста, введите имя правильно (с большой буквы, без цифр и специальных символов)',
+      'Пожалуйста, введите имя правильно (длина 2-16, с большой буквы, без цифр и специальных символов)',
     emailMessage: 'Пожалуйста, введите правильный адрес электронной почты',
     passwordMessage:
       'Минимум 8 символов, как минимум одна буква, одна цифра, один специальный символ',

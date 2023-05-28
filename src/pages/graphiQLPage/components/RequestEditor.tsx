@@ -1,24 +1,29 @@
 import ControlledEditor from '@monaco-editor/react';
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useTypeSelector } from '../../../hooks/redux-hooks';
-import { fetchResult } from '../../../store/slices/requestSlice';
+import { fetchResult, updateRequest } from '../../../store/slices/requestSlice';
 import PlayIcon from './PlaySign';
 import { openModalWindow } from '../../../store/slices/modalWindowSlice';
 
 const RequestEditor = () => {
-  const [inputValue, setInputValue] = useState(`query NewQuery {
+  const { status, request } = useTypeSelector((state) => state.requestValue);
+  const [inputValue, setInputValue] = useState(
+    request
+      ? request
+      : `query NewQuery {
           country(code:"PT") {
             name
           }
-        }`);
+        }`
+  );
   const dispatch = useAppDispatch();
 
   const { variables, headers } = useTypeSelector((state) => state.variablesValue);
   const { wholeWindow } = useTypeSelector((state) => state.variableView);
-  const { status } = useTypeSelector((state) => state.requestValue);
 
   const handleChange = (e: string | undefined) => {
     setInputValue(e ? e : '');
+    dispatch(updateRequest(e ? e : ''));
   };
 
   const handleSubmit = async () => {
@@ -41,7 +46,6 @@ const RequestEditor = () => {
 
   useEffect(() => {
     if (status === 'failed') {
-      console.log('open modalWindow in Request editor useEffect');
       dispatch(openModalWindow());
     }
   }, [dispatch, status]);
