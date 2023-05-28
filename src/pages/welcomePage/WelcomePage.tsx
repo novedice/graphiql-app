@@ -1,19 +1,30 @@
 import { FormattedMessage } from 'react-intl';
 import '../../index.css';
 
-import { useTypeSelector } from '../../hooks/redux-hooks';
+import { useAppDispatch, useTypeSelector } from '../../hooks/redux-hooks';
 import { useNavigate } from 'react-router-dom';
 import ModalWindow from '../../components/ModalWindow';
-import { useState } from 'react';
+import { closeModalWindow, openModalWindow } from '../../store/slices/modalWindowSlice';
+import ModalGetStarted from './components/ModalGetStarted';
+import { updateStatusDoc } from '../../store/slices/docSlice';
+import { updateStatusRequest } from '../../store/slices/requestSlice';
 
 const WelcomePage = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { show } = useTypeSelector((state) => state.modalWindow);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { loggedIn } = useTypeSelector((state) => state.login);
 
-  const handleCloseModal = () => {
-    document.body.classList.remove('overflow-hidden');
-    setIsOpen(false);
+  const getStart = () => {
+    if (loggedIn) {
+      dispatch(closeModalWindow());
+      dispatch(updateStatusDoc());
+      dispatch(updateStatusRequest());
+
+      navigate('/graphi-ql');
+    } else {
+      dispatch(openModalWindow());
+    }
   };
 
   return (
@@ -77,9 +88,7 @@ const WelcomePage = () => {
           <div className='flex justify-center mt-12'>
             <button
               className='ml-3 capitalize text-3xl px-4 py-2 text-white border-[1px] font-sans border-white rounded font-thin hover:text-black hover:bg-white'
-              onClick={() => {
-                loggedIn ? navigate('/graphi-ql') : setIsOpen(true);
-              }}
+              onClick={getStart}
             >
               <FormattedMessage id='getStarted' />
             </button>
@@ -160,7 +169,11 @@ const WelcomePage = () => {
             </div>
           </div>
         </div>
-        <ModalWindow isOpen={isOpen} onClose={handleCloseModal} />
+        {show && (
+          <ModalWindow>
+            <ModalGetStarted />
+          </ModalWindow>
+        )}
       </div>
     </>
   );

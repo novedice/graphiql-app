@@ -23,8 +23,11 @@ const variableViewSlice = createSlice({
     changeWholeView: (state) => {
       state.wholeWindow = !state.wholeWindow;
     },
+    openWholeView: (state) => {
+      state.wholeWindow = true;
+    },
   },
 });
 
-export const { openVar, changeWholeView, closeVar } = variableViewSlice.actions;
+export const { openVar, changeWholeView, closeVar, openWholeView } = variableViewSlice.actions;
 export default variableViewSlice.reducer;

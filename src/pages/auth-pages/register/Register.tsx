@@ -1,10 +1,11 @@
 import { FormRegister } from './FormRegister';
 import { useNavigate } from 'react-router';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { setUser } from '../../store/slices/userSlice';
-import { useAppDispatch, useTypeSelector } from '../../hooks/redux-hooks';
+import { setUser } from '../../../store/slices/userSlice';
+import { useAppDispatch, useTypeSelector } from '../../../hooks/redux-hooks';
 import { useEffect } from 'react';
-import { logIn } from '../../store/slices/loginSlice';
+import { logIn } from '../../../store/slices/loginSlice';
+import { closeModalWindow } from '../../../store/slices/modalWindowSlice';
 
 const Register = () => {
   const dispatch = useAppDispatch();
@@ -33,6 +34,7 @@ const Register = () => {
         );
 
         dispatch(logIn());
+        dispatch(closeModalWindow());
 
         navigate('/graphi-ql');
       })
