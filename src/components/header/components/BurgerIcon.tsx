@@ -11,7 +11,7 @@ const BurgerIcon = ({ setOpen, open }: BurgerIconProps) => {
   };
   return (
     <>
-      <div className={` burger-icon space-y-2 sm:hidden mr-4`} onClick={toggleOpenMenu}>
+      <div className={` burger-icon space-y-2 md:hidden mr-4`} onClick={toggleOpenMenu}>
         {open === 'hidden' ? (
           <>
             <p className='w-8 h-0.5 bg-gray-600'></p>
